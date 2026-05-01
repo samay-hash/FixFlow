@@ -41,9 +41,15 @@ export default function Landing() {
     border:   dark ? '#444'    : '#0A0A0A',
     dot:      dark ? '#F0EBE018' : '#0A0A0A18',
     cardBg:   dark ? '#1A1A1A' : '#EAE4D9',
-    // Always-dark tokens — never flip with theme
-    inkBg:    '#0A0A0A',   // logo box, stats bar, terminal header bg
-    inkText:  '#F0EBE0',  // text ON those always-dark surfaces
+    // Always-dark tokens — for logo box & terminal header only
+    inkBg:    '#0A0A0A',
+    inkText:  '#F0EBE0',
+    // Theme-aware accent section (stats bar + CTA)
+    accentBg: dark ? '#0A0A0A' : '#EAE4D9',
+    accentText: dark ? '#C8FF00' : '#0A0A0A',
+    accentMuted: dark ? '#888'  : '#555',
+    accentDivider: dark ? '#333' : '#bbb',
+    accentBorder: dark ? '#444' : '#0A0A0A',
   };
 
   const card = (extra = {}) => ({
@@ -228,15 +234,15 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── STATS BAR — always dark strip ────────────────────── */}
-      <section style={{ borderTop: `3px solid ${t.border}`, borderBottom: `3px solid ${t.border}`, background: t.inkBg }}>
+      {/* ── STATS BAR ────────────────────────────────────────── */}
+      <section style={{ borderTop: `3px solid ${t.border}`, borderBottom: `3px solid ${t.border}`, background: t.accentBg }}>
         <div className="max-w-7xl mx-auto px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-0">
           {STATS.map((s, i) => (
             <div key={s.label}
               className="text-center py-4 px-6"
-              style={{ borderRight: i < STATS.length - 1 ? '3px solid #333' : 'none' }}>
-              <p className="text-3xl font-black" style={{ color: '#C8FF00' }}>{s.value}</p>
-              <p className="text-xs font-bold uppercase tracking-wider mt-1" style={{ color: '#888' }}>{s.label}</p>
+              style={{ borderRight: i < STATS.length - 1 ? `3px solid ${t.accentDivider}` : 'none' }}>
+              <p className="text-3xl font-black" style={{ color: t.accentText }}>{s.value}</p>
+              <p className="text-xs font-bold uppercase tracking-wider mt-1" style={{ color: t.accentMuted }}>{s.label}</p>
             </div>
           ))}
         </div>
@@ -348,35 +354,35 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── CTA — always dark section ─────────────────────────── */}
-      <section style={{ borderTop: `3px solid ${t.border}`, background: t.inkBg }}
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section style={{ borderTop: `3px solid ${t.border}`, background: t.accentBg }}
         className="px-8 py-24">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-6"
-            style={{ background: '#FF2D78', border: '2px solid #555' }}>
+            style={{ background: '#FF2D78', border: `2px solid ${t.accentBorder}` }}>
             <Clock size={12} color="white" />
             <span className="text-xs font-black uppercase tracking-wider text-white">Start in 60 Seconds</span>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-black uppercase leading-tight mb-6" style={{ color: '#F0EBE0' }}>
+          <h2 className="text-5xl lg:text-6xl font-black uppercase leading-tight mb-6" style={{ color: t.text }}>
             STOP FINDING OUT<br />
             <span style={{ background: '#C8FF00', color: '#0A0A0A', display: 'inline-block', padding: '0 12px' }}>
               FROM YOUR USERS.
             </span>
           </h2>
-          <p className="text-base font-medium mb-8" style={{ color: '#999' }}>
+          <p className="text-base font-medium mb-8" style={{ color: t.muted }}>
             FixFlow tells you before they do. Free to start. No credit card. Just add a URL.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/register"
               className="px-8 py-4 font-black uppercase text-base tracking-wide transition-all"
-              style={{ background: '#C8FF00', color: '#0A0A0A', border: '3px solid #C8FF00', boxShadow: '5px 5px 0 #C8FF00' }}
+              style={{ background: '#C8FF00', color: '#0A0A0A', border: `3px solid ${t.border}`, boxShadow: `5px 5px 0 ${t.border}` }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}>
               Create Free Workspace →
             </Link>
             <Link to="/login"
               className="px-8 py-4 font-black uppercase text-base tracking-wide"
-              style={{ background: 'transparent', color: '#ccc', border: '3px solid #555' }}>
+              style={{ background: 'transparent', color: t.muted, border: `3px solid ${t.border}` }}>
               I Have an Account
             </Link>
           </div>
