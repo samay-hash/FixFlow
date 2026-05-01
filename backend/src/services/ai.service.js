@@ -1,4 +1,5 @@
 const logger = require('../utils/logger');
+const Groq = require('groq-sdk');
 
 // Build the prompt for postmortem generation from an incident
 const buildPostmortemPrompt = (incident) => {
@@ -173,5 +174,52 @@ const generateMockPostmortem = (incident) => ({
   qualityScore: 6,
   qualityFeedback: 'AI key not configured. This is a template draft — please fill in specific technical details for each section.',
 });
+// Ask Groq Incident Copilot a question based on logs and incident context
+const askGroqCopilot = async (incident, logs, userMessage, chatHistory = []) => {
+  try {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) return "Groq API Key not configured. Please add GROQ_API_KEY to your backend .env file.";
 
-module.exports = { generatePostmortem, scorePostmortem, generateSitrep, analyzeLogs };
+    const groq = new Groq({ apiKey });
+
+    // Prepare context
+    const logText = logs.slice(-50).map(l => `[${l.level}] ${l.source}: ${l.message}`).join('\n');
+    const timeline = incident.timeline.map(t => `[${t.type}] ${t.message}`).join('\n');
+
+    const systemPrompt = `You are "FixFlow Copilot", an elite Site Reliability Engineer AI assistant. 
+You are helping the user troubleshoot an ongoing incident in real-time.
+Be extremely concise, technical, and actionable. Do not use filler words. If you suggest commands, wrap them in markdown code blocks.
+
+=== INCIDENT CONTEXT ===
+Title: ${incident.title}
+Status: ${incident.status}
+Severity: ${incident.severity}
+
+=== RECENT TIMELINE ===
+${timeline || 'No timeline events yet.'}
+
+=== RECENT SERVER LOGS ===
+${logText || 'No logs available.'}
+========================`;
+
+    const messages = [
+      { role: "system", content: systemPrompt },
+      ...chatHistory,
+      { role: "user", content: userMessage }
+    ];
+
+    const response = await groq.chat.completions.create({
+      messages,
+      model: "llama-3.3-70b-versatile",
+      temperature: 0.3,
+      max_tokens: 800,
+    });
+
+    return response.choices[0]?.message?.content || "No response generated.";
+  } catch (err) {
+    logger.error(`Groq Copilot failed: ${err.message}`);
+    return "Sorry, the AI copilot encountered an error analyzing the logs. Please try again.";
+  }
+};
+
+module.exports = { generatePostmortem, scorePostmortem, generateSitrep, analyzeLogs, askGroqCopilot };

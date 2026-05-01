@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { Send, Bot, UserCircle, ArrowLeft, Users, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 import clsx from 'clsx';
 import AutoRemediation from '../components/AutoRemediation';
+import IncidentCopilot from '../components/IncidentCopilot';
 
 const typeColors = { system: 'text-[#666]', observation: 'text-[#444]', action_taken: 'text-[var(--blue)]', status_change: 'text-[var(--pink)]', ai_insight: 'text-purple-600' };
 const typeIcons = { system: '⚙️', observation: '👁', action_taken: '🔧', status_change: '🔄', ai_insight: '🤖' };
@@ -266,6 +267,8 @@ export default function IncidentDetail() {
             </div>
           </div>
         </div>
+        {/* Groq Incident Copilot */}
+        {!isResolved && <IncidentCopilot incidentId={incident._id} incidentStatus={incident.status} />}
       </main>
     </div>
   );

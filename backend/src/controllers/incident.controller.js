@@ -3,7 +3,9 @@ const Log = require('../models/Log');
 const { getIO } = require('../socket/socket');
 const mongoose = require('mongoose');
 const User = require('../models/User');
+const ServerLog = require('../models/ServerLog');
 const notificationService = require('../services/notification.service');
+const { askGroqCopilot } = require('../services/ai.service');
 
 // @GET /api/incidents
 const getIncidents = async (req, res) => {
@@ -287,4 +289,34 @@ const getStats = async (req, res) => {
   }
 };
 
-module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats };
+// @POST /api/incidents/:id/chat
+const askCopilot = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
+    const { message, history } = req.body;
+    if (!message) return res.status(400).json({ success: false, message: 'Message is required' });
+
+    const incident = await Incident.findOne({ _id: req.params.id, companyId: req.user.companyId });
+    if (!incident) return res.status(404).json({ success: false, message: 'Incident not found' });
+
+    // Fetch recent server logs if there is a site attached
+    let logs = [];
+    if (incident.siteId) {
+      logs = await ServerLog.find({ siteId: incident.siteId })
+        .sort({ timestamp: -1 })
+        .limit(50);
+      logs = logs.reverse(); // Chronological order
+    }
+
+    const reply = await askGroqCopilot(incident, logs, message, history || []);
+
+    res.json({ success: true, reply });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats, askCopilot };
