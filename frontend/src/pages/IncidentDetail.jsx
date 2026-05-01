@@ -8,7 +8,7 @@ import { Send, Bot, UserCircle, ArrowLeft, Users, CheckCircle, Clock, AlertTrian
 import clsx from 'clsx';
 import AutoRemediation from '../components/AutoRemediation';
 
-const typeColors = { system: 'text-slate-500', observation: 'text-slate-300', action_taken: 'text-blue-300', status_change: 'text-yellow-300', ai_insight: 'text-purple-300' };
+const typeColors = { system: 'text-[#666]', observation: 'text-[#444]', action_taken: 'text-[var(--blue)]', status_change: 'text-[var(--pink)]', ai_insight: 'text-purple-600' };
 const typeIcons = { system: '⚙️', observation: '👁', action_taken: '🔧', status_change: '🔄', ai_insight: '🤖' };
 
 export default function IncidentDetail() {
@@ -100,9 +100,9 @@ export default function IncidentDetail() {
               </span>
               {incident.source === 'auto' && <span className="text-xs text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded-full">🤖 Auto-detected</span>}
             </div>
-            <h1 className="text-2xl font-bold text-white">{incident.title}</h1>
-            {incident.description && <p className="text-slate-400 text-sm mt-2">{incident.description}</p>}
-            <div className="flex items-center gap-4 mt-3 text-xs text-slate-500">
+            <h1 className="text-3xl font-black uppercase tracking-tight" style={{ color: 'var(--black)' }}>{incident.title}</h1>
+            {incident.description && <p className="font-bold text-sm mt-2" style={{ color: '#666' }}>{incident.description}</p>}
+            <div className="flex items-center gap-4 mt-3 text-xs font-bold" style={{ color: '#555' }}>
               <span className="flex items-center gap-1"><Clock size={12} />Created: {new Date(incident.createdAt).toLocaleString()}</span>
               {incident.siteId && <span className="flex items-center gap-1"><AlertTriangle size={12} />Site: {incident.siteId.name}</span>}
               {incident.mttr && <span className="flex items-center gap-1"><CheckCircle size={12} />MTTR: {Math.round(incident.mttr / 60)}m</span>}
@@ -124,24 +124,24 @@ export default function IncidentDetail() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* War Room - Timeline */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-6">
             {/* AI SITREP */}
-            <div className="card border-purple-500/30 bg-purple-500/5">
+            <div className="p-5" style={{ background: '#E9D5FF', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Bot size={16} className="text-purple-400" />
-                  <h3 className="text-sm font-semibold text-purple-300">AI Situation Report (SITREP)</h3>
+                  <Bot size={18} style={{ color: 'var(--black)' }} />
+                  <h3 className="text-sm font-black uppercase tracking-wider" style={{ color: 'var(--black)' }}>AI Situation Report (SITREP)</h3>
                 </div>
                 {!isResolved && canEdit && (
-                  <button onClick={getSitrep} disabled={sitrepLoading} className="btn-ghost btn-sm text-purple-400 border-purple-500/30">
+                  <button onClick={getSitrep} disabled={sitrepLoading} className="btn-ghost btn-sm" style={{ border: '2px solid var(--black)', background: 'white', color: 'var(--black)' }}>
                     <Bot size={12} />{sitrepLoading ? 'Analyzing...' : 'Update SITREP'}
                   </button>
                 )}
               </div>
               {sitrep ? (
-                <p className="text-sm text-slate-300 leading-relaxed">{sitrep}</p>
+                <p className="text-sm font-medium leading-relaxed" style={{ color: '#222' }}>{sitrep}</p>
               ) : (
-                <p className="text-sm text-slate-500 italic">Click "Update SITREP" to generate an AI situation report based on timeline activity.</p>
+                <p className="text-sm font-medium italic" style={{ color: '#666' }}>Click "Update SITREP" to generate an AI situation report based on timeline activity.</p>
               )}
             </div>
             
@@ -149,21 +149,22 @@ export default function IncidentDetail() {
             {!isResolved && <AutoRemediation incident={incident} sitrep={sitrep} />}
 
             {/* Timeline */}
-            <div className="card">
-              <h3 className="font-semibold text-white mb-4 text-sm">Incident Timeline</h3>
-              <div className="space-y-3 max-h-96 overflow-y-auto pr-2">
-                {incident.timeline?.length === 0 && <p className="text-slate-500 text-sm text-center py-4">No updates yet</p>}
+            <div className="p-6" style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '6px 6px 0 var(--black)' }}>
+              <h3 className="font-black uppercase tracking-wider mb-4 text-sm" style={{ color: 'var(--black)' }}>Incident Timeline</h3>
+              <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
+                {incident.timeline?.length === 0 && <p className="text-[#666] font-bold text-sm text-center py-4">No updates yet</p>}
                 {incident.timeline?.map((entry, i) => (
                   <div key={i} className="flex gap-3 animate-fade-in">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-dark-800 border border-slate-700 flex items-center justify-center text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full border-[2px] flex items-center justify-center text-sm"
+                         style={{ background: 'white', borderColor: 'var(--black)', boxShadow: '2px 2px 0 var(--black)' }}>
                       {typeIcons[entry.type] || '💬'}
                     </div>
                     <div className="flex-1">
-                      <p className={clsx('text-sm', typeColors[entry.type] || 'text-slate-300')}>{entry.message}</p>
+                      <p className={clsx('text-sm font-medium', typeColors[entry.type] || 'text-[#222]')}>{entry.message}</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-slate-600">{entry.updatedBy?.name || 'System'}</span>
-                        <span className="text-xs text-slate-600">·</span>
-                        <span className="text-xs text-slate-600">{new Date(entry.timestamp).toLocaleString()}</span>
+                        <span className="text-xs font-bold text-[#666]">{entry.updatedBy?.name || 'System'}</span>
+                        <span className="text-xs font-bold text-[#666]">·</span>
+                        <span className="text-xs font-bold text-[#666]">{new Date(entry.timestamp).toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
@@ -172,18 +173,26 @@ export default function IncidentDetail() {
 
               {/* Post Update */}
               {canEdit && !isResolved && (
-                <form onSubmit={postUpdate} className="mt-4 pt-4 border-t border-slate-700">
-                  <div className="flex gap-2 mb-2">
+                <form onSubmit={postUpdate} className="mt-5 pt-5" style={{ borderTop: '3px solid var(--black)' }}>
+                  <div className="flex gap-2 mb-3">
                     {['observation', 'action_taken', 'status_change'].map(t => (
                       <button key={t} type="button" onClick={() => setMsgType(t)}
-                        className={clsx('btn-sm btn text-xs capitalize', msgType === t ? 'btn-primary' : 'btn-ghost')}>
+                        className={clsx('btn-sm btn text-xs font-black uppercase tracking-wider', msgType === t ? 'bg-black text-white' : 'bg-white text-black')}
+                        style={{ border: '2px solid var(--black)' }}>
                         {t.replace('_', ' ')}
                       </button>
                     ))}
                   </div>
                   <div className="flex gap-2">
-                    <input value={message} onChange={e => setMessage(e.target.value)} placeholder="Describe what you observed or did..." className="input flex-1 text-sm" />
-                    <button type="submit" disabled={posting || !message.trim()} className="btn-primary btn-sm"><Send size={14} /></button>
+                    <input value={message} onChange={e => setMessage(e.target.value)} 
+                           placeholder="Describe what you observed or did..." 
+                           className="input flex-1 text-sm font-medium" 
+                           style={{ background: 'white' }} />
+                    <button type="submit" disabled={posting || !message.trim()} 
+                            className="btn-sm" 
+                            style={{ background: '#C8FF00', color: 'var(--black)', border: '3px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
+                      <Send size={16} />
+                    </button>
                   </div>
                 </form>
               )}
@@ -191,44 +200,45 @@ export default function IncidentDetail() {
           </div>
 
           {/* Sidebar Info */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             {/* Health Score */}
-            <div className="card text-center">
-              <p className="text-xs text-slate-400 mb-3">Incident Health Score</p>
+            <div className="p-6 text-center" style={{ background: 'white', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+              <p className="text-xs font-black uppercase tracking-wider mb-3" style={{ color: '#666' }}>Incident Health Score</p>
               <div className="relative inline-block">
                 <svg className="w-24 h-24 -rotate-90">
-                  <circle cx="48" cy="48" r="40" stroke="#1e293b" strokeWidth="6" fill="none" />
+                  <circle cx="48" cy="48" r="40" stroke="#EAE4D9" strokeWidth="6" fill="none" />
                   <circle cx="48" cy="48" r="40"
-                    stroke={incident.healthScore >= 70 ? '#10b981' : incident.healthScore >= 40 ? '#f59e0b' : '#ef4444'}
+                    stroke={incident.healthScore >= 70 ? '#10b981' : incident.healthScore >= 40 ? '#f59e0b' : '#FF2D78'}
                     strokeWidth="6" fill="none"
                     strokeDasharray={`${(incident.healthScore / 100) * 251} 251`}
                     strokeLinecap="round" style={{ transition: 'stroke-dasharray 1s ease' }} />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className={clsx('text-2xl font-bold', incident.healthScore >= 70 ? 'text-emerald-400' : incident.healthScore >= 40 ? 'text-yellow-400' : 'text-red-400')}>
+                  <span className={clsx('text-3xl font-black', incident.healthScore >= 70 ? 'text-emerald-500' : incident.healthScore >= 40 ? 'text-yellow-500' : 'text-[var(--pink)]')}>
                     {incident.healthScore}
                   </span>
-                  <span className="text-xs text-slate-500">/100</span>
+                  <span className="text-xs font-bold" style={{ color: '#888' }}>/100</span>
                 </div>
               </div>
-              <p className="text-xs text-slate-500 mt-2">Score drops with age, rises with action</p>
+              <p className="text-xs font-bold mt-2" style={{ color: '#888' }}>Score drops with age, rises with action</p>
             </div>
 
             {/* Assigned Responders */}
-            <div className="card">
-              <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2"><Users size={14} />Responders</h4>
+            <div className="p-5" style={{ background: 'white', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+              <h4 className="text-sm font-black uppercase tracking-wider mb-3 flex items-center gap-2" style={{ color: 'var(--black)' }}><Users size={14} />Responders</h4>
               {incident.assignedTo?.length === 0 ? (
-                <p className="text-xs text-slate-500">No responders assigned yet</p>
+                <p className="text-xs font-bold" style={{ color: '#888' }}>No responders assigned yet</p>
               ) : (
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {incident.assignedTo?.map(u => (
-                    <div key={u._id} className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
+                    <div key={u._id} className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black text-[var(--black)] flex-shrink-0"
+                           style={{ background: '#C8FF00', border: '2px solid var(--black)' }}>
                         {u.name?.[0] || '?'}
                       </div>
                       <div>
-                        <p className="text-xs font-medium text-slate-300">{u.name}</p>
-                        <p className="text-xs text-slate-500 capitalize">{u.role}</p>
+                        <p className="text-xs font-black" style={{ color: 'var(--black)' }}>{u.name}</p>
+                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: '#666' }}>{u.role}</p>
                       </div>
                     </div>
                   ))}
@@ -237,9 +247,9 @@ export default function IncidentDetail() {
             </div>
 
             {/* Metadata */}
-            <div className="card">
-              <h4 className="text-sm font-semibold text-slate-300 mb-3">Details</h4>
-              <dl className="space-y-2 text-xs">
+            <div className="p-5" style={{ background: 'white', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+              <h4 className="text-sm font-black uppercase tracking-wider mb-4" style={{ color: 'var(--black)' }}>Details</h4>
+              <dl className="space-y-3 text-xs">
                 {[
                   ['Source', incident.source],
                   ['Created', new Date(incident.createdAt).toLocaleString()],
@@ -247,9 +257,9 @@ export default function IncidentDetail() {
                   ['Timeline Entries', incident.timeline?.length || 0],
                   ['MTTR', incident.mttr ? `${Math.round(incident.mttr / 60)} min` : 'Ongoing'],
                 ].map(([k, v]) => (
-                  <div key={k} className="flex justify-between">
-                    <dt className="text-slate-500">{k}</dt>
-                    <dd className="text-slate-300 capitalize font-mono">{String(v)}</dd>
+                  <div key={k} className="flex justify-between items-center">
+                    <dt className="font-bold" style={{ color: '#666' }}>{k}</dt>
+                    <dd className="font-mono font-bold" style={{ color: 'var(--black)' }}>{String(v)}</dd>
                   </div>
                 ))}
               </dl>

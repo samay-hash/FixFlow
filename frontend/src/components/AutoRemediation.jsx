@@ -37,35 +37,35 @@ export default function AutoRemediation({ incident, sitrep }) {
   if (!script) return null;
 
   return (
-    <div className="card border-emerald-500/30 bg-emerald-500/5 mt-4 relative overflow-hidden group">
+    <div className="p-5 mt-6 relative overflow-hidden group" style={{ background: '#E6FFDD', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
       {/* Animated glowing border effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 translate-x-[-100%] animate-[slideIn_3s_ease-in-out_infinite]" />
       
-      <div className="flex items-center justify-between mb-3 relative z-10">
+      <div className="flex items-center justify-between mb-4 relative z-10">
         <div className="flex items-center gap-2">
-          <TerminalIcon size={18} className="text-emerald-400" />
-          <h3 className="font-semibold text-emerald-400 text-sm">AI Auto-Remediation Plan</h3>
-          <span className="badge bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-[10px] uppercase tracking-widest px-2 ml-2">Experimental</span>
+          <TerminalIcon size={18} style={{ color: 'var(--black)' }} />
+          <h3 className="font-black uppercase tracking-wider text-sm" style={{ color: 'var(--black)' }}>AI Auto-Remediation Plan</h3>
+          <span className="text-[10px] uppercase font-black px-2 py-0.5 ml-2" style={{ background: 'var(--black)', color: '#C8FF00' }}>Experimental</span>
         </div>
-        <button onClick={handleCopy} className="btn-ghost btn-sm text-emerald-400 hover:text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/20">
+        <button onClick={handleCopy} className="btn-sm font-bold uppercase tracking-wider" style={{ background: 'white', color: 'var(--black)', border: '2px solid var(--black)' }}>
           {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
           {copied ? 'Copied!' : 'Copy Script'}
         </button>
       </div>
 
-      <div className="bg-dark-900 border border-slate-700 rounded-lg p-4 font-mono text-xs text-slate-300 overflow-x-auto relative z-10 shadow-inner">
-        <div className="flex items-center gap-2 mb-2 pb-2 border-b border-slate-800">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-          <span className="text-slate-600 text-[10px] ml-2 font-sans">root@simrs-auto-remediator:~</span>
+      <div className="font-mono text-xs overflow-x-auto relative z-10" style={{ background: 'var(--black)', border: '2px solid var(--black)', padding: '16px' }}>
+        <div className="flex items-center gap-2 mb-3 pb-3" style={{ borderBottom: '2px solid #333' }}>
+          <span className="w-3 h-3 rounded-full" style={{ background: '#FF2D78' }}></span>
+          <span className="w-3 h-3 rounded-full" style={{ background: '#FFE500' }}></span>
+          <span className="w-3 h-3 rounded-full" style={{ background: '#00D1FF' }}></span>
+          <span className="text-[10px] ml-2 font-sans font-bold tracking-widest" style={{ color: '#888' }}>root@simrs-auto-remediator:~</span>
         </div>
-        <pre className="text-emerald-300 leading-relaxed whitespace-pre-wrap">
+        <pre className="leading-relaxed whitespace-pre-wrap" style={{ color: '#00FF41' }}>
           {script.split('\n').map((line, i) => (
-            <div key={i} className="flex hover:bg-emerald-500/10 transition-colors px-1 rounded">
-              <span className="text-slate-600 select-none mr-4">{(i + 1).toString().padStart(2, '0')}</span>
-              <span className="text-slate-400 mr-2">$</span>
-              <span>{line}</span>
+            <div key={i} className="flex hover:bg-[#111] transition-colors px-2 py-0.5 rounded">
+              <span className="select-none mr-4 font-bold" style={{ color: '#666' }}>{(i + 1).toString().padStart(2, '0')}</span>
+              <span className="mr-2 font-bold" style={{ color: '#888' }}>$</span>
+              <span className="font-bold">{line}</span>
             </div>
           ))}
         </pre>
