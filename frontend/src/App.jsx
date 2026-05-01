@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Sites from './pages/Sites';
 import Incidents from './pages/Incidents';
+import NewIncident from './pages/NewIncident';
 import IncidentDetail from './pages/IncidentDetail';
 import Logs from './pages/Logs';
 import Postmortems from './pages/Postmortems';
@@ -48,12 +49,13 @@ function AppRoutes() {
         <Route path="/status/:slug" element={<StatusPage />} />
 
         {/* Private */}
-        <Route path="/dashboard"      element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/sites"          element={<PrivateRoute><Sites /></PrivateRoute>} />
-        <Route path="/incidents"      element={<PrivateRoute><Incidents /></PrivateRoute>} />
-        <Route path="/incidents/:id"  element={<PrivateRoute><IncidentDetail /></PrivateRoute>} />
-        <Route path="/logs"           element={<PrivateRoute><Logs /></PrivateRoute>} />
-        <Route path="/postmortems"    element={<PrivateRoute><Postmortems /></PrivateRoute>} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/sites" element={<PrivateRoute><Sites /></PrivateRoute>} />
+        <Route path="/incidents" element={<PrivateRoute><Incidents /></PrivateRoute>} />
+        <Route path="/incidents/new" element={<PrivateRoute><NewIncident /></PrivateRoute>} />
+        <Route path="/incidents/:id" element={<PrivateRoute><IncidentDetail /></PrivateRoute>} />
+        <Route path="/logs" element={<PrivateRoute><Logs /></PrivateRoute>} />
+        <Route path="/postmortems" element={<PrivateRoute><Postmortems /></PrivateRoute>} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
