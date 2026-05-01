@@ -5,18 +5,18 @@ import { Activity, Search, RefreshCw, AlertCircle, Info, AlertTriangle, Skull } 
 import clsx from 'clsx';
 
 const LEVEL_CONFIG = {
-  fatal:   { icon: Skull,         color: 'text-red-400',    bg: 'bg-red-500/10 border-red-500/30',    label: 'FATAL'   },
-  error:   { icon: AlertCircle,   color: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/30', label: 'ERROR'  },
-  warning: { icon: AlertTriangle, color: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/30', label: 'WARN'  },
-  info:    { icon: Info,          color: 'text-blue-400',   bg: 'bg-blue-500/10 border-blue-500/30',    label: 'INFO'   },
+  fatal:   { icon: Skull,         color: '#FF2D78', bg: '#FF2D78', label: 'FATAL'   },
+  error:   { icon: AlertCircle,   color: '#FF6B00', bg: '#FF6B00', label: 'ERROR'   },
+  warning: { icon: AlertTriangle, color: '#8A5A00', bg: '#FFE500', label: 'WARN'    },
+  info:    { icon: Info,          color: '#0050FF', bg: '#D0E0FF', label: 'INFO'    },
 };
 
 export default function Logs() {
-  const [logs, setLogs] = useState([]);
-  const [summary, setSummary] = useState({ info: 0, warning: 0, error: 0, fatal: 0 });
-  const [filter, setFilter] = useState('');
-  const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [logs, setLogs]           = useState([]);
+  const [summary, setSummary]     = useState({ info: 0, warning: 0, error: 0, fatal: 0 });
+  const [filter, setFilter]       = useState('');
+  const [search, setSearch]       = useState('');
+  const [loading, setLoading]     = useState(true);
 
   const load = async () => {
     setLoading(true);
@@ -35,7 +35,11 @@ export default function Logs() {
 
   useEffect(() => { load(); }, [filter]);
 
-  const displayed = logs.filter(l => !search || l.message.toLowerCase().includes(search.toLowerCase()) || l.source?.toLowerCase().includes(search.toLowerCase()));
+  const displayed = logs.filter(l =>
+    !search ||
+    l.message.toLowerCase().includes(search.toLowerCase()) ||
+    l.source?.toLowerCase().includes(search.toLowerCase())
+  );
 
   const totalErrors = (summary.error || 0) + (summary.fatal || 0);
 
@@ -43,57 +47,82 @@ export default function Logs() {
     <div className="flex min-h-screen">
       <Sidebar />
       <main className="flex-1 ml-64 p-8">
-        <div className="page-header flex items-center justify-between">
+
+        {/* ── Header ──────────────────────────────────────── */}
+        <div className="page-header flex items-start justify-between">
           <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs font-bold uppercase px-2 py-0.5"
+                style={{ background: '#0A0A0A', border: '2px solid #0A0A0A', color: '#C8FF00' }}>
+                // EXPLORER
+              </span>
+            </div>
             <h1 className="page-title">Log Explorer</h1>
-            <p className="page-subtitle">{displayed.length} log entries • {totalErrors} errors in 24h</p>
+            <p className="page-subtitle">{displayed.length} entries • {totalErrors} errors in 24h</p>
           </div>
           <button onClick={load} className="btn-ghost btn-sm"><RefreshCw size={14} />Refresh</button>
         </div>
 
-        {/* Summary Cards */}
+        {/* ── Summary Cards ────────────────────────────────── */}
         <div className="grid grid-cols-4 gap-4 mb-6">
           {Object.entries(LEVEL_CONFIG).map(([level, cfg]) => {
             const Icon = cfg.icon;
+            const isActive = filter === level;
             return (
-              <button key={level} onClick={() => setFilter(filter === level ? '' : level)}
-                className={clsx('card text-left transition-all hover:scale-105', filter === level && 'border-white/30')}>
-                <div className={clsx('inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-mono font-bold mb-2', cfg.bg, cfg.color)}>
-                  <Icon size={10} />{cfg.label}
+              <button key={level}
+                onClick={() => setFilter(filter === level ? '' : level)}
+                className="p-4 text-left transition-all"
+                style={{
+                  background: isActive ? cfg.bg : '#EAE4D9',
+                  border: `3px solid #0A0A0A`,
+                  boxShadow: isActive ? '4px 4px 0 #0A0A0A' : '3px 3px 0 #0A0A0A',
+                  transform: isActive ? 'translate(-1px,-1px)' : 'none',
+                }}
+              >
+                <div className="flex items-center gap-1.5 mb-2">
+                  <Icon size={12} style={{ color: isActive ? '#0A0A0A' : cfg.color }} />
+                  <span className="text-xs font-black uppercase tracking-wider"
+                    style={{ color: isActive ? '#0A0A0A' : cfg.color }}>
+                    {cfg.label}
+                  </span>
                 </div>
-                <p className={clsx('text-2xl font-bold', cfg.color)}>{summary[level] || 0}</p>
-                <p className="text-xs text-slate-500 mt-0.5">last 24h</p>
+                <p className="text-3xl font-black" style={{ color: '#0A0A0A' }}>{summary[level] || 0}</p>
+                <p className="text-xs font-medium mt-0.5" style={{ color: '#666' }}>last 24h</p>
               </button>
             );
           })}
         </div>
 
-        {/* Search */}
+        {/* ── Search ──────────────────────────────────────── */}
         <div className="relative mb-4">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search log messages or source..." className="input pl-9" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: '#888' }} />
+          <input value={search} onChange={e => setSearch(e.target.value)}
+            placeholder="Search log messages or source..."
+            className="input pl-9" />
         </div>
 
-        {/* Log Table */}
-        <div className="card p-0 overflow-hidden">
-          <div className="overflow-auto max-h-[60vh]">
+        {/* ── Log Table ───────────────────────────────────── */}
+        <div style={{ border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A', overflow: 'hidden' }}>
+          <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
             {loading ? (
               <div className="flex items-center justify-center py-16">
-                <Activity size={24} className="text-blue-400 animate-spin" />
+                <Activity size={24} style={{ color: '#0050FF' }} className="animate-spin" />
               </div>
             ) : displayed.length === 0 ? (
               <div className="text-center py-16">
-                <Activity size={32} className="text-slate-600 mx-auto mb-3" />
-                <p className="text-slate-400 text-sm">No logs found</p>
+                <Activity size={32} className="mx-auto mb-3" style={{ color: '#888' }} />
+                <p className="text-sm font-bold" style={{ color: '#0A0A0A' }}>No logs found</p>
               </div>
             ) : (
               <table className="w-full text-sm">
-                <thead className="sticky top-0 bg-dark-800 border-b border-slate-700">
+                <thead style={{ position: 'sticky', top: 0, background: '#0A0A0A', borderBottom: '3px solid #0A0A0A' }}>
                   <tr>
-                    <th className="text-left px-4 py-3 text-xs text-slate-400 font-medium w-24">Level</th>
-                    <th className="text-left px-4 py-3 text-xs text-slate-400 font-medium w-40">Timestamp</th>
-                    <th className="text-left px-4 py-3 text-xs text-slate-400 font-medium w-28">Source</th>
-                    <th className="text-left px-4 py-3 text-xs text-slate-400 font-medium">Message</th>
+                    {['Level', 'Timestamp', 'Source', 'Message'].map(h => (
+                      <th key={h} className="text-left px-4 py-3 text-xs font-black uppercase tracking-wider"
+                        style={{ color: '#C8FF00' }}>
+                        {h}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
@@ -101,19 +130,30 @@ export default function Logs() {
                     const cfg = LEVEL_CONFIG[log.level] || LEVEL_CONFIG.info;
                     const Icon = cfg.icon;
                     return (
-                      <tr key={log._id} className={clsx('border-b border-slate-800 hover:bg-dark-800/50 transition-colors', i % 2 === 0 && 'bg-dark-700/20')}>
+                      <tr key={log._id}
+                        style={{
+                          background: i % 2 === 0 ? '#EAE4D9' : 'white',
+                          borderBottom: '1px solid #ccc',
+                        }}
+                      >
                         <td className="px-4 py-2.5">
-                          <span className={clsx('inline-flex items-center gap-1 text-xs font-mono font-bold', cfg.color)}>
-                            <Icon size={10} />{cfg.label}
+                          <span className="inline-flex items-center gap-1 text-xs font-black px-2 py-0.5"
+                            style={{ background: cfg.bg, color: log.level === 'warning' ? '#8A5A00' : 'white', border: '1.5px solid #0A0A0A' }}>
+                            <Icon size={9} />{cfg.label}
                           </span>
                         </td>
-                        <td className="px-4 py-2.5 font-mono text-xs text-slate-500 whitespace-nowrap">
+                        <td className="px-4 py-2.5 text-xs font-mono" style={{ color: '#666' }}>
                           {new Date(log.timestamp).toLocaleString()}
                         </td>
                         <td className="px-4 py-2.5">
-                          <span className="text-xs text-slate-400 bg-slate-700/40 px-1.5 py-0.5 rounded font-mono">{log.source || 'system'}</span>
+                          <span className="text-xs font-black px-1.5 py-0.5"
+                            style={{ background: '#0A0A0A', color: '#C8FF00', fontFamily: 'monospace' }}>
+                            {log.source || 'system'}
+                          </span>
                         </td>
-                        <td className="px-4 py-2.5 text-slate-300 font-mono text-xs">{log.message}</td>
+                        <td className="px-4 py-2.5 text-xs font-mono" style={{ color: '#0A0A0A' }}>
+                          {log.message}
+                        </td>
                       </tr>
                     );
                   })}

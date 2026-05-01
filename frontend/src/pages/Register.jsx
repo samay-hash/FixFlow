@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../store/authSlice';
 import api from '../api/axios';
 import toast from 'react-hot-toast';
-import { Shield, Building2, User, Mail, Lock, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
 export default function Register() {
-  const [form, setForm] = useState({ name: '', email: '', password: '', companyName: '' });
+  const [form, setForm]       = useState({ name: '', email: '', password: '', companyName: '' });
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch  = useDispatch();
+  const navigate  = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,32 +22,53 @@ export default function Register() {
       navigate('/dashboard');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Registration failed');
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   };
 
   const fields = [
-    { key: 'name', label: 'Full Name', icon: User, type: 'text', placeholder: 'John Doe' },
-    { key: 'email', label: 'Work Email', icon: Mail, type: 'email', placeholder: 'john@company.com' },
-    { key: 'companyName', label: 'Company / Team Name', icon: Building2, type: 'text', placeholder: 'Acme Corp' },
-    { key: 'password', label: 'Password', icon: Lock, type: 'password', placeholder: 'Min. 6 characters' },
+    { key: 'name',        label: 'Full Name',              type: 'text',     placeholder: 'John Doe' },
+    { key: 'email',       label: 'Work Email',             type: 'email',    placeholder: 'john@company.com' },
+    { key: 'companyName', label: 'Company / Team Name',    type: 'text',     placeholder: 'Acme Corp' },
+    { key: 'password',    label: 'Password',               type: 'password', placeholder: 'Min. 6 characters' },
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'radial-gradient(ellipse at 70% 50%, #1e3a8a22 0%, transparent 60%), radial-gradient(ellipse at 30% 20%, #7c3aed22 0%, transparent 60%), #0a0a0f' }}>
+    <div className="min-h-screen flex items-center justify-center p-6"
+      style={{
+        background: '#F2EDE4',
+        backgroundImage: 'radial-gradient(circle, #0A0A0A18 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+      }}
+    >
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-2xl shadow-blue-500/40 mb-4">
-            <Shield size={32} className="text-white" />
+
+        {/* ── Brand ────────────────────────────────────────── */}
+        <div className="mb-8">
+          <div
+            className="inline-flex items-center gap-3 px-4 py-2 mb-6"
+            style={{ background: '#0A0A0A', boxShadow: '4px 4px 0 #C8FF00' }}
+          >
+            <span className="text-lg font-black uppercase tracking-widest text-white">FixFlow</span>
+            <span className="text-xs font-bold px-1.5 py-0.5" style={{ background: '#C8FF00', color: '#0A0A0A' }}>AI</span>
           </div>
-          <h1 className="text-3xl font-bold text-white">Create Workspace</h1>
-          <p className="text-slate-400 text-sm mt-1">Set up your monitoring workspace in seconds</p>
+          <h1 className="text-4xl font-black uppercase leading-tight" style={{ color: '#0A0A0A' }}>
+            CREATE YOUR<br />
+            <span style={{ background: '#FF2D78', color: 'white', display: 'inline-block', padding: '0 8px' }}>
+              WORKSPACE.
+            </span>
+          </h1>
+          <p className="mt-3 text-sm font-medium" style={{ color: '#666' }}>
+            Set up monitoring in seconds. No credit card required.
+          </p>
         </div>
 
-        <div className="card">
+        {/* ── Form Card ────────────────────────────────────── */}
+        <div
+          className="p-6"
+          style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '6px 6px 0 #0A0A0A' }}
+        >
           <form onSubmit={handleSubmit} className="space-y-4">
-            {fields.map(({ key, label, icon: Icon, type, placeholder }) => (
+            {fields.map(({ key, label, type, placeholder }) => (
               <div key={key}>
                 <label className="label">{label}</label>
                 <input className="input" type={type} placeholder={placeholder}
@@ -55,21 +76,30 @@ export default function Register() {
               </div>
             ))}
             <button type="submit" disabled={loading} className="btn-primary w-full justify-center py-3 mt-2">
-              {loading ? <span className="animate-spin">⏳</span> : <Zap size={16} />}
-              {loading ? 'Setting up workspace...' : 'Create Workspace & Start Monitoring'}
+              {loading ? '⏳' : <Zap size={16} />}
+              {loading ? 'SETTING UP...' : 'CREATE WORKSPACE & START MONITORING'}
             </button>
           </form>
-          <p className="text-center text-sm text-slate-500 mt-4">
+          <p className="text-center text-sm font-medium mt-4" style={{ color: '#555' }}>
             Already have a workspace?{' '}
-            <a href="/login" className="text-blue-400 hover:text-blue-300 font-medium">Sign in →</a>
+            <a href="/login" className="font-bold" style={{ color: '#0050FF', textDecoration: 'underline' }}>
+              Sign in →
+            </a>
           </p>
         </div>
 
-        {/* Feature highlights */}
+        {/* ── Feature Pills ─────────────────────────────────── */}
         <div className="mt-4 grid grid-cols-3 gap-2">
-          {['Real-time Alerts', 'AI Postmortems', 'Team Collaboration'].map(f => (
-            <div key={f} className="text-center p-2 bg-dark-700/50 rounded-lg border border-slate-700/30">
-              <p className="text-xs text-slate-400">{f}</p>
+          {[
+            { label: 'Real-time Alerts', bg: '#C8FF00', color: '#0A0A0A' },
+            { label: 'AI Postmortems',   bg: '#0050FF', color: 'white' },
+            { label: 'Team Collab',      bg: '#FF2D78', color: 'white' },
+          ].map(f => (
+            <div key={f.label}
+              className="text-center px-2 py-2 text-xs font-bold uppercase tracking-wide"
+              style={{ background: f.bg, border: '2px solid #0A0A0A', boxShadow: '2px 2px 0 #0A0A0A', color: f.color }}
+            >
+              {f.label}
             </div>
           ))}
         </div>

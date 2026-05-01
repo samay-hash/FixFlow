@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIncidents, setStats } from '../store/incidentSlice';
 import api from '../api/axios';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { AlertTriangle, Globe, Activity, CheckCircle2, Clock, Zap, TrendingUp, ArrowRight } from 'lucide-react';
+import { AlertTriangle, Globe, Activity, CheckCircle2, Clock, ArrowRight } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import clsx from 'clsx';
 
@@ -14,17 +14,38 @@ const SeverityBadge = ({ s }) => {
 };
 
 const StatusDot = ({ s }) => {
-  const colors = { up: 'bg-emerald-500', down: 'bg-red-500', degraded: 'bg-yellow-500', unknown: 'bg-slate-500' };
-  return <span className={clsx('inline-block w-2.5 h-2.5 rounded-full', colors[s] || 'bg-slate-500')} />;
+  const map = { up: '#C8FF00', down: '#FF2D78', degraded: '#FFE500', unknown: '#ccc' };
+  return (
+    <span className="inline-block w-3 h-3 flex-shrink-0"
+      style={{ background: map[s] || '#ccc', border: '2px solid #0A0A0A' }} />
+  );
 };
+
+const StatCard = ({ label, value, icon: Icon, loading, accent }) => (
+  <div
+    className="p-5 relative overflow-hidden"
+    style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}
+  >
+    <div
+      className="absolute top-0 right-0 w-12 h-12 flex items-center justify-center"
+      style={{ background: accent, borderLeft: '3px solid #0A0A0A', borderBottom: '3px solid #0A0A0A' }}
+    >
+      <Icon size={16} color="#0A0A0A" />
+    </div>
+    <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: '#666' }}>{label}</p>
+    <p className="text-4xl font-black" style={{ color: '#0A0A0A' }}>
+      {loading ? '—' : value ?? 0}
+    </p>
+  </div>
+);
 
 export default function Dashboard() {
   const dispatch = useDispatch();
   const { stats, list: incidents } = useSelector(state => state.incidents);
   const { user } = useSelector(state => state.auth);
-  const [sites, setSites] = useState([]);
+  const [sites, setSites]         = useState([]);
   const [logSummary, setLogSummary] = useState({ info: 0, warning: 0, error: 0, fatal: 0 });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading]     = useState(true);
   const [uptimeData, setUptimeData] = useState([]);
 
   useEffect(() => {
@@ -40,146 +61,184 @@ export default function Dashboard() {
         dispatch(setStats(statsRes.data.stats));
         setSites(siteRes.data.sites);
         setLogSummary(logRes.data.summary);
-
-        // Build mock uptime sparkline from sites
-        const data = Array.from({ length: 12 }, (_, i) => ({
-          time: `${i * 2}h ago`,
+        setUptimeData(Array.from({ length: 12 }, (_, i) => ({
+          time: `${i * 2}h`,
           uptime: 95 + Math.random() * 5,
-        }));
-        setUptimeData(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+        })));
+      } catch (err) { console.error(err); }
+      finally { setLoading(false); }
     };
     load();
   }, [dispatch]);
 
-  const statCards = [
-    { label: 'Active Incidents', value: stats.open, icon: AlertTriangle, color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' },
-    { label: 'In Progress', value: stats.inProgress, icon: Activity, color: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/20' },
-    { label: 'Sites Monitored', value: sites.length, icon: Globe, color: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20' },
-    { label: 'Resolved Today', value: stats.resolved, icon: CheckCircle2, color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
-  ];
-
-  const avgMttrMin = Math.round(stats.avgMttrSeconds / 60);
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
   const downSites = sites.filter(s => s.status === 'down');
+  const avgMttrMin = Math.round(stats.avgMttrSeconds / 60);
+
+  const statCards = [
+    { label: 'Active Incidents', value: stats.open,       icon: AlertTriangle,  accent: '#FF2D78' },
+    { label: 'In Progress',      value: stats.inProgress,  icon: Activity,       accent: '#FFE500' },
+    { label: 'Sites Monitored',  value: sites.length,      icon: Globe,          accent: '#0050FF' },
+    { label: 'Resolved Today',   value: stats.resolved,    icon: CheckCircle2,   accent: '#C8FF00' },
+  ];
 
   return (
     <div className="flex min-h-screen">
       <Sidebar />
       <main className="flex-1 ml-64 p-8">
-        {/* Header */}
-        <div className="page-header flex items-center justify-between">
+
+        {/* ── Header ──────────────────────────────────────── */}
+        <div className="page-header flex items-start justify-between">
           <div>
-            <h1 className="page-title">Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 17 ? 'afternoon' : 'evening'}, {user?.name?.split(' ')[0]} 👋</h1>
-            <p className="page-subtitle">Here's what's happening across your infrastructure</p>
-          </div>
-          <div className="text-right">
-            <p className="text-xs text-slate-500">Last updated</p>
-            <p className="text-sm font-mono text-slate-300">{new Date().toLocaleTimeString()}</p>
+            <div className="flex items-center gap-3 mb-1">
+              <span
+                className="text-xs font-bold uppercase px-2 py-0.5"
+                style={{ background: '#C8FF00', border: '2px solid #0A0A0A' }}
+              >
+                // LIVE DASHBOARD
+              </span>
+            </div>
+            <h1 className="page-title">
+              {greeting}, {user?.name?.split(' ')[0]} 👋
+            </h1>
+            <p className="page-subtitle">Infrastructure overview • {new Date().toLocaleTimeString()}</p>
           </div>
         </div>
 
-        {/* Critical Alert Banner */}
+        {/* ── Critical Banner ─────────────────────────────── */}
         {downSites.length > 0 && (
-          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/40 rounded-xl flex items-center gap-3 animate-fade-in">
+          <div
+            className="mb-6 p-4 flex items-center gap-3 animate-fade-in"
+            style={{ background: '#FF2D78', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}
+          >
             <span className="pulse-dot-red" />
-            <p className="text-red-300 font-medium text-sm flex-1">
+            <p className="font-bold text-white text-sm flex-1">
               🚨 {downSites.length} site{downSites.length > 1 ? 's are' : ' is'} currently DOWN:{' '}
-              <span className="font-bold">{downSites.map(s => s.name).join(', ')}</span>
+              <span className="underline">{downSites.map(s => s.name).join(', ')}</span>
             </p>
-            <Link to="/incidents" className="btn-danger btn-sm">View Incidents →</Link>
+            <Link to="/incidents" className="btn-ghost btn-sm" style={{ background: 'white', color: '#FF2D78' }}>
+              View Incidents →
+            </Link>
           </div>
         )}
 
-        {/* Stat Cards */}
+        {/* ── Stat Cards ──────────────────────────────────── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {statCards.map(({ label, value, icon: Icon, color, bg }) => (
-            <div key={label} className={`card border ${bg} transition-all hover:scale-105`}>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs text-slate-400 font-medium">{label}</span>
-                <div className={`p-2 rounded-lg ${bg}`}><Icon size={16} className={color} /></div>
-              </div>
-              <p className={`text-3xl font-bold ${color}`}>{loading ? '...' : value}</p>
-            </div>
+          {statCards.map(card => (
+            <StatCard key={card.label} {...card} loading={loading} />
           ))}
         </div>
 
-        {/* MTTR + Uptime Row */}
+        {/* ── Uptime Chart + MTTR ─────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Uptime Chart */}
-          <div className="card lg:col-span-2">
+          <div className="lg:col-span-2 p-5"
+            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="font-semibold text-white text-sm">Uptime Trend</h3>
-                <p className="text-xs text-slate-400">Last 24 hours</p>
+                <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Uptime Trend</h3>
+                <p className="text-xs font-medium" style={{ color: '#666' }}>Last 24 hours</p>
               </div>
-              <span className="badge-low">Avg: {sites.length > 0 ? (sites.reduce((a, s) => a + s.uptimePercent, 0) / sites.length).toFixed(1) : 100}%</span>
+              <span className="badge-low">
+                Avg: {sites.length > 0 ? (sites.reduce((a, s) => a + s.uptimePercent, 0) / sites.length).toFixed(1) : 100}%
+              </span>
             </div>
-            <ResponsiveContainer width="100%" height={160}>
+            <ResponsiveContainer width="100%" height={150}>
               <AreaChart data={uptimeData}>
                 <defs>
                   <linearGradient id="uptimeGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                    <stop offset="5%"  stopColor="#C8FF00" stopOpacity={0.5} />
+                    <stop offset="95%" stopColor="#C8FF00" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="time" tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
-                <YAxis domain={[90, 100]} tick={{ fill: '#64748b', fontSize: 10 }} axisLine={false} tickLine={false} />
-                <Tooltip contentStyle={{ background: '#1a1a2e', border: '1px solid #334155', borderRadius: 8, fontSize: 12 }} />
-                <Area type="monotone" dataKey="uptime" stroke="#10b981" strokeWidth={2} fill="url(#uptimeGrad)" />
+                <XAxis dataKey="time" tick={{ fill: '#888', fontSize: 10 }} axisLine={false} tickLine={false} />
+                <YAxis domain={[90, 100]} tick={{ fill: '#888', fontSize: 10 }} axisLine={false} tickLine={false} />
+                <Tooltip
+                  contentStyle={{ background: '#0A0A0A', border: '2px solid #C8FF00', borderRadius: 0, fontSize: 12, color: '#fff' }}
+                />
+                <Area type="monotone" dataKey="uptime" stroke="#0A0A0A" strokeWidth={2} fill="url(#uptimeGrad)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
 
-          {/* MTTR & Log Summary */}
+          {/* MTTR + Log Summary */}
           <div className="space-y-4">
-            <div className="card text-center">
-              <Clock size={20} className="text-blue-400 mx-auto mb-2" />
-              <p className="text-3xl font-bold text-white">{avgMttrMin || '—'}<span className="text-sm text-slate-400 ml-1">min</span></p>
-              <p className="text-xs text-slate-400 mt-1">Avg. Time to Resolve</p>
+            <div className="p-5 text-center"
+              style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+              <Clock size={20} className="mx-auto mb-2" style={{ color: '#0050FF' }} />
+              <p className="text-4xl font-black" style={{ color: '#0A0A0A' }}>
+                {avgMttrMin || '—'}
+                <span className="text-base font-medium ml-1" style={{ color: '#666' }}>min</span>
+              </p>
+              <p className="text-xs font-bold uppercase tracking-wide mt-1" style={{ color: '#888' }}>Avg. Time to Resolve</p>
             </div>
-            <div className="card">
-              <p className="text-xs font-semibold text-slate-400 mb-3">24h Log Summary</p>
-              <div className="space-y-2">
-                {[['fatal', '#ef4444'], ['error', '#f97316'], ['warning', '#f59e0b'], ['info', '#3b82f6']].map(([l, c]) => (
-                  <div key={l} className="flex items-center justify-between">
-                    <span className="text-xs capitalize text-slate-400">{l}</span>
-                    <div className="flex items-center gap-2">
-                      <div className="w-20 h-1.5 bg-dark-900 rounded-full overflow-hidden">
-                        <div className="h-full rounded-full" style={{ width: `${Math.min(100, (logSummary[l] / (Object.values(logSummary).reduce((a, b) => a + b, 1))) * 100)}%`, background: c }} />
+
+            <div className="p-5"
+              style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+              <p className="text-xs font-black uppercase tracking-wider mb-3" style={{ color: '#0A0A0A' }}>24H Log Summary</p>
+              <div className="space-y-2.5">
+                {[
+                  ['fatal',   '#FF2D78'],
+                  ['error',   '#FF6B00'],
+                  ['warning', '#FFE500'],
+                  ['info',    '#0050FF'],
+                ].map(([l, c]) => {
+                  const total = Object.values(logSummary).reduce((a, b) => a + b, 1);
+                  return (
+                    <div key={l} className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-bold uppercase w-14" style={{ color: '#0A0A0A' }}>{l}</span>
+                      <div className="flex-1 h-2" style={{ background: '#ccc', border: '1px solid #0A0A0A' }}>
+                        <div className="h-full" style={{
+                          width: `${Math.min(100, (logSummary[l] / total) * 100)}%`,
+                          background: c,
+                        }} />
                       </div>
-                      <span className="text-xs font-mono text-slate-300 w-6 text-right">{logSummary[l]}</span>
+                      <span className="text-xs font-black w-5 text-right" style={{ color: '#0A0A0A' }}>
+                        {logSummary[l]}
+                      </span>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Recent Incidents + Site Status */}
+        {/* ── Recent Incidents + Site Status ──────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
           {/* Recent Incidents */}
-          <div className="card">
+          <div className="p-5"
+            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-white text-sm">Recent Incidents</h3>
-              <Link to="/incidents" className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1">View all <ArrowRight size={12} /></Link>
+              <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Recent Incidents</h3>
+              <Link to="/incidents"
+                className="text-xs font-bold uppercase flex items-center gap-1"
+                style={{ color: '#0050FF' }}>
+                View all <ArrowRight size={12} />
+              </Link>
             </div>
+
             {incidents.length === 0 ? (
-              <div className="text-center py-8">
-                <CheckCircle2 size={32} className="text-emerald-500 mx-auto mb-2" />
-                <p className="text-sm text-slate-400">All clear! No incidents.</p>
+              <div className="text-center py-10">
+                <CheckCircle2 size={32} className="mx-auto mb-2" style={{ color: '#C8FF00' }} />
+                <p className="text-sm font-bold" style={{ color: '#0A0A0A' }}>All clear! No incidents.</p>
               </div>
             ) : (
               <div className="space-y-2">
                 {incidents.slice(0, 5).map(inc => (
-                  <Link key={inc._id} to={`/incidents/${inc._id}`} className="flex items-center gap-3 p-3 rounded-lg bg-dark-800/60 hover:bg-dark-800 transition-colors border border-slate-700/30 hover:border-slate-600/50 group">
+                  <Link key={inc._id} to={`/incidents/${inc._id}`}
+                    className="flex items-center gap-3 p-3 transition-all group"
+                    style={{ background: 'white', border: '2px solid #0A0A0A', boxShadow: '2px 2px 0 #0A0A0A' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '4px 4px 0 #0A0A0A'; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '2px 2px 0 #0A0A0A'; }}
+                  >
                     <SeverityBadge s={inc.severity} />
-                    <p className="text-sm text-slate-300 group-hover:text-white flex-1 truncate">{inc.title}</p>
-                    <span className={clsx('text-xs', inc.status === 'resolved' ? 'text-emerald-400' : inc.status === 'in_progress' ? 'text-yellow-400' : 'text-red-400')}>
+                    <p className="text-sm font-semibold flex-1 truncate" style={{ color: '#0A0A0A' }}>{inc.title}</p>
+                    <span className="text-xs font-bold uppercase" style={{
+                      color: inc.status === 'resolved' ? '#0A8A00' : inc.status === 'in_progress' ? '#8A6A00' : '#FF2D78',
+                    }}>
                       {inc.status.replace('_', ' ')}
                     </span>
                   </Link>
@@ -189,29 +248,36 @@ export default function Dashboard() {
           </div>
 
           {/* Site Status */}
-          <div className="card">
+          <div className="p-5"
+            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-white text-sm">Site Status</h3>
-              <Link to="/sites" className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1">Manage <ArrowRight size={12} /></Link>
+              <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Site Status</h3>
+              <Link to="/sites" className="text-xs font-bold uppercase flex items-center gap-1" style={{ color: '#0050FF' }}>
+                Manage <ArrowRight size={12} />
+              </Link>
             </div>
+
             {sites.length === 0 ? (
-              <div className="text-center py-8">
-                <Globe size={32} className="text-slate-600 mx-auto mb-2" />
-                <p className="text-sm text-slate-400">No sites added yet.</p>
+              <div className="text-center py-10">
+                <Globe size={32} className="mx-auto mb-2" style={{ color: '#888' }} />
+                <p className="text-sm font-bold" style={{ color: '#0A0A0A' }}>No sites added yet.</p>
                 <Link to="/sites" className="btn-primary btn-sm mt-3 inline-flex">Add your first site</Link>
               </div>
             ) : (
               <div className="space-y-2">
                 {sites.slice(0, 6).map(site => (
-                  <div key={site._id} className="flex items-center gap-3 p-3 rounded-lg bg-dark-800/60 border border-slate-700/30">
+                  <div key={site._id}
+                    className="flex items-center gap-3 p-3"
+                    style={{ background: 'white', border: '2px solid #0A0A0A' }}
+                  >
                     <StatusDot s={site.status} />
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-slate-300 truncate">{site.name}</p>
-                      <p className="text-xs text-slate-500 truncate">{site.url}</p>
+                      <p className="text-sm font-bold truncate" style={{ color: '#0A0A0A' }}>{site.name}</p>
+                      <p className="text-xs truncate" style={{ color: '#888' }}>{site.url}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-xs font-mono text-slate-400">{site.responseTime}ms</p>
-                      <p className="text-xs text-slate-500">{site.uptimePercent}% up</p>
+                      <p className="text-xs font-mono font-bold" style={{ color: '#0A0A0A' }}>{site.responseTime}ms</p>
+                      <p className="text-xs" style={{ color: '#666' }}>{site.uptimePercent}% up</p>
                     </div>
                   </div>
                 ))}
