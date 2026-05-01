@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../api/axios';
 import Sidebar from '../components/Sidebar';
 import toast from 'react-hot-toast';
-import { FileText, Bot, Star, ChevronDown, ChevronUp, CheckCircle, Clock } from 'lucide-react';
+import { FileText, Bot, Star, ChevronDown, ChevronUp, CheckCircle, Clock, Download } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function Postmortems() {
@@ -50,6 +50,35 @@ export default function Postmortems() {
     ['What Went Wrong',  'whatWentWrong'],
     ['Prevention Steps', 'preventionSteps'],
   ];
+
+  const downloadMarkdown = (pm) => {
+    let md = `# Postmortem: ${pm.title}\n`;
+    if (pm.incidentId) md += `**Incident:** ${pm.incidentId.title}\n`;
+    md += `**Date:** ${new Date(pm.createdAt).toLocaleDateString()}\n\n`;
+
+    sections.forEach(([label, key]) => {
+      if (pm[key]) {
+        md += `## ${label}\n${pm[key]}\n\n`;
+      }
+    });
+
+    if (pm.actionItems?.length > 0) {
+      md += `## Action Items\n`;
+      pm.actionItems.forEach(item => {
+        md += `- [${item.status === 'done' ? 'x' : ' '}] ${item.title} (Priority: ${item.priority})\n`;
+      });
+    }
+
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `postmortem-${pm._id}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="flex min-h-screen">
@@ -222,6 +251,13 @@ export default function Postmortems() {
                         </div>
                       </div>
                     )}
+
+                    {/* Download Button */}
+                    <div className="pt-4 mt-2" style={{ borderTop: '2px dashed #ccc' }}>
+                      <button onClick={() => downloadMarkdown(pm)} className="btn-sm btn" style={{ background: 'var(--black)', color: 'white', border: '2px solid var(--black)' }}>
+                        <Download size={14} /> Download Markdown
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import AutoRemediation from '../components/AutoRemediation';
 import IncidentCopilot from '../components/IncidentCopilot';
 
-const typeColors = { system: 'text-[#666]', observation: 'text-[#444]', action_taken: 'text-[var(--blue)]', status_change: 'text-[var(--pink)]', ai_insight: 'text-purple-600' };
+const typeColors = { system: 'text-[#333]', observation: 'text-[var(--black)]', action_taken: 'text-[var(--blue)]', status_change: 'text-[var(--pink)]', ai_insight: 'text-purple-600' };
 const typeIcons = { system: '⚙️', observation: '👁', action_taken: '🔧', status_change: '🔄', ai_insight: '🤖' };
 
 export default function IncidentDetail() {
@@ -113,11 +113,11 @@ export default function IncidentDetail() {
           {/* Actions */}
           {canEdit && (
             <div className="flex gap-2 flex-wrap">
-              {!isResolved && <button onClick={assignSelf} className="btn-ghost btn-sm"><Users size={14} />Assign Self</button>}
-              {incident.status === 'open' && <button onClick={() => updateStatus('in_progress')} className="btn-sm btn bg-yellow-600 hover:bg-yellow-500 text-white">▶ Start Working</button>}
-              {incident.status === 'in_progress' && <button onClick={() => updateStatus('resolved')} className="btn-success btn-sm"><CheckCircle size={14} />Resolve</button>}
+              {!isResolved && <button title="Take ownership of this incident" onClick={assignSelf} className="btn-ghost btn-sm"><Users size={14} />Assign Self</button>}
+              {incident.status === 'open' && <button title="Mark this incident as In Progress" onClick={() => updateStatus('in_progress')} className="btn-sm btn bg-yellow-600 hover:bg-yellow-500 text-white">▶ Start Working</button>}
+              {incident.status === 'in_progress' && <button title="Mark this incident as Resolved" onClick={() => updateStatus('resolved')} className="btn-success btn-sm"><CheckCircle size={14} />Resolve</button>}
               {isResolved && (
-                <button onClick={() => navigate('/postmortems')} className="btn-primary btn-sm"><Bot size={14} />Write Postmortem</button>
+                <button title="Go to Postmortems to generate RCA" onClick={() => navigate('/postmortems')} className="btn-primary btn-sm"><Bot size={14} />Write Postmortem</button>
               )}
             </div>
           )}
@@ -134,7 +134,7 @@ export default function IncidentDetail() {
                   <h3 className="text-sm font-black uppercase tracking-wider" style={{ color: 'var(--black)' }}>AI Situation Report (SITREP)</h3>
                 </div>
                 {!isResolved && canEdit && (
-                  <button onClick={getSitrep} disabled={sitrepLoading} className="btn-ghost btn-sm" style={{ border: '2px solid var(--black)', background: 'white', color: 'var(--black)' }}>
+                  <button title="Ask AI to read the timeline and summarize the current situation" onClick={getSitrep} disabled={sitrepLoading} className="btn-ghost btn-sm" style={{ border: '2px solid var(--black)', background: 'white', color: 'var(--black)' }}>
                     <Bot size={12} />{sitrepLoading ? 'Analyzing...' : 'Update SITREP'}
                   </button>
                 )}
@@ -178,6 +178,7 @@ export default function IncidentDetail() {
                   <div className="flex gap-2 mb-3">
                     {['observation', 'action_taken', 'status_change'].map(t => (
                       <button key={t} type="button" onClick={() => setMsgType(t)}
+                        title={`Post a new ${t.replace('_', ' ')} update to the timeline`}
                         className={clsx('btn-sm btn text-xs font-black uppercase tracking-wider', msgType === t ? 'bg-black text-white' : 'bg-white text-black')}
                         style={{ border: '2px solid var(--black)' }}>
                         {t.replace('_', ' ')}

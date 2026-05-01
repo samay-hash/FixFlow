@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
 import { addIncidentRealtime, updateIncidentRealtime } from '../store/incidentSlice';
 import toast from 'react-hot-toast';
+import { X } from 'lucide-react';
 
 const SocketContext = createContext(null);
 
@@ -32,12 +33,15 @@ export const SocketProvider = ({ children }) => {
     socket.on('incident:created', (incident) => {
       dispatch(addIncidentRealtime(incident));
       toast.custom((t) => (
-        <div className={`${t.visible ? 'animate-slide-in' : ''} bg-red-900/90 border border-red-500/50 text-white px-4 py-3 rounded-xl shadow-xl flex items-start gap-3 max-w-sm`}>
-          <span className="text-xl">🚨</span>
-          <div>
-            <p className="font-semibold text-sm">New Incident Created</p>
-            <p className="text-xs text-red-200 mt-0.5">{incident.title}</p>
+        <div className={`${t.visible ? 'animate-slide-in' : ''} bg-red-900/90 border border-red-500/50 text-white px-4 py-3 rounded-xl shadow-xl flex items-start justify-between gap-3 max-w-sm`}>
+          <div className="flex gap-3">
+            <span className="text-xl">🚨</span>
+            <div>
+              <p className="font-semibold text-sm">New Incident Created</p>
+              <p className="text-xs text-red-200 mt-0.5">{incident.title}</p>
+            </div>
           </div>
+          <button onClick={() => toast.dismiss(t.id)} className="text-white/70 hover:text-white"><X size={16} /></button>
         </div>
       ), { duration: 8000 });
     });
@@ -49,9 +53,12 @@ export const SocketProvider = ({ children }) => {
     socket.on('notification:alert', ({ message, severity }) => {
       const isGood = severity === 'low';
       toast.custom((t) => (
-        <div className={`${t.visible ? 'animate-slide-in' : ''} ${isGood ? 'bg-emerald-900/90 border-emerald-500/50' : 'bg-orange-900/90 border-orange-500/50'} border text-white px-4 py-3 rounded-xl shadow-xl flex items-start gap-3 max-w-sm`}>
-          <span className="text-xl">{isGood ? '✅' : '⚠️'}</span>
-          <p className="text-sm">{message}</p>
+        <div className={`${t.visible ? 'animate-slide-in' : ''} ${isGood ? 'bg-emerald-900/90 border-emerald-500/50' : 'bg-orange-900/90 border-orange-500/50'} border text-white px-4 py-3 rounded-xl shadow-xl flex items-start justify-between gap-3 max-w-sm`}>
+          <div className="flex gap-3 items-center">
+            <span className="text-xl">{isGood ? '✅' : '⚠️'}</span>
+            <p className="text-sm">{message}</p>
+          </div>
+          <button onClick={() => toast.dismiss(t.id)} className="text-white/70 hover:text-white"><X size={16} /></button>
         </div>
       ), { duration: 6000 });
     });
