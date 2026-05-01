@@ -371,4 +371,56 @@ const executeRemediation = async (req, res) => {
   }
 };
 
-module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, runStressTest, getStats, askCopilot, executeRemediation };
+// @POST /api/incidents/:id/resolve-verify
+const resolveAndVerify = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
+    const incident = await Incident.findOne({ _id: req.params.id, companyId: req.user.companyId }).populate('siteId');
+    if (!incident) return res.status(404).json({ success: false, message: 'Incident not found' });
+
+    // If there is a site attached, we must VERIFY it is up.
+    if (incident.siteId && incident.siteId.url) {
+      const axios = require('axios');
+      try {
+        // Ping the server to check if it's actually alive
+        await axios.get(incident.siteId.url, { timeout: 5000 });
+        
+        // If it succeeds, update site status
+        incident.siteId.status = 'up';
+        await incident.siteId.save();
+      } catch (error) {
+        // The server is still down! Refuse to resolve.
+        return res.status(400).json({ 
+          success: false, 
+          message: `Verification Failed! The server at ${incident.siteId.url} is still unreachable. You cannot resolve this incident yet.` 
+        });
+      }
+    }
+
+    // If verification passed (or no site attached), mark as resolved
+    incident.status = 'resolved';
+    incident.resolvedAt = new Date();
+    incident.mttr = Math.round((Date.now() - incident.createdAt) / 1000);
+    
+    incident.timeline.push({
+      message: `System Verification Passed. Incident resolved by ${req.user.name}.`,
+      updatedBy: req.user._id,
+      type: 'status_change',
+    });
+
+    await incident.save();
+    await incident.populate(['siteId', 'assignedTo', 'createdBy']);
+
+    const io = getIO();
+    io.to(`company_${req.user.companyId}`).emit('incident:updated', incident);
+
+    res.json({ success: true, message: 'Server verified UP. Incident resolved successfully!', incident });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, runStressTest, getStats, askCopilot, executeRemediation, resolveAndVerify };

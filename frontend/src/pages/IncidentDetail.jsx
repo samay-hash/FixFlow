@@ -24,17 +24,59 @@ export default function IncidentDetail() {
   const [sitrep, setSitrep] = useState('');
   const [sitrepLoading, setSitrepLoading] = useState(false);
   const [team, setTeam] = useState([]);
+  const [displayedSitrep, setDisplayedSitrep] = useState('');
+  const [escalated, setEscalated] = useState(false);
+  const [timeUntilEscalation, setTimeUntilEscalation] = useState('');
 
   const load = async () => {
     try {
       const [incRes, teamRes] = await Promise.all([api.get(`/incidents/${id}`), api.get('/auth/team')]);
       setIncident(incRes.data.incident);
       setTeam(teamRes.data.team);
-      setSitrep(incRes.data.incident.aiSitrep || '');
+      const fetchedSitrep = incRes.data.incident.aiSitrep || '';
+      if (fetchedSitrep) {
+        setSitrep(fetchedSitrep);
+        setDisplayedSitrep(fetchedSitrep);
+      } else {
+        // Auto-fetch SITREP if empty (Watchdog)
+        getSitrep(incRes.data.incident.status);
+      }
     } catch { toast.error('Failed to load incident'); }
     finally { setLoading(false); }
   };
   useEffect(() => { load(); }, [id]);
+
+  // Escalation Timer Logic
+  useEffect(() => {
+    if (!incident || incident.status !== 'open') return;
+    const interval = setInterval(() => {
+      const diff = Date.now() - new Date(incident.createdAt).getTime();
+      const fiveMins = 5 * 60 * 1000;
+      if (diff >= fiveMins) {
+        setEscalated(true);
+        setTimeUntilEscalation('ESCALATED');
+      } else {
+        const remaining = Math.floor((fiveMins - diff) / 1000);
+        const m = Math.floor(remaining / 60).toString().padStart(2, '0');
+        const s = (remaining % 60).toString().padStart(2, '0');
+        setTimeUntilEscalation(`${m}:${s}`);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [incident]);
+
+  // Typewriter effect for SITREP
+  useEffect(() => {
+    if (!sitrep || sitrep === displayedSitrep) return;
+    let i = 0;
+    setDisplayedSitrep('');
+    const timer = setInterval(() => {
+      setDisplayedSitrep(prev => sitrep.substring(0, i));
+      i += 3; // speed of typing
+      if (i > sitrep.length) clearInterval(timer);
+    }, 10);
+    return () => clearInterval(timer);
+  }, [sitrep]);
 
   const postUpdate = async (e) => {
     e.preventDefault();
@@ -61,20 +103,34 @@ export default function IncidentDetail() {
     const currentIds = incident.assignedTo?.map(u => u._id || u) || [];
     if (currentIds.includes(user._id)) return toast('Already assigned');
     try {
-      const { data } = await api.put(`/incidents/${id}`, { assignedTo: [...currentIds, user._id] });
+      const { data } = await api.put(`/incidents/${id}`, { assignedTo: [...currentIds, user._id], status: incident.status === 'open' ? 'in_progress' : incident.status });
       setIncident(data.incident);
-      toast.success('You are now a responder');
-    } catch { toast.error('Failed to assign'); }
+      toast.success('You have taken command of this incident');
+    } catch { toast.error('Failed to take command'); }
   };
 
-  const getSitrep = async () => {
-    setSitrepLoading(true);
+  const verifyAndResolve = async () => {
+    const toastId = toast.loading('📡 Pinging server to verify it is UP...');
     try {
-      // SITREP via AI service (calls backend which calls Gemini)
-      const { data } = await api.put(`/incidents/${id}`, { status: incident.status }); // triggers sitrep in service
-      setSitrep(data.incident.aiSitrep || 'Generating...');
-      toast.success('SITREP updated by AI');
-    } catch { toast.error('SITREP failed'); }
+      const { data } = await api.post(`/incidents/${id}/resolve-verify`);
+      setIncident(data.incident);
+      toast.success(data.message || 'Server verified UP. Incident Resolved!', { id: toastId });
+    } catch (err) { 
+      toast.error(err.response?.data?.message || 'Verification failed. Server is still DOWN.', { id: toastId }); 
+    }
+  };
+
+  const getSitrep = async (currentStatus) => {
+    setSitrepLoading(true);
+    setSitrep('');
+    setDisplayedSitrep('Analyzing current server logs...');
+    try {
+      const { data } = await api.put(`/incidents/${id}`, { status: currentStatus || incident.status }); 
+      setSitrep(data.incident.aiSitrep || 'Analysis complete. No immediate root cause identified.');
+    } catch { 
+      setDisplayedSitrep('Failed to connect to AI Watchdog.');
+      toast.error('SITREP failed'); 
+    }
     finally { setSitrepLoading(false); }
   };
 
@@ -112,10 +168,24 @@ export default function IncidentDetail() {
 
           {/* Actions */}
           {canEdit && (
-            <div className="flex gap-2 flex-wrap">
-              {!isResolved && <button title="Take ownership of this incident" onClick={assignSelf} className="btn-ghost btn-sm"><Users size={14} />Assign Self</button>}
-              {incident.status === 'open' && <button title="Mark this incident as In Progress" onClick={() => updateStatus('in_progress')} className="btn-sm btn bg-yellow-600 hover:bg-yellow-500 text-white">▶ Start Working</button>}
-              {incident.status === 'in_progress' && <button title="Mark this incident as Resolved" onClick={() => updateStatus('resolved')} className="btn-success btn-sm"><CheckCircle size={14} />Resolve</button>}
+            <div className="flex gap-2 flex-wrap items-center">
+              {/* PagerDuty Timer */}
+              {incident.status === 'open' && (
+                <div className={clsx("px-3 py-1.5 text-xs font-black uppercase tracking-wider border-2 border-black", escalated ? 'bg-red-500 text-white animate-pulse' : 'bg-yellow-400 text-black')}>
+                  {escalated ? '🚨 ESCALATED TO ADMIN' : `⏱️ Auto-Escalation in ${timeUntilEscalation}`}
+                </div>
+              )}
+              
+              {!isResolved && (
+                <button title="Become Incident Commander" onClick={assignSelf} className="btn-sm text-white font-black uppercase tracking-wide border-2 border-black" style={{ background: '#5500CC', boxShadow: '3px 3px 0 var(--black)' }}>
+                  <Users size={14} className="inline mr-1" />Take Command
+                </button>
+              )}
+              {incident.status === 'in_progress' && (
+                <button title="Verify server is UP and Resolve" onClick={verifyAndResolve} className="btn-success btn-sm font-black uppercase tracking-wide">
+                  <CheckCircle size={14} className="inline mr-1" />Verify & Resolve
+                </button>
+              )}
               {isResolved && (
                 <button title="Go to Postmortems to generate RCA" onClick={() => navigate('/postmortems')} className="btn-primary btn-sm"><Bot size={14} />Write Postmortem</button>
               )}
@@ -126,24 +196,20 @@ export default function IncidentDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* War Room - Timeline */}
           <div className="lg:col-span-2 space-y-6">
-            {/* AI SITREP */}
-            <div className="p-5" style={{ background: '#E9D5FF', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
-              <div className="flex items-center justify-between mb-3">
+            {/* AI SITREP Watchdog */}
+            <div className="p-5 relative overflow-hidden" style={{ background: '#E9D5FF', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+              {sitrepLoading && <div className="absolute inset-0 bg-purple-400/20 animate-pulse" />}
+              <div className="flex items-center justify-between mb-3 relative z-10">
                 <div className="flex items-center gap-2">
                   <Bot size={18} style={{ color: 'var(--black)' }} />
-                  <h3 className="text-sm font-black uppercase tracking-wider" style={{ color: 'var(--black)' }}>AI Situation Report (SITREP)</h3>
+                  <h3 className="text-sm font-black uppercase tracking-wider" style={{ color: 'var(--black)' }}>Live AI Watchdog (SITREP)</h3>
+                  {sitrepLoading && <span className="ml-2 text-[10px] uppercase font-bold text-purple-700 animate-pulse">Reading Logs...</span>}
                 </div>
-                {!isResolved && canEdit && (
-                  <button title="Ask AI to read the timeline and summarize the current situation" onClick={getSitrep} disabled={sitrepLoading} className="btn-ghost btn-sm" style={{ border: '2px solid var(--black)', background: 'white', color: 'var(--black)' }}>
-                    <Bot size={12} />{sitrepLoading ? 'Analyzing...' : 'Update SITREP'}
-                  </button>
-                )}
               </div>
-              {sitrep ? (
-                <p className="text-sm font-medium leading-relaxed" style={{ color: '#222' }}>{sitrep}</p>
-              ) : (
-                <p className="text-sm font-medium italic" style={{ color: '#666' }}>Click "Update SITREP" to generate an AI situation report based on timeline activity.</p>
-              )}
+              <div className="relative z-10 font-mono text-sm font-medium leading-relaxed" style={{ color: '#222', minHeight: '60px' }}>
+                {displayedSitrep}
+                {sitrepLoading && <span className="inline-block w-2 h-4 bg-black ml-1 animate-ping"></span>}
+              </div>
             </div>
             
             {/* AI Auto Remediation Script */}
