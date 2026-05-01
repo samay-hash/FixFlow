@@ -107,7 +107,7 @@ export default function Team() {
         {user?.role === 'admin' && (
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><Send size={16} />Create Invite</h3>
+              <h3 className="font-black uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: 'var(--black)' }}><Send size={16} />Create Invite</h3>
               <form onSubmit={submitInvite} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -146,10 +146,10 @@ export default function Team() {
 
               {inviteUrl && (
                 <div className="mt-4 p-3" style={{ background: 'var(--black)', color: 'white', border: '2px solid var(--accent)' }}>
-                  <p className="text-xs uppercase font-bold mb-2">Latest invite link</p>
+                  <p className="text-xs uppercase font-black mb-2 tracking-wide text-[var(--cream)]">Latest invite link</p>
                   <div className="flex items-center gap-2">
-                    <input className="input flex-1" readOnly value={inviteUrl} />
-                    <button onClick={copyInvite} className="btn-ghost btn-sm"><Copy size={14} />Copy</button>
+                    <input className="input flex-1 !text-black" readOnly value={inviteUrl} />
+                    <button type="button" onClick={copyInvite} className="btn-sm btn" style={{ background: 'var(--lime)', color: 'var(--black)' }}><Copy size={14} />Copy</button>
                   </div>
                 </div>
               )}
@@ -157,21 +157,21 @@ export default function Team() {
 
             <div className="space-y-6">
               <div className="card">
-                <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><Users size={16} />Current Members</h3>
+                <h3 className="font-black uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: 'var(--black)' }}><Users size={16} />Current Members</h3>
                 <div className="space-y-3">
                   {loading ? (
-                    <p className="text-sm text-slate-400">Loading members...</p>
+                    <p className="text-sm font-bold" style={{ color: '#666' }}>Loading members...</p>
                   ) : team.length === 0 ? (
-                    <p className="text-sm text-slate-400">No members yet.</p>
+                    <p className="text-sm font-bold" style={{ color: '#666' }}>No members yet.</p>
                   ) : team.map(member => (
-                    <div key={member._id} className="flex items-center justify-between p-3 rounded border border-slate-700 bg-dark-800">
+                    <div key={member._id} className="flex items-center justify-between p-3" style={{ background: 'white', border: '2px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
                       <div>
-                        <p className="text-sm font-semibold text-slate-100">{member.name}</p>
-                        <p className="text-xs text-slate-400">{member.email}</p>
+                        <p className="text-sm font-black" style={{ color: 'var(--black)' }}>{member.name}</p>
+                        <p className="text-xs font-bold" style={{ color: '#666' }}>{member.email}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs uppercase font-bold text-slate-300">{member.role}</p>
-                        <p className="text-xs text-slate-500">{member.preferences?.join(', ') || 'No preferences'}</p>
+                        <p className="text-xs uppercase font-black tracking-wider" style={{ color: 'var(--blue)' }}>{member.role}</p>
+                        <p className="text-[10px] font-bold uppercase mt-0.5" style={{ color: '#888' }}>{member.preferences?.join(', ') || 'No preferences'}</p>
                       </div>
                     </div>
                   ))}
@@ -179,42 +179,38 @@ export default function Team() {
               </div>
 
               <div className="card">
-                <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><BadgeCheck size={16} />Unassigned Engineers</h3>
+                <h3 className="font-black uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: 'var(--black)' }}><BadgeCheck size={16} />Unassigned Engineers</h3>
                 <div className="space-y-3">
                   {loading ? (
-                    <p className="text-sm text-slate-400">Loading unassigned users...</p>
+                    <p className="text-sm font-bold" style={{ color: '#666' }}>Loading unassigned users...</p>
                   ) : unassigned.length === 0 ? (
-                    <p className="text-sm text-slate-400">No unassigned users.</p>
+                    <p className="text-sm font-bold" style={{ color: '#666' }}>No unassigned users.</p>
                   ) : unassigned.map(u => (
-                    <div key={u._id} className="p-3 rounded border border-slate-700 bg-dark-800">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-semibold text-slate-100">{u.name}</p>
-                          <p className="text-xs text-slate-400">{u.email}</p>
-                        </div>
-                        <div className="text-xs text-slate-400">{u.role}</div>
+                    <div key={u._id} className="flex items-center justify-between p-3" style={{ background: 'white', border: '2px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
+                      <div>
+                        <p className="text-sm font-black" style={{ color: 'var(--black)' }}>{u.name}</p>
+                        <p className="text-xs font-bold" style={{ color: '#666' }}>{u.email}</p>
                       </div>
+                      <div className="text-xs font-black uppercase tracking-wider" style={{ color: 'var(--blue)' }}>{u.role}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="card">
-                <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><BadgeCheck size={16} />Pending Invites</h3>
+                <h3 className="font-black uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: 'var(--black)' }}><BadgeCheck size={16} />Pending Invites</h3>
                 <div className="space-y-3">
                   {invites.length === 0 ? (
-                    <p className="text-sm text-slate-400">No pending invites.</p>
+                    <p className="text-sm font-bold" style={{ color: '#666' }}>No pending invites.</p>
                   ) : invites.map(invite => (
-                    <div key={invite._id} className="p-3 rounded border border-slate-700 bg-dark-800">
-                      <div className="flex items-center justify-between gap-3">
-                        <div>
-                          <p className="text-sm font-semibold text-slate-100">{invite.email}</p>
-                          <p className="text-xs text-slate-400">{invite.role} · {invite.category}</p>
-                        </div>
-                        <div className="text-right text-xs text-slate-500 flex items-center gap-1">
-                          <Clock size={12} />
-                          {new Date(invite.expiresAt).toLocaleDateString()}
-                        </div>
+                    <div key={invite._id} className="flex items-center justify-between gap-3 p-3" style={{ background: 'white', border: '2px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
+                      <div>
+                        <p className="text-sm font-black" style={{ color: 'var(--black)' }}>{invite.email}</p>
+                        <p className="text-xs font-bold uppercase tracking-wider mt-0.5" style={{ color: 'var(--blue)' }}>{invite.role} · {invite.category}</p>
+                      </div>
+                      <div className="text-right text-xs font-bold flex items-center gap-1" style={{ color: '#888' }}>
+                        <Clock size={12} />
+                        {new Date(invite.expiresAt).toLocaleDateString()}
                       </div>
                     </div>
                   ))}

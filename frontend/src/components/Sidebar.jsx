@@ -88,10 +88,9 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* ── Admin ───────────────────────────────────────────── */}
       {user?.role === 'admin' && (
         <div className="px-3 mb-2">
-          <Link to="/team" className="nav-item" style={{ color: 'var(--blue)' }}>
+          <Link to="/team" className="nav-item" style={{ color: 'var(--black)' }}>
             <Users size={15} />
             <span>Admin · Team</span>
           </Link>
