@@ -19,6 +19,7 @@ export default function Team() {
   const { company, user } = useSelector((state) => state.auth);
   const [team, setTeam] = useState([]);
   const [invites, setInvites] = useState([]);
+  const [unassigned, setUnassigned] = useState([]);
   const [loading, setLoading] = useState(true);
   const [inviteUrl, setInviteUrl] = useState('');
   const [sending, setSending] = useState(false);
@@ -28,9 +29,21 @@ export default function Team() {
 
   const load = async () => {
     try {
-      const { data } = await api.get('/auth/team');
-      setTeam(data.team || []);
-      setInvites(data.invites || []);
+      const teamRes = await api.get('/auth/team');
+      setTeam(teamRes.data.team || []);
+      setInvites(teamRes.data.invites || []);
+
+      // Only admins can access unassigned endpoint
+      if (user?.role === 'admin') {
+        try {
+          const unassignedRes = await api.get('/auth/unassigned');
+          setUnassigned(unassignedRes.data.unassigned || []);
+        } catch {
+          setUnassigned([]);
+        }
+      } else {
+        setUnassigned([]);
+      }
     } catch {
       toast.error('Failed to load team');
     } finally {
@@ -38,7 +51,7 @@ export default function Team() {
     }
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(); }, [user?.role]);
 
   const submitInvite = async (e) => {
     e.preventDefault();
@@ -159,6 +172,27 @@ export default function Team() {
                       <div className="text-right">
                         <p className="text-xs uppercase font-bold text-slate-300">{member.role}</p>
                         <p className="text-xs text-slate-500">{member.preferences?.join(', ') || 'No preferences'}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="card">
+                <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><BadgeCheck size={16} />Unassigned Engineers</h3>
+                <div className="space-y-3">
+                  {loading ? (
+                    <p className="text-sm text-slate-400">Loading unassigned users...</p>
+                  ) : unassigned.length === 0 ? (
+                    <p className="text-sm text-slate-400">No unassigned users.</p>
+                  ) : unassigned.map(u => (
+                    <div key={u._id} className="p-3 rounded border border-slate-700 bg-dark-800">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-semibold text-slate-100">{u.name}</p>
+                          <p className="text-xs text-slate-400">{u.email}</p>
+                        </div>
+                        <div className="text-xs text-slate-400">{u.role}</div>
                       </div>
                     </div>
                   ))}

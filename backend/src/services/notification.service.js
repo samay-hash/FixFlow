@@ -199,4 +199,42 @@ const sendInviteEmail = async ({ to, inviterName, companyName, inviteUrl, role, 
   });
 };
 
-module.exports = { sendEmail, sendDownAlert, sendInviteEmail };
+const sendAssignedIncidentEmail = async (incident, assignees) => {
+  if (!assignees || assignees.length === 0) return;
+  for (const assignee of assignees) {
+    try {
+      const html = `
+      <div style="font-family: sans-serif; max-width: 600px;">
+        <div style="background: #0f172a; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+          <h1 style="margin:0;">You were assigned to an Incident</h1>
+        </div>
+        <div style="background: #1a1a2e; color: #e2e8f0; padding: 24px; border-radius: 0 0 8px 8px;">
+          <p>Hi ${assignee.name || 'there'},</p>
+          <p><strong>Incident:</strong> ${incident.title}</p>
+          <p><strong>Severity:</strong> ${incident.severity || 'N/A'}</p>
+          <p><strong>Site:</strong> ${incident.siteId?.name || '—'} ${incident.siteId?.url ? `(${incident.siteId.url})` : ''}</p>
+          <p><strong>Description:</strong></p>
+          <p>${incident.description || 'No description provided.'}</p>
+          <p style="margin-top:12px;">
+            <a href="${process.env.FRONTEND_URL}/incidents/${incident._id}" 
+               style="display:inline-block;padding:10px 18px;background:#3b82f6;color:white;border-radius:6px;text-decoration:none;">
+              View Incident
+            </a>
+          </p>
+          <hr style="border:none;border-top:1px solid #2a2a3a;margin:16px 0;" />
+          <p style="font-size:12px;color:#9aa3b2">This is an automated notification from FixFlow.</p>
+        </div>
+      </div>
+      `;
+      await sendEmail({
+        to: assignee.email,
+        subject: `Assigned: ${incident.title} — ${incident.severity?.toUpperCase() || 'Incident'}`,
+        html,
+      });
+    } catch (err) {
+      logger.warn(`Failed to send assigned email to ${assignee.email}: ${err.message}`);
+    }
+  }
+};
+
+module.exports = { sendEmail, sendDownAlert, sendInviteEmail, sendAssignedIncidentEmail };
