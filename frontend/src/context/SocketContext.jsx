@@ -33,17 +33,17 @@ export const SocketProvider = ({ children }) => {
     socket.on('incident:created', (incident) => {
       dispatch(addIncidentRealtime(incident));
       toast.custom((t) => (
-        <div className={`${t.visible ? 'animate-slide-in' : ''} bg-red-900/90 border border-red-500/50 text-white px-4 py-3 rounded-xl shadow-xl flex items-start justify-between gap-3 max-w-sm`}>
+        <div onClick={() => toast.dismiss(t.id)} className={`${t.visible ? 'animate-fade-in' : 'animate-fade-out'} cursor-pointer bg-[var(--pink)] text-white p-4 flex items-start justify-between gap-3 min-w-[300px]`}>
           <div className="flex gap-3">
             <span className="text-xl">🚨</span>
             <div>
-              <p className="font-semibold text-sm">New Incident Created</p>
-              <p className="text-xs text-red-200 mt-0.5">{incident.title}</p>
+              <p className="font-black text-sm uppercase tracking-wider">New Incident</p>
+              <p className="text-xs font-bold mt-0.5">{incident.title}</p>
             </div>
           </div>
-          <button onClick={() => toast.dismiss(t.id)} className="text-white/70 hover:text-white"><X size={16} /></button>
+          <button onClick={(e) => { e.stopPropagation(); toast.dismiss(t.id); }} className="text-white hover:text-gray-200"><X size={16} /></button>
         </div>
-      ), { duration: 8000 });
+      ), { duration: 6000 });
     });
 
     socket.on('incident:updated', (incident) => {
@@ -53,14 +53,14 @@ export const SocketProvider = ({ children }) => {
     socket.on('notification:alert', ({ message, severity }) => {
       const isGood = severity === 'low';
       toast.custom((t) => (
-        <div className={`${t.visible ? 'animate-slide-in' : ''} ${isGood ? 'bg-emerald-900/90 border-emerald-500/50' : 'bg-orange-900/90 border-orange-500/50'} border text-white px-4 py-3 rounded-xl shadow-xl flex items-start justify-between gap-3 max-w-sm`}>
+        <div onClick={() => toast.dismiss(t.id)} className={`${t.visible ? 'animate-fade-in' : 'animate-fade-out'} cursor-pointer ${isGood ? 'bg-[var(--lime)] text-[var(--black)]' : 'bg-[#FF6B00] text-white'} p-4 flex items-start justify-between gap-3 min-w-[300px]`}>
           <div className="flex gap-3 items-center">
             <span className="text-xl">{isGood ? '✅' : '⚠️'}</span>
-            <p className="text-sm">{message}</p>
+            <p className="text-sm font-bold uppercase tracking-wider">{message}</p>
           </div>
-          <button onClick={() => toast.dismiss(t.id)} className="text-white/70 hover:text-white"><X size={16} /></button>
+          <button onClick={(e) => { e.stopPropagation(); toast.dismiss(t.id); }} className="hover:opacity-70"><X size={16} /></button>
         </div>
-      ), { duration: 6000 });
+      ), { duration: 5000 });
     });
 
     socket.on('site:status', (data) => {
