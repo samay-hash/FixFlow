@@ -6,11 +6,13 @@ import { SocketProvider } from './context/SocketContext';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AcceptInvite from './pages/AcceptInvite';
 import Dashboard from './pages/Dashboard';
 import Sites from './pages/Sites';
 import Incidents from './pages/Incidents';
 import NewIncident from './pages/NewIncident';
 import IncidentDetail from './pages/IncidentDetail';
+import Team from './pages/Team';
 import Logs from './pages/Logs';
 import Postmortems from './pages/Postmortems';
 import StatusPage from './pages/StatusPage';
@@ -46,6 +48,7 @@ function AppRoutes() {
         {/* Public auth */}
         <Route path="/login"    element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+        <Route path="/accept-invite/:token" element={<AcceptInvite />} />
         <Route path="/status/:slug" element={<StatusPage />} />
 
         {/* Private */}
@@ -54,6 +57,7 @@ function AppRoutes() {
         <Route path="/incidents" element={<PrivateRoute><Incidents /></PrivateRoute>} />
         <Route path="/incidents/new" element={<PrivateRoute><NewIncident /></PrivateRoute>} />
         <Route path="/incidents/:id" element={<PrivateRoute><IncidentDetail /></PrivateRoute>} />
+        <Route path="/team" element={<PrivateRoute><Team /></PrivateRoute>} />
         <Route path="/logs" element={<PrivateRoute><Logs /></PrivateRoute>} />
         <Route path="/postmortems" element={<PrivateRoute><Postmortems /></PrivateRoute>} />
 

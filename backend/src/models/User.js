@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   companyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Company', required: true },
   avatar: { type: String, default: '' },
   isOnCall: { type: Boolean, default: false },
+  preferences: [{ type: String, trim: true }],
 }, { timestamps: true });
 
 userSchema.pre('save', async function () {
