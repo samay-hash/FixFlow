@@ -56,4 +56,61 @@ const getLogSummary = async (req, res) => {
   }
 };
 
-module.exports = { getLogs, ingestLog, getLogSummary };
+// @POST /api/logs/agent/ingest — For external EC2 agents (No JWT required)
+const agentIngest = async (req, res) => {
+  try {
+    const token = req.headers['x-agent-token'];
+    if (!token || token !== process.env.LOG_INGEST_TOKEN) {
+      return res.status(401).json({ success: false, message: 'Unauthorized agent' });
+    }
+
+    // CompanyId is usually mapped to the token in production, 
+    // for this hackathon we take it from body or fallback to a known company
+    const { message, level = 'INFO', source = 'syslog', serverIp, companyId } = req.body;
+    
+    if (!message || !companyId) {
+      return res.status(400).json({ success: false, message: 'Message and companyId are required' });
+    }
+
+    const ServerLog = require('../models/ServerLog');
+    const log = await ServerLog.create({
+      companyId,
+      serverIp: serverIp || req.ip,
+      source,
+      level,
+      message,
+    });
+
+    const { getIO } = require('../socket/socket');
+    const io = getIO();
+    io.to(`company_${companyId}`).emit('serverlog:new', log);
+
+    res.status(201).json({ success: true, id: log._id });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// @GET /api/logs/analyze — Analyze last 100 server logs using AI
+const analyzeServerLogs = async (req, res) => {
+  try {
+    const ServerLog = require('../models/ServerLog');
+    const { analyzeLogs } = require('../services/ai.service');
+
+    const logs = await ServerLog.find({ companyId: req.user.companyId })
+      .sort({ timestamp: -1 })
+      .limit(100)
+      .lean();
+
+    if (!logs.length) {
+      return res.json({ success: true, logs: [], analysis: { summary: 'No logs found.', anomalies: [], fix: '' }});
+    }
+
+    const analysis = await analyzeLogs(logs);
+    res.json({ success: true, logs, analysis });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getLogs, ingestLog, getLogSummary, agentIngest, analyzeServerLogs };

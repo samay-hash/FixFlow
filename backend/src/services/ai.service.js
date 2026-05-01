@@ -95,6 +95,7 @@ const scorePostmortem = async (postmortem) => {
 
 // Generate AI SITREP (war room summary) for an active incident
 const generateSitrep = async (incident) => {
+  // ... existing code
   try {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -124,6 +125,42 @@ const generateSitrep = async (incident) => {
   }
 };
 
+// Analyze server logs to find anomalies or fixes
+const analyzeLogs = async (logs) => {
+  try {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) return { summary: 'AI unavailable.', anomalies: [], fix: 'Add Gemini API Key.' };
+
+    const axios = require('axios');
+    const logText = logs.map(l => `[${l.level}] ${l.source}: ${l.message}`).join('\n');
+    
+    const prompt = `You are a DevOps expert. Analyze these recent server logs and provide a brief summary of system health, list any anomalies/errors, and suggest a terminal fix script.
+    
+    LOGS:
+    ${logText}
+    
+    Respond STRICTLY in JSON format:
+    {
+      "summary": "1-2 sentence overview of what these logs show",
+      "anomalies": ["list", "of", "critical", "errors", "or empty array"],
+      "fix": "Bash command string to investigate or fix the anomalies (or empty string if healthy)"
+    }`;
+
+    const response = await axios.post(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
+      { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 500 } },
+      { timeout: 15000 }
+    );
+
+    const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    return jsonMatch ? JSON.parse(jsonMatch[0]) : { summary: 'Error parsing AI response', anomalies: [], fix: '' };
+  } catch (err) {
+    logger.error(`AI Log Analysis failed: ${err.message}`);
+    return { summary: 'Analysis failed.', anomalies: [], fix: '' };
+  }
+};
+
 // Mock fallback when no API key
 const generateMockPostmortem = (incident) => ({
   summary: `A ${incident.severity} severity incident was detected affecting ${incident.siteId?.name || 'the monitored service'}. The incident was ${incident.status} after ${incident.mttr ? Math.round(incident.mttr / 60) + ' minutes' : 'an unknown duration'}.`,
@@ -137,4 +174,4 @@ const generateMockPostmortem = (incident) => ({
   qualityFeedback: 'AI key not configured. This is a template draft — please fill in specific technical details for each section.',
 });
 
-module.exports = { generatePostmortem, scorePostmortem, generateSitrep };
+module.exports = { generatePostmortem, scorePostmortem, generateSitrep, analyzeLogs };

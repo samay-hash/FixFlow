@@ -11,7 +11,7 @@ const navItems = [
   { path: '/dashboard',   label: 'Dashboard',       icon: LayoutDashboard },
   { path: '/sites',       label: 'Sites',            icon: Globe },
   { path: '/incidents',   label: 'Incidents',        icon: AlertTriangle },
-  { path: '/logs',        label: 'Log Explorer',     icon: Activity },
+  { path: '/logs',        label: 'Log Intelligence', icon: Activity },
   { path: '/postmortems', label: 'Postmortems',      icon: FileText },
 ];
 

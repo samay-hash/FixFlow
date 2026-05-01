@@ -62,6 +62,32 @@ const startServer = async () => {
   });
   logger.info('🕐 Monitoring cron started (every 1 minute)');
 
+  // Start S3 Log Archival cron (runs every midnight)
+  cron.schedule('0 0 * * *', async () => {
+    try {
+      logger.info('☁️ Starting nightly S3 Log Archival...');
+      const ServerLog = require('./models/ServerLog');
+      const { archiveLogsToS3 } = require('./services/s3.service');
+      
+      const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      
+      // Get all unique companies that have old logs
+      const companies = await ServerLog.distinct('companyId', { timestamp: { $lt: yesterday } });
+      
+      for (const companyId of companies) {
+        const logs = await ServerLog.find({ companyId, timestamp: { $lt: yesterday } }).lean();
+        if (logs.length > 0) {
+          await archiveLogsToS3(companyId.toString(), logs);
+          await ServerLog.deleteMany({ companyId, timestamp: { $lt: yesterday } });
+          logger.info(`🧹 Cleaned up ${logs.length} old logs from MongoDB for company ${companyId}`);
+        }
+      }
+    } catch (err) {
+      logger.error(`Archival cron error: ${err.message}`);
+    }
+  });
+  logger.info('📦 S3 Archival cron scheduled (daily at midnight)');
+
   const PORT = process.env.PORT || 5000;
   server.listen(PORT, () => {
     logger.info(`🚀 SIMRS Backend running on http://localhost:${PORT}`);
