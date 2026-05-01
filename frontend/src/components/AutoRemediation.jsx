@@ -4,7 +4,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 
-export default function AutoRemediation({ incident, sitrep }) {
+export default function AutoRemediation({ incident, sitrep, isResolved }) {
   const [copied, setCopied] = useState(false);
   const [script, setScript] = useState('');
   const [executing, setExecuting] = useState(false);
@@ -78,9 +78,11 @@ export default function AutoRemediation({ incident, sitrep }) {
           <span className="text-[10px] uppercase font-black px-2 py-0.5 ml-2" style={{ background: 'var(--black)', color: '#C8FF00' }}>Experimental</span>
         </div>
         <div className="flex gap-2">
-          <button onClick={handleExecute} disabled={executing} className="btn-sm font-bold uppercase tracking-wider transition-colors" style={{ background: executing ? '#ccc' : 'var(--black)', color: executing ? '#666' : 'var(--cream)', border: '2px solid var(--black)' }}>
-            {executing ? 'Executing...' : '⚡ Execute via SSM'}
-          </button>
+          {!isResolved && (
+            <button onClick={handleExecute} disabled={executing} className="btn-sm font-bold uppercase tracking-wider transition-colors" style={{ background: executing ? '#ccc' : 'var(--black)', color: executing ? '#666' : 'var(--cream)', border: '2px solid var(--black)' }}>
+              {executing ? 'Executing...' : '⚡ Execute via SSM'}
+            </button>
+          )}
           <button onClick={handleCopy} disabled={executing} className="btn-sm font-bold uppercase tracking-wider transition-colors" style={{ background: 'white', color: 'var(--black)', border: '2px solid var(--black)' }}>
             {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
             {copied ? 'Copied!' : 'Copy'}

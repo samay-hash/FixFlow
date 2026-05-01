@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 import api from '../api/axios';
 import Sidebar from '../components/Sidebar';
 import toast from 'react-hot-toast';
-import { Plus, AlertTriangle, Filter, Flame, ChevronRight, Zap } from 'lucide-react';
+import { Plus, AlertTriangle, Filter, Flame, ChevronRight, Zap, Trash2 } from 'lucide-react';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
+import ConfirmModal from '../components/ConfirmModal';
 
 const SEVERITY_ORDER = { critical: 0, high: 1, medium: 2, low: 3 };
 
@@ -36,6 +37,7 @@ export default function Incidents() {
   const [loading, setLoading]     = useState(true);
   const [filter, setFilter]       = useState({ status: '', severity: '' });
   const [chaosLoading, setChaosLoading] = useState(false);
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, id: null, type: null }); // type: 'single' | 'all'
   const { user } = useSelector(s => s.auth);
   const { list: realtimeList } = useSelector(s => s.incidents);
 
@@ -61,6 +63,27 @@ export default function Incidents() {
       load();
     } catch (err) { toast.error(err.response?.data?.message || 'Stress test failed'); }
     finally { setChaosLoading(false); }
+  };
+
+  const deleteIncident = async (id) => {
+    try {
+      await api.delete(`/incidents/${id}`);
+      setIncidents(prev => prev.filter(i => i._id !== id));
+      toast.success('Incident deleted');
+    } catch { toast.error('Failed to delete incident'); }
+  };
+
+  const deleteAllIncidents = async () => {
+    try {
+      await api.delete('/incidents');
+      setIncidents([]);
+      toast.success('All incidents deleted');
+    } catch { toast.error('Failed to delete incidents'); }
+  };
+
+  const handleConfirmAction = () => {
+    if (confirmModal.type === 'single') deleteIncident(confirmModal.id);
+    else if (confirmModal.type === 'all') deleteAllIncidents();
   };
 
   const sorted = [...incidents].sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity]);
@@ -89,6 +112,11 @@ export default function Incidents() {
             <p className="page-subtitle">{activeCount} active • {totalCount} total</p>
           </div>
           <div className="flex gap-3 flex-wrap">
+            {user?.role === 'admin' && incidents.length > 0 && (
+              <button onClick={() => setConfirmModal({ isOpen: true, type: 'all', id: null })} className="btn-sm flex items-center gap-2 px-4" style={{ background: 'var(--pink)', color: 'white', border: '2px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
+                <Trash2 size={16} /> Delete All
+              </button>
+            )}
             {user?.role === 'admin' && (
               <button onClick={handleStressTest} disabled={chaosLoading} className="btn-danger flex items-center gap-2 px-4" style={{ background: 'var(--yellow)', color: 'var(--black)' }}>
                 <Zap size={16} />
@@ -189,13 +217,36 @@ export default function Incidents() {
                       </div>
                     </div>
 
-                    <ChevronRight size={16} style={{ color: '#aaa', flexShrink: 0 }} />
-                  </Link>
+                      <div className="flex items-center gap-2">
+                        {user?.role === 'admin' && (
+                          <button 
+                            onClick={(e) => { e.preventDefault(); setConfirmModal({ isOpen: true, type: 'single', id: inc._id }); }}
+                            className="p-2 transition-opacity opacity-0 group-hover:opacity-100 hover:bg-red-50 rounded"
+                            title="Delete Incident"
+                            style={{ color: 'var(--pink)' }}
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                        )}
+                        <ChevronRight size={16} style={{ color: '#aaa', flexShrink: 0 }} />
+                      </div>
+                    </Link>
                 </motion.div>
               ))}
             </div>
           </AnimatePresence>
         )}
+
+        <ConfirmModal 
+          isOpen={confirmModal.isOpen}
+          onClose={() => setConfirmModal({ isOpen: false, id: null, type: null })}
+          onConfirm={handleConfirmAction}
+          title={confirmModal.type === 'all' ? "Delete All Incidents" : "Delete Incident"}
+          message={confirmModal.type === 'all' 
+            ? "Are you sure you want to delete ALL incidents? This will wipe your incident history entirely." 
+            : "Are you sure you want to delete this incident permanently?"}
+          confirmText="Delete"
+        />
       </main>
     </div>
   );

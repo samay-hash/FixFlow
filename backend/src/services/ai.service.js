@@ -34,34 +34,52 @@ Generate a JSON response with these exact fields:
 }`;
 };
 
-// Generate postmortem using AI (Gemini API or fallback)
+// Generate postmortem using AI (Gemini first, Groq fallback, then mock)
 const generatePostmortem = async (incident) => {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      logger.warn('GEMINI_API_KEY not set — using mock AI draft');
-      return generateMockPostmortem(incident);
+    const geminiKey = process.env.GEMINI_API_KEY;
+    const groqKey   = process.env.GROQ_API_KEY;
+    const prompt    = buildPostmortemPrompt(incident);
+
+    // ── Try Gemini first ──────────────────────────────────────────────────
+    if (geminiKey) {
+      try {
+        const axios = require('axios');
+        const response = await axios.post(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
+          { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 1500 } },
+          { timeout: 30000 }
+        );
+        const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const jsonMatch = text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          logger.info('✅ AI postmortem draft generated via Gemini');
+          return JSON.parse(jsonMatch[0]);
+        }
+      } catch (e) { logger.warn(`Gemini postmortem failed: ${e.message} — trying Groq`); }
     }
 
-    const axios = require('axios');
-    const prompt = buildPostmortemPrompt(incident);
+    // ── Try Groq fallback ─────────────────────────────────────────────────
+    if (groqKey) {
+      try {
+        const groq = new Groq({ apiKey: groqKey });
+        const response = await groq.chat.completions.create({
+          messages: [{ role: 'user', content: prompt + '\n\nIMPORTANT: Return ONLY valid JSON, no markdown wrapping.' }],
+          model: 'llama-3.3-70b-versatile',
+          temperature: 0.3,
+          max_tokens: 1200,
+        });
+        const text = response.choices[0]?.message?.content || '';
+        const jsonMatch = text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          logger.info('✅ AI postmortem draft generated via Groq');
+          return JSON.parse(jsonMatch[0]);
+        }
+      } catch (e) { logger.warn(`Groq postmortem failed: ${e.message} — using mock`); }
+    }
 
-    const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
-      {
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 1500 },
-      },
-      { timeout: 30000 }
-    );
-
-    const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) throw new Error('AI did not return valid JSON');
-
-    const parsed = JSON.parse(jsonMatch[0]);
-    logger.info('✅ AI postmortem draft generated');
-    return parsed;
+    logger.warn('No AI key available — using mock postmortem draft');
+    return generateMockPostmortem(incident);
   } catch (err) {
     logger.error(`AI generation failed: ${err.message}. Using mock.`);
     return generateMockPostmortem(incident);
@@ -81,7 +99,7 @@ const scorePostmortem = async (postmortem) => {
     Respond with JSON: { "score": <number>, "feedback": "<string>" }`;
 
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
       { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 200 } },
       { timeout: 15000 }
     );
@@ -95,32 +113,54 @@ const scorePostmortem = async (postmortem) => {
 };
 
 // Generate AI SITREP (war room summary) for an active incident
-const generateSitrep = async (incident) => {
-  // ... existing code
+const generateSitrep = async (incident, logs = []) => {
+  const geminiKey = process.env.GEMINI_API_KEY;
+  const groqKey   = process.env.GROQ_API_KEY;
+
+  const recentUpdates = incident.timeline.slice(-5).map(t => t.message).join('\n');
+  const recentLogs    = logs.slice(-30).map(l => `[${l.level}] ${l.message}`).join('\n');
+  const prompt = `Write a 2-3 sentence SITREP (Situation Report) for an active incident:
+  Incident: ${incident.title} | Severity: ${incident.severity} | Status: ${incident.status}
+  Duration: ${Math.round((Date.now() - incident.createdAt) / 60000)} minutes
+  
+  Recent Timeline Updates: ${recentUpdates || 'None'}
+  Recent Server Logs: ${recentLogs || 'No logs available'}
+  
+  Write in past tense. Analyze server logs to identify the exact technical error. Be concise and factual. No markdown.
+  At the end, provide a bash script to mitigate the issue inside a \`\`\`bash block.`;
+
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      const updates = incident.timeline.length;
-      return `SITREP: ${incident.title} — Status: ${incident.status}. ${updates} timeline update(s). Responders: ${incident.assignedTo?.length || 0}. Duration: ${Math.round((Date.now() - incident.createdAt) / 60000)} min.`;
+    // ── Try Gemini ──────────────────────────────────────────────────────
+    if (geminiKey) {
+      try {
+        const axios = require('axios');
+        const response = await axios.post(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
+          { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 600 } },
+          { timeout: 20000 }
+        );
+        const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+        if (text) return text;
+      } catch (e) { logger.warn(`Gemini SITREP failed: ${e.message} — trying Groq`); }
     }
 
-    const axios = require('axios');
-    const recentUpdates = incident.timeline.slice(-5).map(t => t.message).join('\n');
-    const prompt = `Write a 2-3 sentence SITREP (Situation Report) for an active incident:
-    Incident: ${incident.title} | Severity: ${incident.severity} | Status: ${incident.status}
-    Duration: ${Math.round((Date.now() - incident.createdAt) / 60000)} minutes
-    Recent updates:\n${recentUpdates}
-    Write in past tense. Be concise and factual. No markdown.
-    
-    IMPORTANT: At the very end of your response, provide an exact terminal command script (Bash, Kubectl, or AWS CLI) that could potentially mitigate or investigate this specific issue based on the title. Format it strictly inside a \`\`\`bash block.`;
+    // ── Try Groq fallback ───────────────────────────────────────────────
+    if (groqKey) {
+      try {
+        const groq = new Groq({ apiKey: groqKey });
+        const response = await groq.chat.completions.create({
+          messages: [{ role: 'user', content: prompt }],
+          model: 'llama-3.3-70b-versatile',
+          temperature: 0.2,
+          max_tokens: 500,
+        });
+        const text = response.choices[0]?.message?.content?.trim();
+        if (text) return text;
+      } catch (e) { logger.warn(`Groq SITREP failed: ${e.message}`); }
+    }
 
-    const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
-      { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 150 } },
-      { timeout: 10000 }
-    );
-
-    return response.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+    // ── Local fallback ──────────────────────────────────────────────────
+    return `SITREP: ${incident.title} — Status: ${incident.status}. ${incident.timeline.length} timeline update(s). Responders: ${incident.assignedTo?.length || 0}.\n\n⚠️ No AI key available.\n\n\`\`\`bash\n# System recovery script\nsudo systemctl restart nginx pm2\ncurl -s http://localhost/health\n\`\`\``;
   } catch (err) {
     return `SITREP: ${incident.title} — ongoing, ${incident.status}. ${incident.timeline.length} updates logged.`;
   }
@@ -128,38 +168,73 @@ const generateSitrep = async (incident) => {
 
 // Analyze server logs to find anomalies or fixes
 const analyzeLogs = async (logs) => {
-  try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) return { summary: 'AI unavailable.', anomalies: [], fix: 'Add Gemini API Key.' };
+  const geminiKey = process.env.GEMINI_API_KEY;
+  const groqKey   = process.env.GROQ_API_KEY;
 
-    const axios = require('axios');
-    const logText = logs.map(l => `[${l.level}] ${l.source}: ${l.message}`).join('\n');
+  const logText = logs.map(l => `[${l.level}] ${l.source}: ${l.message}`).join('\n');
+  const prompt = `You are a DevOps expert. Analyze these recent server logs and provide a brief summary of system health, list any anomalies/errors, and suggest a terminal fix script.
     
-    const prompt = `You are a DevOps expert. Analyze these recent server logs and provide a brief summary of system health, list any anomalies/errors, and suggest a terminal fix script.
-    
-    LOGS:
-    ${logText}
-    
-    Respond STRICTLY in JSON format:
-    {
-      "summary": "1-2 sentence overview of what these logs show",
-      "anomalies": ["list", "of", "critical", "errors", "or empty array"],
-      "fix": "Bash command string to investigate or fix the anomalies (or empty string if healthy)"
-    }`;
+  LOGS:
+  ${logText}
+  
+  Respond STRICTLY in this JSON format (no extra text, no markdown wrapping):
+  {
+    "summary": "1-2 sentence overview",
+    "anomalies": ["error1", "error2"],
+    "fix": "bash command to investigate or fix"
+  }`;
 
-    const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
-      { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 500 } },
-      { timeout: 15000 }
-    );
-
-    const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    return jsonMatch ? JSON.parse(jsonMatch[0]) : { summary: 'Error parsing AI response', anomalies: [], fix: '' };
-  } catch (err) {
-    logger.error(`AI Log Analysis failed: ${err.message}`);
-    return { summary: 'Analysis failed.', anomalies: [], fix: '' };
+  // ── Try Gemini ────────────────────────────────────────────────────────
+  if (geminiKey) {
+    try {
+      const axios = require('axios');
+      const response = await axios.post(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
+        { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 500 } },
+        { timeout: 15000 }
+      );
+      const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) return JSON.parse(jsonMatch[0]);
+    } catch (e) { logger.warn(`Gemini log analysis failed: ${e.message} — trying Groq`); }
   }
+
+  // ── Try Groq fallback ─────────────────────────────────────────────────
+  if (groqKey) {
+    try {
+      const groq = new Groq({ apiKey: groqKey });
+      const response = await groq.chat.completions.create({
+        messages: [{ role: 'user', content: prompt }],
+        model: 'llama-3.3-70b-versatile',
+        temperature: 0.2,
+        max_tokens: 500,
+      });
+      const text = response.choices[0]?.message?.content || '';
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        logger.info('✅ Log analysis completed via Groq');
+        return JSON.parse(jsonMatch[0]);
+      }
+    } catch (e) { logger.warn(`Groq log analysis failed: ${e.message} — using local scan`); }
+  }
+
+  // ── Smart local fallback (no AI needed) ──────────────────────────────
+  logger.warn('No AI key available — using local log pattern scan');
+  const fatals   = logs.filter(l => l.level === 'FATAL');
+  const errors   = logs.filter(l => l.level === 'ERROR');
+  const warnings = logs.filter(l => l.level === 'WARN');
+  const anomalies = [...fatals, ...errors].map(l => l.message).slice(0, 5);
+  return {
+    summary: anomalies.length === 0
+      ? `System appears stable. ${logs.length} logs analyzed — ${warnings.length} warnings, no critical errors.`
+      : `⚠️ ${fatals.length} FATAL and ${errors.length} ERROR events detected out of ${logs.length} total logs. Immediate investigation recommended.`,
+    anomalies,
+    fix: fatals.length > 0
+      ? 'sudo systemctl restart nginx pm2 && journalctl -u nginx -n 50 --no-pager'
+      : errors.length > 0
+      ? 'pm2 logs --lines 100 && sudo netstat -tulnp | grep 5000'
+      : '',
+  };
 };
 
 // Mock fallback when no API key

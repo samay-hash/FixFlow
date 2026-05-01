@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import api from '../api/axios';
 import Sidebar from '../components/Sidebar';
 import toast from 'react-hot-toast';
-import { FileText, Bot, Star, ChevronDown, ChevronUp, CheckCircle, Clock, Download } from 'lucide-react';
+import { FileText, Bot, Star, ChevronDown, ChevronUp, CheckCircle, Clock, Download, Trash2 } from 'lucide-react';
 import clsx from 'clsx';
+import ConfirmModal from '../components/ConfirmModal';
 
 export default function Postmortems() {
   const [postmortems, setPostmortems]           = useState([]);
@@ -12,6 +14,8 @@ export default function Postmortems() {
   const [generating, setGenerating]             = useState(false);
   const [expanded, setExpanded]                 = useState(null);
   const [selectedIncident, setSelectedIncident] = useState('');
+  const [confirmModal, setConfirmModal]         = useState({ isOpen: false, id: null });
+  const { user } = useSelector(s => s.auth);
 
   const load = async () => {
     try {
@@ -38,6 +42,14 @@ export default function Postmortems() {
       toast.success('🤖 AI postmortem draft generated!');
     } catch (err) { toast.error(err.response?.data?.message || 'Generation failed'); }
     finally { setGenerating(false); }
+  };
+
+  const handleDelete = async () => {
+    try {
+      await api.delete(`/postmortems/${confirmModal.id}`);
+      setPostmortems(prev => prev.filter(p => p._id !== confirmModal.id));
+      toast.success('Postmortem deleted');
+    } catch { toast.error('Failed to delete postmortem'); }
   };
 
   const scoreAccent = (s) => s >= 8 ? 'var(--accent)' : s >= 6 ? 'var(--yellow)' : 'var(--pink)';
@@ -156,7 +168,7 @@ export default function Postmortems() {
                 style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
 
                 {/* Card Header */}
-                <div className="flex items-start justify-between gap-4 cursor-pointer"
+                <div className="flex items-start justify-between gap-4 cursor-pointer group"
                   onClick={() => setExpanded(expanded === pm._id ? null : pm._id)}>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -193,7 +205,17 @@ export default function Postmortems() {
                       </span>
                     </div>
                   </div>
-                  <div style={{ color: '#888' }}>
+                  <div className="flex items-center gap-3" style={{ color: '#888' }}>
+                    {user?.role === 'admin' && (
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); setConfirmModal({ isOpen: true, id: pm._id }); }}
+                        className="p-1.5 transition-opacity opacity-0 group-hover:opacity-100 hover:bg-red-50 rounded"
+                        title="Delete Postmortem"
+                        style={{ color: 'var(--pink)' }}
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    )}
                     {expanded === pm._id ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                   </div>
                 </div>
@@ -264,6 +286,15 @@ export default function Postmortems() {
             ))}
           </div>
         )}
+
+        <ConfirmModal 
+          isOpen={confirmModal.isOpen}
+          onClose={() => setConfirmModal({ isOpen: false, id: null })}
+          onConfirm={handleDelete}
+          title="Delete Postmortem"
+          message="Are you sure you want to permanently delete this postmortem? This action cannot be undone."
+          confirmText="Delete"
+        />
       </main>
     </div>
   );

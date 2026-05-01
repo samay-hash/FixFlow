@@ -3,8 +3,22 @@ const Website = require('../models/Website');
 const UptimeSnapshot = require('../models/UptimeSnapshot');
 const Incident = require('../models/Incident');
 const Log = require('../models/Log');
+const ServerLog = require('../models/ServerLog');
 const notificationService = require('./notification.service');
 const logger = require('../utils/logger');
+
+// Write a real operational log to ServerLog (visible in Log Intelligence)
+const writeServerLog = async (companyId, level, message) => {
+  try {
+    await ServerLog.create({
+      companyId,
+      serverIp: 'fixflow-monitor.internal',
+      source: 'monitor-agent',
+      level,
+      message,
+    });
+  } catch (e) { /* non-critical, don't crash monitor */ }
+};
 
 // Check a single site and return result
 const checkSite = async (site) => {
@@ -149,6 +163,18 @@ const runMonitoringTick = async (io) => {
         statusCode: result.statusCode,
       });
 
+      // ⭐ Write real operational log to Log Intelligence
+      if (result.status === 'up') {
+        await writeServerLog(site.companyId, 'INFO',
+          `[MONITOR] ${site.name} (${site.url}) — UP ✔️  Response: ${result.responseTime}ms | HTTP ${result.statusCode}`);
+      } else if (result.status === 'degraded') {
+        await writeServerLog(site.companyId, 'WARN',
+          `[MONITOR] ${site.name} (${site.url}) — DEGRADED ⚠️  Slow response: ${result.responseTime}ms | HTTP ${result.statusCode}`);
+      } else {
+        await writeServerLog(site.companyId, 'ERROR',
+          `[MONITOR] ${site.name} (${site.url}) — DOWN 🔴  ${result.error || `HTTP ${result.statusCode}`} | Response: ${result.responseTime}ms`);
+      }
+
       // Update site
       site.status = result.status;
       site.lastChecked = new Date();
@@ -169,8 +195,12 @@ const runMonitoringTick = async (io) => {
 
       // Handle state transitions
       if (previousStatus !== 'down' && result.status === 'down') {
+        await writeServerLog(site.companyId, 'FATAL',
+          `[MONITOR] CRITICAL: ${site.name} just went DOWN. Auto-incident created. Previous status: ${previousStatus}`);
         await createDownIncident(site, io);
       } else if (previousStatus === 'down' && result.status === 'up') {
+        await writeServerLog(site.companyId, 'INFO',
+          `[MONITOR] RECOVERY: ${site.name} is back ONLINE. Auto-resolving incident.`);
         await autoResolveIncident(site, io);
       }
     }

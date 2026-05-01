@@ -5,6 +5,8 @@ import Sidebar from '../components/Sidebar';
 import toast from 'react-hot-toast';
 import { Plus, Globe, Trash2, RefreshCw, ExternalLink, Wifi, WifiOff, Clock } from 'lucide-react';
 import clsx from 'clsx';
+import { motion, AnimatePresence } from 'framer-motion';
+import ConfirmModal from '../components/ConfirmModal';
 
 const StatusBadge = ({ s }) => {
   const map = { up: 'status-up', down: 'status-down', degraded: 'status-degraded', unknown: 'status-unknown' };
@@ -18,6 +20,7 @@ export default function Sites() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm]         = useState({ name: '', url: '', checkInterval: 5 });
   const [adding, setAdding]     = useState(false);
+  const [confirmModal, setConfirmModal] = useState({ isOpen: false, id: null, name: '' });
   const { user } = useSelector(s => s.auth);
   const isAdmin  = user?.role === 'admin' || user?.role === 'engineer';
 
@@ -44,13 +47,22 @@ export default function Sites() {
     finally { setAdding(false); }
   };
 
-  const handleDelete = async (id, name) => {
-    if (!confirm(`Delete "${name}" from monitoring?`)) return;
+  const handleDelete = async () => {
     try {
-      await api.delete(`/sites/${id}`);
-      setSites(prev => prev.filter(s => s._id !== id));
+      await api.delete(`/sites/${confirmModal.id}`);
+      setSites(prev => prev.filter(s => s._id !== confirmModal.id));
       toast.success('Site removed');
     } catch { toast.error('Failed to delete site'); }
+  };
+
+  const runStressTest = async (siteId) => {
+    toast.loading('Initiating Stress Test...', { id: 'stress' });
+    try {
+      await api.post('/incidents/stress-test', { siteId });
+      toast.success('Stress Test started! Blasting 500 requests.', { id: 'stress' });
+    } catch { 
+      toast.error('Failed to start test', { id: 'stress' }); 
+    }
   };
 
   const upSites   = sites.filter(s => s.status === 'up').length;
@@ -193,15 +205,26 @@ export default function Sites() {
                     <Clock size={10} />
                     {site.lastChecked ? new Date(site.lastChecked).toLocaleTimeString() : 'Not checked yet'}
                   </div>
-                  {user?.role === 'admin' && (
-                    <button
-                      onClick={() => handleDelete(site._id, site.name)}
-                      className="transition-opacity opacity-0 group-hover:opacity-100"
-                      style={{ color: 'var(--pink)' }}
-                    >
-                      <Trash2 size={14} />
-                    </button>
-                  )}
+                  <div className="flex gap-2 items-center">
+                    {user?.role === 'admin' && (
+                      <button
+                        onClick={() => runStressTest(site._id)}
+                        className="btn-sm font-black uppercase tracking-wider transition-opacity opacity-0 group-hover:opacity-100"
+                        style={{ background: '#C8FF00', color: 'var(--black)', border: '2px solid var(--black)', padding: '2px 8px', fontSize: '10px' }}
+                      >
+                        ⚡ Test
+                      </button>
+                    )}
+                    {user?.role === 'admin' && (
+                      <button
+                        onClick={() => setConfirmModal({ isOpen: true, id: site._id, name: site.name })}
+                        className="transition-opacity opacity-0 group-hover:opacity-100"
+                        style={{ color: 'var(--pink)' }}
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -241,6 +264,15 @@ export default function Sites() {
             </div>
           </div>
         )}
+
+        <ConfirmModal 
+          isOpen={confirmModal.isOpen}
+          onClose={() => setConfirmModal({ isOpen: false, id: null, name: '' })}
+          onConfirm={handleDelete}
+          title="Delete Monitored Site"
+          message={`Are you sure you want to stop monitoring "${confirmModal.name}" and delete it? This cannot be undone.`}
+          confirmText="Delete"
+        />
       </main>
     </div>
   );

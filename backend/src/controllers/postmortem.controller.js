@@ -86,4 +86,15 @@ const updatePostmortem = async (req, res) => {
   }
 };
 
-module.exports = { getPostmortems, createPostmortem, updatePostmortem };
+// @DELETE /api/postmortems/:id
+const deletePostmortem = async (req, res) => {
+  try {
+    const postmortem = await Postmortem.findOneAndDelete({ _id: req.params.id, companyId: req.user.companyId });
+    if (!postmortem) return res.status(404).json({ success: false, message: 'Postmortem not found' });
+    res.json({ success: true, message: 'Postmortem deleted' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getPostmortems, createPostmortem, updatePostmortem, deletePostmortem };

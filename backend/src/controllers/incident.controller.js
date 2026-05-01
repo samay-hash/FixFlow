@@ -215,8 +215,16 @@ const addTimelineUpdate = async (req, res) => {
 // @POST /api/incidents/stress-test — Real Load Tester
 const runStressTest = async (req, res) => {
   try {
+    const siteId = req.body?.siteId;
     const Website = require('../models/Website');
-    let site = await Website.findOne({ companyId: req.user.companyId });
+    
+    let site;
+    if (siteId) {
+      site = await Website.findOne({ _id: siteId, companyId: req.user.companyId });
+    } else {
+      site = await Website.findOne({ companyId: req.user.companyId });
+    }
+    
     if (!site || !site.url) {
       return res.status(400).json({ success: false, message: 'No registered website found to stress test.' });
     }
@@ -423,4 +431,63 @@ const resolveAndVerify = async (req, res) => {
   }
 };
 
-module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, runStressTest, getStats, askCopilot, executeRemediation, resolveAndVerify };
+// @POST /api/incidents/:id/sitrep
+const generateSitrep = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
+    const incident = await Incident.findOne({ _id: req.params.id, companyId: req.user.companyId })
+      .populate('siteId')
+      .populate('assignedTo');
+      
+    if (!incident) return res.status(404).json({ success: false, message: 'Incident not found' });
+
+    let logs = [];
+    if (incident.siteId) {
+      logs = await ServerLog.find({ siteId: incident.siteId._id })
+        .sort({ timestamp: -1 })
+        .limit(50);
+      logs = logs.reverse();
+    }
+
+    const aiService = require('../services/ai.service');
+    const sitrep = await aiService.generateSitrep(incident, logs);
+    
+    incident.aiSitrep = sitrep;
+    await incident.save();
+
+    res.json({ success: true, sitrep, incident });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// @DELETE /api/incidents/:id
+const deleteIncident = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
+    const incident = await Incident.findOneAndDelete({ _id: req.params.id, companyId: req.user.companyId });
+    if (!incident) return res.status(404).json({ success: false, message: 'Incident not found' });
+
+    res.json({ success: true, message: 'Incident deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// @DELETE /api/incidents
+const deleteAllIncidents = async (req, res) => {
+  try {
+    await Incident.deleteMany({ companyId: req.user.companyId });
+    res.json({ success: true, message: 'All incidents deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, runStressTest, getStats, askCopilot, executeRemediation, resolveAndVerify, generateSitrep, deleteIncident, deleteAllIncidents };

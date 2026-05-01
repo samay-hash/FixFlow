@@ -8,6 +8,7 @@ import { Send, Bot, UserCircle, ArrowLeft, Users, CheckCircle, Clock, AlertTrian
 import clsx from 'clsx';
 import AutoRemediation from '../components/AutoRemediation';
 import IncidentCopilot from '../components/IncidentCopilot';
+import ConfirmModal from '../components/ConfirmModal';
 
 const typeColors = { system: 'text-[#333]', observation: 'text-[var(--black)]', action_taken: 'text-[var(--blue)]', status_change: 'text-[var(--pink)]', ai_insight: 'text-purple-600' };
 const typeIcons = { system: '⚙️', observation: '👁', action_taken: '🔧', status_change: '🔄', ai_insight: '🤖' };
@@ -27,6 +28,7 @@ export default function IncidentDetail() {
   const [displayedSitrep, setDisplayedSitrep] = useState('');
   const [escalated, setEscalated] = useState(false);
   const [timeUntilEscalation, setTimeUntilEscalation] = useState('');
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const load = async () => {
     try {
@@ -120,18 +122,26 @@ export default function IncidentDetail() {
     }
   };
 
-  const getSitrep = async (currentStatus) => {
+  const getSitrep = async () => {
     setSitrepLoading(true);
     setSitrep('');
     setDisplayedSitrep('Analyzing current server logs...');
     try {
-      const { data } = await api.put(`/incidents/${id}`, { status: currentStatus || incident.status }); 
-      setSitrep(data.incident.aiSitrep || 'Analysis complete. No immediate root cause identified.');
+      const { data } = await api.post(`/incidents/${id}/sitrep`); 
+      setSitrep(data.sitrep || 'Analysis complete. No immediate root cause identified.');
     } catch { 
       setDisplayedSitrep('Failed to connect to AI Watchdog.');
       toast.error('SITREP failed'); 
     }
     finally { setSitrepLoading(false); }
+  };
+
+  const deleteIncident = async () => {
+    try {
+      await api.delete(`/incidents/${id}`);
+      toast.success('Incident deleted successfully');
+      navigate('/incidents');
+    } catch { toast.error('Failed to delete incident'); }
   };
 
   if (loading) return <div className="flex min-h-screen"><Sidebar /><main className="flex-1 ml-64 flex items-center justify-center"><div className="animate-spin text-4xl">⏳</div></main></div>;
@@ -189,6 +199,11 @@ export default function IncidentDetail() {
               {isResolved && (
                 <button title="Go to Postmortems to generate RCA" onClick={() => navigate('/postmortems')} className="btn-primary btn-sm"><Bot size={14} />Write Postmortem</button>
               )}
+              {user?.role === 'admin' && (
+                <button title="Delete this incident forever" onClick={() => setShowConfirm(true)} className="btn-sm font-black uppercase tracking-wide border-2 border-black" style={{ background: '#FF2D78', color: 'white', boxShadow: '3px 3px 0 var(--black)' }}>
+                  Trash
+                </button>
+              )}
             </div>
           )}
         </div>
@@ -213,7 +228,7 @@ export default function IncidentDetail() {
             </div>
             
             {/* AI Auto Remediation Script */}
-            {!isResolved && <AutoRemediation incident={incident} sitrep={sitrep} />}
+            <AutoRemediation incident={incident} sitrep={sitrep} isResolved={isResolved} />
 
             {/* Timeline */}
             <div className="p-6" style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '6px 6px 0 var(--black)' }}>
@@ -227,7 +242,13 @@ export default function IncidentDetail() {
                       {typeIcons[entry.type] || '💬'}
                     </div>
                     <div className="flex-1">
-                      <p className={clsx('text-sm font-medium', typeColors[entry.type] || 'text-[#222]')}>{entry.message}</p>
+                      <p className={clsx('text-sm font-medium', 
+                        entry.message.includes("'open' to 'in_progress'") ? 'text-[#D97706]' : 
+                        entry.message.includes("System Verification Passed") ? 'text-[#059669]' : 
+                        (typeColors[entry.type] || 'text-[#222]')
+                      )}>
+                        {entry.message}
+                      </p>
                       <div className="flex items-center gap-2 mt-1">
                         <span className="text-xs font-bold text-[#666]">{entry.updatedBy?.name || 'System'}</span>
                         <span className="text-xs font-bold text-[#666]">·</span>
@@ -336,6 +357,15 @@ export default function IncidentDetail() {
         </div>
         {/* Groq Incident Copilot */}
         {!isResolved && <IncidentCopilot incidentId={incident._id} incidentStatus={incident.status} />}
+        
+        <ConfirmModal 
+          isOpen={showConfirm}
+          onClose={() => setShowConfirm(false)}
+          onConfirm={deleteIncident}
+          title="Delete Incident"
+          message="Are you sure you want to delete this incident permanently? This action cannot be undone and will remove all timeline history."
+          confirmText="Delete"
+        />
       </main>
     </div>
   );

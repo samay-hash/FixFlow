@@ -20,34 +20,49 @@ const logs = [
   { level: 'FATAL', message: 'System halted due to kernel panic: VFS: Unable to mount root fs on unknown-block(0,0)' }
 ];
 
+async function injectForCompany(companyId) {
+  console.log(`\n🔥 Injecting CHAOS logs for company: ${companyId}...`);
+  for (let i = 0; i < logs.length; i++) {
+    await axios.post(API_URL, {
+      companyId: companyId.toString(),
+      serverIp: 'ip-172-31-45-12.ec2.internal',
+      source: 'syslog',
+      level: logs[i].level,
+      message: logs[i].message
+    }, {
+      headers: { 'x-agent-token': TOKEN }
+    });
+    console.log(`📡 Streamed: [${logs[i].level}] ${logs[i].message}`);
+    await new Promise(r => setTimeout(r, 200));
+  }
+}
+
 async function run() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     const db = mongoose.connection;
-    const company = await db.collection('companies').findOne({});
     
-    if (!company) {
+    // If a specific companyId is passed as CLI arg, use that
+    const cliCompanyId = process.argv[2];
+    if (cliCompanyId) {
+      await injectForCompany(cliCompanyId);
+      console.log('\n✅ Simulation complete! Check your FixFlow Log Intelligence page.');
+      process.exit(0);
+    }
+    
+    // Otherwise inject for ALL companies so every user can see logs
+    const companies = await db.collection('companies').find({}).toArray();
+    if (!companies.length) {
       console.error('❌ No company found in DB. Make sure you are registered.');
       process.exit(1);
     }
-    
-    console.log(`🔥 Injecting CHAOS logs for company: ${company._id}...`);
-    
-    for (let i = 0; i < logs.length; i++) {
-      await axios.post(API_URL, {
-        companyId: company._id,
-        serverIp: 'ip-172-31-45-12.ec2.internal',
-        source: 'syslog',
-        level: logs[i].level,
-        message: logs[i].message
-      }, {
-        headers: { 'x-agent-token': TOKEN }
-      });
-      console.log(`📡 Streamed: [${logs[i].level}] ${logs[i].message}`);
-      await new Promise(r => setTimeout(r, 600)); // Stream them slowly
+
+    console.log(`\n📋 Found ${companies.length} company(s). Injecting for ALL of them...`);
+    for (const company of companies) {
+      await injectForCompany(company._id);
     }
     
-    console.log('✅ Simulation complete! Check your FixFlow Log Intelligence page.');
+    console.log('\n✅ Simulation complete! Check your FixFlow Log Intelligence page.');
     process.exit(0);
   } catch (err) {
     console.error('❌ Error during simulation:', err.message);
