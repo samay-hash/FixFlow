@@ -3,6 +3,7 @@ import { Provider, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import { store } from './store';
 import { SocketProvider } from './context/SocketContext';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -26,24 +27,35 @@ const PublicRoute = ({ children }) => {
 function AppRoutes() {
   return (
     <SocketProvider>
-      <Toaster position="top-right" toastOptions={{ style: { background: '#1a1a2e', color: '#e2e8f0', border: '1px solid #334155' } }} />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            fontFamily: "'Space Grotesk', sans-serif",
+            border: '2px solid #0A0A0A',
+            borderRadius: 0,
+            boxShadow: '3px 3px 0 #0A0A0A',
+          },
+        }}
+      />
       <Routes>
-        {/* Public */}
-        <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+        {/* Landing */}
+        <Route path="/" element={<Landing />} />
+
+        {/* Public auth */}
+        <Route path="/login"    element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/status/:slug" element={<StatusPage />} />
 
         {/* Private */}
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/sites" element={<PrivateRoute><Sites /></PrivateRoute>} />
-        <Route path="/incidents" element={<PrivateRoute><Incidents /></PrivateRoute>} />
-        <Route path="/incidents/:id" element={<PrivateRoute><IncidentDetail /></PrivateRoute>} />
-        <Route path="/logs" element={<PrivateRoute><Logs /></PrivateRoute>} />
-        <Route path="/postmortems" element={<PrivateRoute><Postmortems /></PrivateRoute>} />
+        <Route path="/dashboard"      element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/sites"          element={<PrivateRoute><Sites /></PrivateRoute>} />
+        <Route path="/incidents"      element={<PrivateRoute><Incidents /></PrivateRoute>} />
+        <Route path="/incidents/:id"  element={<PrivateRoute><IncidentDetail /></PrivateRoute>} />
+        <Route path="/logs"           element={<PrivateRoute><Logs /></PrivateRoute>} />
+        <Route path="/postmortems"    element={<PrivateRoute><Postmortems /></PrivateRoute>} />
 
-        {/* Redirect */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </SocketProvider>
   );
