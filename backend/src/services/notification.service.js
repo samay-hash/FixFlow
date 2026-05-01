@@ -67,4 +67,27 @@ const sendDownAlert = async (site, incident) => {
   });
 };
 
-module.exports = { sendEmail, sendDownAlert };
+const sendInviteEmail = async ({ to, inviterName, companyName, inviteUrl, role, category }) => {
+  await sendEmail({
+    to,
+    subject: `You're invited to join ${companyName} on FixFlow`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px;">
+        <div style="background: #0f172a; color: white; padding: 20px; border-radius: 8px 8px 0 0;">
+          <h1 style="margin:0;">Invitation to Join FixFlow</h1>
+        </div>
+        <div style="background: #1a1a2e; color: #e2e8f0; padding: 24px; border-radius: 0 0 8px 8px;">
+          <p><strong>${inviterName}</strong> invited you to join <strong>${companyName}</strong>.</p>
+          <p><strong>Role:</strong> ${role}</p>
+          <p><strong>Category:</strong> ${category}</p>
+          <a href="${inviteUrl}"
+             style="display:inline-block;margin-top:16px;padding:12px 24px;background:#3b82f6;color:white;border-radius:6px;text-decoration:none;">
+            Accept Invitation →
+          </a>
+        </div>
+      </div>
+    `,
+  });
+};
+
+module.exports = { sendEmail, sendDownAlert, sendInviteEmail };

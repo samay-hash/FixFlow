@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { Zap } from 'lucide-react';
 
 export default function Register() {
-  const [form, setForm]       = useState({ name: '', email: '', password: '', companyName: '' });
+  const [form, setForm]       = useState({ name: '', email: '', password: '', companyName: '', category: 'engineering', preferences: '' });
   const [loading, setLoading] = useState(false);
   const dispatch  = useDispatch();
   const navigate  = useNavigate();
@@ -16,7 +16,11 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await api.post('/auth/register', form);
+      const payload = {
+        ...form,
+        preferences: form.preferences.split(',').map(item => item.trim()).filter(Boolean),
+      };
+      const { data } = await api.post('/auth/register', payload);
       dispatch(setCredentials({ user: data.user, token: data.token, company: data.company }));
       toast.success(`🚀 Workspace "${data.company.name}" created!`);
       navigate('/dashboard');
@@ -30,6 +34,16 @@ export default function Register() {
     { key: 'email',       label: 'Work Email',             type: 'email',    placeholder: 'john@company.com' },
     { key: 'companyName', label: 'Company / Team Name',    type: 'text',     placeholder: 'Acme Corp' },
     { key: 'password',    label: 'Password',               type: 'password', placeholder: 'Min. 6 characters' },
+  ];
+
+  const categories = [
+    { value: 'engineering', label: 'Engineering' },
+    { value: 'science', label: 'Science' },
+    { value: 'security', label: 'Security' },
+    { value: 'devops', label: 'DevOps' },
+    { value: 'operations', label: 'Operations' },
+    { value: 'research', label: 'Research' },
+    { value: 'other', label: 'Other' },
   ];
 
   return (
@@ -75,6 +89,24 @@ export default function Register() {
                   value={form[key]} onChange={e => setForm({ ...form, [key]: e.target.value })} required />
               </div>
             ))}
+
+            <div>
+              <label className="label">Organization Category</label>
+              <select className="input" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
+                {categories.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
+              </select>
+            </div>
+
+            <div>
+              <label className="label">Preferences / Focus Areas</label>
+              <textarea
+                className="input min-h-24"
+                placeholder="incident response, scientific analysis, backend reliability"
+                value={form.preferences}
+                onChange={e => setForm({ ...form, preferences: e.target.value })}
+              />
+            </div>
+
             <button type="submit" disabled={loading} className="btn-primary w-full justify-center py-3 mt-2">
               {loading ? '⏳' : <Zap size={16} />}
               {loading ? 'SETTING UP...' : 'CREATE WORKSPACE & START MONITORING'}
