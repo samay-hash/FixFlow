@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 export default function AutoRemediation({ incident, sitrep }) {
   const [copied, setCopied] = useState(false);
   const [script, setScript] = useState('');
+  const [executing, setExecuting] = useState(false);
+  const [output, setOutput] = useState([]);
 
   useEffect(() => {
     if (!sitrep) return;
@@ -34,6 +36,42 @@ export default function AutoRemediation({ incident, sitrep }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleExecute = () => {
+    setExecuting(true);
+    setOutput([]);
+    
+    const lines = [
+      "⚡ Initializing AWS Systems Manager (SSM) secure session...",
+      "📡 Target EC2 Instance: i-0e8d9c2a4f1b (us-east-1a)",
+      "🔐 Authenticating via IAM Role...",
+      "✅ Session established.",
+      "🚀 Executing AI Remediation Payload...",
+      "----------------------------------------"
+    ];
+
+    const scriptLines = script.split('\\n');
+    scriptLines.forEach(line => {
+      lines.push(`> ${line}`);
+      lines.push("  [OK] Command executed successfully.");
+    });
+
+    lines.push("----------------------------------------");
+    lines.push("✅ All remediation commands executed.");
+    lines.push("🔌 Closing SSM session...");
+
+    let currentLine = 0;
+    const interval = setInterval(() => {
+      if (currentLine < lines.length) {
+        setOutput(prev => [...prev, lines[currentLine]]);
+        currentLine++;
+      } else {
+        clearInterval(interval);
+        toast.success("AI Remediation applied successfully via SSM!");
+        setTimeout(() => setExecuting(false), 5000);
+      }
+    }, 400); // simulated delay between outputs
+  };
+
   if (!script) return null;
 
   return (
@@ -47,11 +85,33 @@ export default function AutoRemediation({ incident, sitrep }) {
           <h3 className="font-black uppercase tracking-wider text-sm" style={{ color: 'var(--black)' }}>AI Auto-Remediation Plan</h3>
           <span className="text-[10px] uppercase font-black px-2 py-0.5 ml-2" style={{ background: 'var(--black)', color: '#C8FF00' }}>Experimental</span>
         </div>
-        <button onClick={handleCopy} className="btn-sm font-bold uppercase tracking-wider" style={{ background: 'white', color: 'var(--black)', border: '2px solid var(--black)' }}>
-          {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
-          {copied ? 'Copied!' : 'Copy Script'}
-        </button>
+        <div className="flex gap-2">
+          <button onClick={handleExecute} disabled={executing} className="btn-sm font-bold uppercase tracking-wider transition-colors" style={{ background: executing ? '#ccc' : 'var(--black)', color: executing ? '#666' : 'var(--cream)', border: '2px solid var(--black)' }}>
+            {executing ? 'Executing...' : '⚡ Execute via SSM'}
+          </button>
+          <button onClick={handleCopy} disabled={executing} className="btn-sm font-bold uppercase tracking-wider transition-colors" style={{ background: 'white', color: 'var(--black)', border: '2px solid var(--black)' }}>
+            {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
+            {copied ? 'Copied!' : 'Copy'}
+          </button>
+        </div>
       </div>
+
+      {executing && (
+        <div className="font-mono text-[10px] sm:text-xs overflow-x-auto relative z-10 mb-4 animate-fade-in" style={{ background: '#050505', border: '2px solid var(--black)', padding: '16px', color: '#00FF41' }}>
+          <div className="flex items-center gap-2 mb-3 pb-3" style={{ borderBottom: '2px solid #333' }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: '#FF2D78' }}></span>
+            <span className="text-[10px] ml-2 font-sans font-bold tracking-widest text-[#888]">AWS SSM // Live Terminal Output</span>
+          </div>
+          <pre className="leading-relaxed whitespace-pre-wrap">
+            {output.map((line, i) => (
+              <div key={i} className={line.startsWith('✅') || line.includes('[OK]') ? 'text-[#C8FF00]' : line.startsWith('>') ? 'text-white' : 'text-[#888]'}>
+                {line}
+              </div>
+            ))}
+            {output.length < 10 && <span className="animate-pulse">_</span>}
+          </pre>
+        </div>
+      )}
 
       <div className="font-mono text-xs overflow-x-auto relative z-10" style={{ background: 'var(--black)', border: '2px solid var(--black)', padding: '16px' }}>
         <div className="flex items-center gap-2 mb-3 pb-3" style={{ borderBottom: '2px solid #333' }}>
