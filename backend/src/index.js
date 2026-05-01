@@ -17,6 +17,7 @@ const siteRoutes = require('./routes/site.routes');
 const incidentRoutes = require('./routes/incident.routes');
 const logRoutes = require('./routes/log.routes');
 const postmortemRoutes = require('./routes/postmortem.routes');
+const webhookRoutes = require('./routes/webhook.routes');
 
 const app = express();
 const server = http.createServer(app);
@@ -36,6 +37,7 @@ app.use('/api/sites', siteRoutes);
 app.use('/api/incidents', incidentRoutes);
 app.use('/api/logs', logRoutes);
 app.use('/api/postmortems', postmortemRoutes);
+app.use('/api/webhooks', webhookRoutes);
 
 // Health check
 app.get('/health', (req, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }));

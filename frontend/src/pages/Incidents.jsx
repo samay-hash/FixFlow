@@ -53,13 +53,13 @@ export default function Incidents() {
   useEffect(() => { load(); }, [filter]);
   useEffect(() => { if (realtimeList.length > 0) setIncidents(realtimeList); }, [realtimeList]);
 
-  const handleChaos = async () => {
+  const handleStressTest = async () => {
     setChaosLoading(true);
     try {
-      await api.post('/incidents/debug/chaos');
-      toast.success('🔥 Chaos Mode Activated!');
+      await api.post('/incidents/stress-test');
+      toast.success('⚡ Stress Test Initiated! Sending requests...');
       load();
-    } catch (err) { toast.error(err.response?.data?.message || 'Chaos failed'); }
+    } catch (err) { toast.error(err.response?.data?.message || 'Stress test failed'); }
     finally { setChaosLoading(false); }
   };
 
@@ -90,9 +90,9 @@ export default function Incidents() {
           </div>
           <div className="flex gap-3 flex-wrap">
             {user?.role === 'admin' && (
-              <button onClick={handleChaos} disabled={chaosLoading} className="btn-danger">
-                <Flame size={16} />
-                {chaosLoading ? 'Triggering...' : '🔥 Trigger Chaos'}
+              <button onClick={handleStressTest} disabled={chaosLoading} className="btn-danger flex items-center gap-2 px-4" style={{ background: 'var(--yellow)', color: 'var(--black)' }}>
+                <Zap size={16} />
+                {chaosLoading ? 'Running...' : '⚡ Run Stress Test'}
               </button>
             )}
             <Link to="/incidents/new" className="btn-primary">

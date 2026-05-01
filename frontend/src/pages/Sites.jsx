@@ -207,6 +207,40 @@ export default function Sites() {
             ))}
           </div>
         )}
+
+        {/* ── Webhooks & Integrations ──────────────────────── */}
+        {!loading && isAdmin && (
+          <div className="mt-8 p-6" style={{ background: 'var(--black)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+            <div className="flex items-start gap-4 flex-wrap">
+              <div className="p-3 bg-white border-2 border-black flex-shrink-0" style={{ boxShadow: '2px 2px 0 var(--accent)' }}>
+                <Globe size={24} color="var(--black)" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-black text-lg text-white uppercase mb-2">GitHub Webhook Integration</h3>
+                <p className="text-sm text-gray-400 mb-4 max-w-2xl">
+                  Connect your GitHub repositories to FixFlow. Automatically generate an Incident War Room whenever a deployment fails or a GitHub Actions workflow crashes.
+                </p>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <input 
+                    readOnly 
+                    className="input flex-1 max-w-lg font-mono text-xs" 
+                    style={{ background: '#111', color: '#00FF41', border: '2px solid #333' }}
+                    value={`${window.location.origin.replace('5173', '5001')}/api/webhooks/github/${user?.companyId}`} 
+                  />
+                  <button 
+                    onClick={() => {
+                      navigator.clipboard.writeText(`${window.location.origin.replace('5173', '5001')}/api/webhooks/github/${user?.companyId}`);
+                      toast.success('Webhook URL copied!');
+                    }} 
+                    className="btn-primary btn-sm flex items-center gap-2"
+                  >
+                    <ExternalLink size={14} /> Copy URL
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

@@ -212,49 +212,75 @@ const addTimelineUpdate = async (req, res) => {
   }
 };
 
-// @POST /api/incidents/trigger-chaos — Demo mode only
-const triggerChaos = async (req, res) => {
+// @POST /api/incidents/stress-test — Real Load Tester
+const runStressTest = async (req, res) => {
   try {
-    if (process.env.NODE_ENV === 'production')
-      return res.status(403).json({ success: false, message: 'Chaos mode disabled in production' });
-
     const Website = require('../models/Website');
     let site = await Website.findOne({ companyId: req.user.companyId });
+    if (!site || !site.url) {
+      return res.status(400).json({ success: false, message: 'No registered website found to stress test.' });
+    }
 
-    const incident = await Incident.create({
-      title: '🔥 [CHAOS] Simulated Production Outage',
-      description: 'Chaos mode triggered for demo purposes. This simulates a real production outage.',
-      severity: 'critical',
-      status: 'open',
-      source: 'auto',
-      siteId: site?._id,
-      companyId: req.user.companyId,
-      timeline: [{
-        message: '🔥 CHAOS MODE ACTIVATED — Simulated outage triggered',
-        type: 'system',
-      }],
-    });
+    const targetUrl = site.url;
 
-    if (site) { site.status = 'down'; await site.save(); }
+    // We don't await this because we want it to run in the background
+    const performLoadTest = async () => {
+      const axios = require('axios');
+      let successCount = 0;
+      let failCount = 0;
+      const requests = [];
+      
+      // Send 500 concurrent requests to the target URL to simulate DDoS / High Load
+      for (let i = 0; i < 500; i++) {
+        requests.push(
+          axios.get(targetUrl, { timeout: 8000 })
+            .then(() => successCount++)
+            .catch(() => failCount++)
+        );
+      }
 
-    await Log.create({
-      message: '[CHAOS] Simulated 500 Internal Server Error — Connection to database refused',
-      level: 'fatal',
-      source: 'chaos-mode',
-      companyId: req.user.companyId,
-      siteId: site?._id,
-      incidentId: incident._id,
-    });
+      await Promise.allSettled(requests);
 
-    const io = getIO();
-    io.to(`company_${req.user.companyId}`).emit('incident:created', incident);
-    io.to(`company_${req.user.companyId}`).emit('notification:alert', {
-      message: '🔥 CRITICAL: Production outage detected!',
-      severity: 'critical',
-      incidentId: incident._id,
-    });
+      // Log the result of the stress test into the system logs
+      await Log.create({
+        message: `[STRESS TEST] Completed on ${targetUrl}. Successful requests: ${successCount}. Failed/Dropped requests: ${failCount}.`,
+        level: failCount > 50 ? 'fatal' : (failCount > 0 ? 'error' : 'warning'),
+        source: 'load-tester',
+        companyId: req.user.companyId,
+        siteId: site._id,
+      });
 
-    res.status(201).json({ success: true, message: 'Chaos triggered!', incident });
+      // If the site failed under load, create a real incident automatically
+      if (failCount > 50) {
+        site.status = 'down';
+        await site.save();
+        
+        const incident = await Incident.create({
+          title: `🔥 [DDoS ALERT] Site crashed under massive load (${failCount} dropped requests)`,
+          description: `The website ${targetUrl} failed to handle the concurrent connections during the stress test. It is currently unresponsive.`,
+          severity: 'critical',
+          status: 'open',
+          source: 'auto',
+          siteId: site._id,
+          companyId: req.user.companyId,
+          timeline: [{
+            message: `System detected massive request failure spike. ${failCount} requests timed out. Possible DDoS or capacity limit reached.`,
+            type: 'system',
+          }],
+        });
+        const io = getIO();
+        io.to(`company_${req.user.companyId}`).emit('incident:created', incident);
+        io.to(`company_${req.user.companyId}`).emit('notification:alert', {
+          message: '🔥 CRITICAL: Site crashed during load test!',
+          severity: 'critical',
+          incidentId: incident._id,
+        });
+      }
+    };
+
+    performLoadTest(); // Start async execution
+
+    res.status(200).json({ success: true, message: `Load test initiated on ${targetUrl}. Blasting 500 concurrent requests.` });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -345,4 +371,4 @@ const executeRemediation = async (req, res) => {
   }
 };
 
-module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats, askCopilot, executeRemediation };
+module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, runStressTest, getStats, askCopilot, executeRemediation };
