@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Terminal as TerminalIcon, Copy, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import api from '../api/axios';
 
 export default function AutoRemediation({ incident, sitrep }) {
   const [copied, setCopied] = useState(false);
@@ -12,22 +13,14 @@ export default function AutoRemediation({ incident, sitrep }) {
   useEffect(() => {
     if (!sitrep) return;
     
-    // Fake extracting a remediation script based on severity/title for immediate visual impact
-    // If the real AI provided a script inside sitrep using ```bash, extract it:
-    const match = sitrep.match(/```(?:bash|sh|cli)\n([\s\S]*?)```/);
+    // Extract the real remediation script provided by Gemini AI in the SITREP
+    const match = sitrep.match(/```(?:bash|sh|cli)\\n([\\s\\S]*?)```/);
     if (match && match[1]) {
       setScript(match[1].trim());
     } else {
-      // Fallback "hacker" looking remediation if AI didn't provide one explicitly
-      if (incident.title.toLowerCase().includes('database') || incident.title.toLowerCase().includes('mongo')) {
-        setScript(`kubectl scale deployment ${incident.siteId?.name || 'mongodb-primary'} --replicas=3\nkubectl logs -l app=database --tail=50 > db-crash.log\nsystemctl restart mongod`);
-      } else if (incident.title.toLowerCase().includes('down') || incident.title.toLowerCase().includes('timeout')) {
-        setScript(`aws elbv2 modify-target-group-attributes --target-group-arn arn:aws:elasticloadbalancing... --attributes Key=deregistration_delay.timeout_seconds,Value=30\npm2 restart ${incident.siteId?.name || 'api-server'}`);
-      } else {
-        setScript(`kubectl rollout undo deployment/${incident.siteId?.name || 'production-api'}\naws cloudwatch get-metric-statistics --namespace AWS/EC2 --metric-name CPUUtilization`);
-      }
+      setScript('');
     }
-  }, [sitrep, incident]);
+  }, [sitrep]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(script);
@@ -36,40 +29,39 @@ export default function AutoRemediation({ incident, sitrep }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleExecute = () => {
+  const handleExecute = async () => {
     setExecuting(true);
-    setOutput([]);
+    setOutput(["⚡ Connecting to target server environment..."]);
     
-    const lines = [
-      "⚡ Initializing AWS Systems Manager (SSM) secure session...",
-      "📡 Target EC2 Instance: i-0e8d9c2a4f1b (us-east-1a)",
-      "🔐 Authenticating via IAM Role...",
-      "✅ Session established.",
-      "🚀 Executing AI Remediation Payload...",
-      "----------------------------------------"
-    ];
-
-    const scriptLines = script.split('\\n');
-    scriptLines.forEach(line => {
-      lines.push(`> ${line}`);
-      lines.push("  [OK] Command executed successfully.");
-    });
-
-    lines.push("----------------------------------------");
-    lines.push("✅ All remediation commands executed.");
-    lines.push("🔌 Closing SSM session...");
-
-    let currentLine = 0;
-    const interval = setInterval(() => {
-      if (currentLine < lines.length) {
-        setOutput(prev => [...prev, lines[currentLine]]);
-        currentLine++;
-      } else {
-        clearInterval(interval);
-        toast.success("AI Remediation applied successfully via SSM!");
-        setTimeout(() => setExecuting(false), 5000);
+    try {
+      // Make real API call to backend to execute the script
+      const { data } = await api.post(`/incidents/${incident._id}/remediate`, { script });
+      
+      const realOutput = [
+        "✅ Session established securely.",
+        `> Running command(s)...`,
+        "----------------------------------------",
+        ...(data.output ? data.output.split('\\n') : ["No stdout generated."]),
+        "----------------------------------------",
+        "✅ Execution completed."
+      ];
+      
+      if (data.stderr) {
+        realOutput.push("⚠️ WARNING / ERRORS:");
+        realOutput.push(...data.stderr.split('\\n'));
       }
-    }, 400); // simulated delay between outputs
+
+      setOutput(realOutput);
+      toast.success("Script executed on server!");
+    } catch (err) {
+      setOutput([
+        "❌ Failed to connect to server.",
+        err.response?.data?.message || err.message
+      ]);
+      toast.error("Execution failed.");
+    } finally {
+      setExecuting(false);
+    }
   };
 
   if (!script) return null;

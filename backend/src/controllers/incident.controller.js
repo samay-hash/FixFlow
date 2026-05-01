@@ -319,4 +319,30 @@ const askCopilot = async (req, res) => {
   }
 };
 
-module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats, askCopilot };
+// @POST /api/incidents/:id/remediate
+const executeRemediation = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
+    const { script } = req.body;
+    if (!script) return res.status(400).json({ success: false, message: 'Script is required' });
+
+    // DANGEROUS: For Hackathon Demo purposes ONLY. Executes AI-generated shell commands locally.
+    const { exec } = require('child_process');
+    
+    exec(script, { timeout: 15000 }, (error, stdout, stderr) => {
+      res.json({
+        success: true,
+        output: stdout || 'Command executed with no stdout.',
+        stderr: stderr || (error ? error.message : '')
+      });
+    });
+
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+module.exports = { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats, askCopilot, executeRemediation };

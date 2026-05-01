@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats, askCopilot } = require('../controllers/incident.controller');
+const { getIncidents, getIncidentById, createIncident, updateIncident, addTimelineUpdate, triggerChaos, getStats, askCopilot, executeRemediation } = require('../controllers/incident.controller');
 const { protect } = require('../middleware/auth.middleware');
 const { authorize } = require('../middleware/role.middleware');
 
@@ -11,6 +11,7 @@ router.post('/:id/chat', protect, authorize('admin', 'engineer'), askCopilot);
 router.post('/', protect, authorize('admin', 'engineer'), createIncident);
 router.put('/:id', protect, authorize('admin', 'engineer'), updateIncident);
 router.post('/:id/timeline', protect, authorize('admin', 'engineer'), addTimelineUpdate);
+router.post('/:id/remediate', protect, authorize('admin', 'engineer'), executeRemediation);
 router.post('/debug/chaos', protect, authorize('admin'), triggerChaos);
 
 module.exports = router;
