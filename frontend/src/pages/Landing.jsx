@@ -37,10 +37,13 @@ export default function Landing() {
     bg2:      dark ? '#141414' : '#EAE4D9',
     bg3:      dark ? '#1E1E1E' : '#fff',
     text:     dark ? '#F0EBE0' : '#0A0A0A',
-    muted:    dark ? '#888'    : '#555',
-    border:   dark ? '#333'    : '#0A0A0A',
+    muted:    dark ? '#999'    : '#555',
+    border:   dark ? '#444'    : '#0A0A0A',
     dot:      dark ? '#F0EBE018' : '#0A0A0A18',
     cardBg:   dark ? '#1A1A1A' : '#EAE4D9',
+    // Always-dark tokens — never flip with theme
+    inkBg:    '#0A0A0A',   // logo box, stats bar, terminal header bg
+    inkText:  '#F0EBE0',  // text ON those always-dark surfaces
   };
 
   const card = (extra = {}) => ({
@@ -67,8 +70,8 @@ export default function Landing() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 flex items-center justify-center"
-            style={{ background: t.text, boxShadow: `2px 2px 0 #C8FF00` }}>
-            <Shield size={16} color={dark ? '#0A0A0A' : '#F2EDE4'} />
+            style={{ background: t.inkBg, boxShadow: `2px 2px 0 #C8FF00` }}>
+            <Shield size={16} color="#C8FF00" />
           </div>
           <span className="font-black text-lg uppercase tracking-widest" style={{ color: t.text }}>FixFlow</span>
           <span className="text-xs font-bold px-1.5 py-0.5"
@@ -167,18 +170,18 @@ export default function Landing() {
               style={{ background: '#C8FF00', border: `3px solid ${t.border}`, boxShadow: `2px 2px 0 ${t.border}` }} />
 
             <div style={{ ...card(), position: 'relative', overflow: 'hidden' }}>
-              {/* Terminal header */}
+              {/* Terminal header — always dark */}
               <div className="flex items-center justify-between px-4 py-3 -mx-6 -mt-6 mb-5"
-                style={{ background: t.text, marginLeft: -24, marginRight: -24, marginTop: -24, paddingLeft: 24, paddingRight: 24 }}>
+                style={{ background: t.inkBg, marginLeft: -24, marginRight: -24, marginTop: -24, paddingLeft: 24, paddingRight: 24 }}>
                 <div className="flex gap-1.5">
                   {['#FF2D78', '#FFE500', '#C8FF00'].map(c => (
-                    <div key={c} className="w-3 h-3" style={{ background: c, border: `1.5px solid ${dark ? '#555' : '#0A0A0A'}` }} />
+                    <div key={c} className="w-3 h-3" style={{ background: c, border: '1.5px solid #555' }} />
                   ))}
                 </div>
-                <span className="text-xs font-black uppercase tracking-wider" style={{ color: dark ? '#C8FF00' : '#F2EDE4' }}>
+                <span className="text-xs font-black uppercase tracking-wider" style={{ color: '#C8FF00' }}>
                   FixFlow Dashboard
                 </span>
-                <span className="text-xs font-mono" style={{ color: dark ? '#888' : '#aaa' }}>LIVE</span>
+                <span className="text-xs font-mono" style={{ color: '#888' }}>LIVE</span>
               </div>
 
               {/* Mock status rows */}
@@ -212,12 +215,12 @@ export default function Landing() {
 
               {/* Mock AI Suggestion */}
               <div className="mt-3 p-3"
-                style={{ background: '#EDE0FF', border: `2px solid ${dark ? '#5500CC' : '#0A0A0A'}` }}>
-                <p className="text-xs font-black uppercase tracking-wide mb-1" style={{ color: '#5500CC' }}>
+                style={{ background: dark ? '#2A1A44' : '#EDE0FF', border: `2px solid #5500CC` }}>
+                <p className="text-xs font-black uppercase tracking-wide mb-1" style={{ color: dark ? '#BB88FF' : '#5500CC' }}>
                   🤖 AI SUGGESTION
                 </p>
-                <p className="text-xs font-mono" style={{ color: '#333' }}>
-                  "Restart nginx pods & check DB connection pool"
+                <p className="text-xs font-mono" style={{ color: dark ? '#ccc' : '#333' }}>
+                  "Restart nginx pods &amp; check DB connection pool"
                 </p>
               </div>
             </div>
@@ -225,15 +228,15 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── STATS BAR ───────────────────────────────────────── */}
-      <section style={{ borderTop: `3px solid ${t.border}`, borderBottom: `3px solid ${t.border}`, background: t.text }}>
+      {/* ── STATS BAR — always dark strip ────────────────────── */}
+      <section style={{ borderTop: `3px solid ${t.border}`, borderBottom: `3px solid ${t.border}`, background: t.inkBg }}>
         <div className="max-w-7xl mx-auto px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-0">
           {STATS.map((s, i) => (
             <div key={s.label}
               className="text-center py-4 px-6"
-              style={{ borderRight: i < STATS.length - 1 ? `3px solid ${dark ? '#333' : '#333'}` : 'none' }}>
+              style={{ borderRight: i < STATS.length - 1 ? '3px solid #333' : 'none' }}>
               <p className="text-3xl font-black" style={{ color: '#C8FF00' }}>{s.value}</p>
-              <p className="text-xs font-bold uppercase tracking-wider mt-1" style={{ color: dark ? '#888' : '#aaa' }}>{s.label}</p>
+              <p className="text-xs font-bold uppercase tracking-wider mt-1" style={{ color: '#888' }}>{s.label}</p>
             </div>
           ))}
         </div>
@@ -315,7 +318,7 @@ export default function Landing() {
           </div>
           <h2 className="text-4xl font-black uppercase" style={{ color: t.text }}>
             BUILT WITH<br />
-            <span className="inline-block px-2" style={{ background: t.text, color: dark ? '#0A0A0A' : '#F2EDE4' }}>
+            <span className="inline-block px-2" style={{ background: t.inkBg, color: '#C8FF00' }}>
               PRODUCTION-GRADE TOOLS.
             </span>
           </h2>
@@ -345,22 +348,22 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── CTA ─────────────────────────────────────────────── */}
-      <section style={{ borderTop: `3px solid ${t.border}`, background: '#0A0A0A' }}
+      {/* ── CTA — always dark section ─────────────────────────── */}
+      <section style={{ borderTop: `3px solid ${t.border}`, background: t.inkBg }}
         className="px-8 py-24">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-6"
-            style={{ background: '#FF2D78', border: '2px solid #333' }}>
+            style={{ background: '#FF2D78', border: '2px solid #555' }}>
             <Clock size={12} color="white" />
             <span className="text-xs font-black uppercase tracking-wider text-white">Start in 60 Seconds</span>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-black uppercase text-white leading-tight mb-6">
+          <h2 className="text-5xl lg:text-6xl font-black uppercase leading-tight mb-6" style={{ color: '#F0EBE0' }}>
             STOP FINDING OUT<br />
             <span style={{ background: '#C8FF00', color: '#0A0A0A', display: 'inline-block', padding: '0 12px' }}>
               FROM YOUR USERS.
             </span>
           </h2>
-          <p className="text-base font-medium mb-8" style={{ color: '#888' }}>
+          <p className="text-base font-medium mb-8" style={{ color: '#999' }}>
             FixFlow tells you before they do. Free to start. No credit card. Just add a URL.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
@@ -373,7 +376,7 @@ export default function Landing() {
             </Link>
             <Link to="/login"
               className="px-8 py-4 font-black uppercase text-base tracking-wide"
-              style={{ background: 'transparent', color: '#888', border: '3px solid #333' }}>
+              style={{ background: 'transparent', color: '#ccc', border: '3px solid #555' }}>
               I Have an Account
             </Link>
           </div>
@@ -386,8 +389,8 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 flex items-center justify-center"
-              style={{ background: t.text, boxShadow: '2px 2px 0 #C8FF00' }}>
-              <Shield size={12} color={dark ? '#0A0A0A' : '#F2EDE4'} />
+              style={{ background: t.inkBg, boxShadow: '2px 2px 0 #C8FF00' }}>
+              <Shield size={12} color="#C8FF00" />
             </div>
             <span className="font-black uppercase tracking-widest text-sm" style={{ color: t.text }}>FixFlow</span>
             <span className="text-xs" style={{ color: t.muted }}>Smart Incident Monitoring & Response</span>
