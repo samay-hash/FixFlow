@@ -5,6 +5,8 @@ const companySchema = new mongoose.Schema({
   slug: { type: String, unique: true, lowercase: true },
   plan: { type: String, enum: ['free', 'pro', 'enterprise'], default: 'free' },
   logoUrl: { type: String, default: '' },
+  category: { type: String, enum: ['science', 'engineering', 'security', 'devops', 'operations', 'research', 'other'], default: 'engineering' },
+  preferences: [{ type: String, trim: true }],
 }, { timestamps: true });
 
 companySchema.pre('save', function () {

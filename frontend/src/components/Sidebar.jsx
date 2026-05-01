@@ -45,6 +45,11 @@ export default function Sidebar() {
             <p className="text-xs font-medium truncate max-w-[130px]" style={{ color: '#666' }}>
               {company?.name || '...'}
             </p>
+            {company?.category && (
+              <p className="text-[10px] font-black uppercase tracking-wide mt-1" style={{ color: '#0050FF' }}>
+                {company.category}
+              </p>
+            )}
           </div>
         </div>
 

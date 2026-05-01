@@ -57,6 +57,9 @@ export default function Login() {
           <p className="mt-3 text-sm font-medium" style={{ color: '#666' }}>
             Smart Incident Monitoring &amp; Response System
           </p>
+          <p className="mt-2 text-xs font-semibold uppercase tracking-wide" style={{ color: '#888' }}>
+            Organization login for admins and invited engineers
+          </p>
         </div>
 
         {/* ── Form Card ────────────────────────────────────── */}
