@@ -1,6 +1,7 @@
 const Incident = require('../models/Incident');
 const Log = require('../models/Log');
 const { getIO } = require('../socket/socket');
+const mongoose = require('mongoose');
 
 // @GET /api/incidents
 const getIncidents = async (req, res) => {
@@ -28,6 +29,10 @@ const getIncidents = async (req, res) => {
 // @GET /api/incidents/:id
 const getIncidentById = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
     const incident = await Incident.findOne({ _id: req.params.id, companyId: req.user.companyId })
       .populate('siteId', 'name url status dependsOn')
       .populate('assignedTo', 'name email avatar role')
@@ -64,13 +69,19 @@ const createIncident = async (req, res) => {
 
     res.status(201).json({ success: true, incident });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ success: false, message: err.message });
+    
   }
 };
 
 // @PUT /api/incidents/:id
 const updateIncident = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
     const incident = await Incident.findOne({ _id: req.params.id, companyId: req.user.companyId });
     if (!incident) return res.status(404).json({ success: false, message: 'Incident not found' });
 
@@ -117,6 +128,10 @@ const updateIncident = async (req, res) => {
 // @POST /api/incidents/:id/timeline
 const addTimelineUpdate = async (req, res) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'Invalid incident id' });
+    }
+
     const { message, type, isPublic } = req.body;
     const incident = await Incident.findOne({ _id: req.params.id, companyId: req.user.companyId });
     if (!incident) return res.status(404).json({ success: false, message: 'Incident not found' });
