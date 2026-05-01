@@ -13,6 +13,8 @@ const incidentSchema = new mongoose.Schema({
   description: { type: String, default: '' },
   severity: { type: String, enum: ['low', 'medium', 'high', 'critical'], default: 'high' },
   status: { type: String, enum: ['open', 'in_progress', 'resolved'], default: 'open' },
+  // Category / department for routing (e.g. backend, frontend, database)
+  category: { type: String, enum: ['backend', 'frontend', 'database', 'infrastructure', 'network', 'security', 'other'], default: 'other' },
   source: { type: String, enum: ['manual', 'auto'], default: 'auto' },
   siteId: { type: mongoose.Schema.Types.ObjectId, ref: 'Website' },
   assignedTo: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],

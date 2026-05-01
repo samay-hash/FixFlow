@@ -50,10 +50,16 @@ const getIncidentById = async (req, res) => {
 // @POST /api/incidents
 const createIncident = async (req, res) => {
   try {
-    const { title, description, severity, siteId, assignedTo } = req.body;
-    const incident = await Incident.create({
-      title, description, severity,
-      siteId, assignedTo: assignedTo || [],
+    const { title, description, severity, siteId, assignedTo, category } = req.body;
+
+    // Base payload
+    const payload = {
+      title,
+      description,
+      severity,
+      siteId,
+      assignedTo: assignedTo || [],
+      category: category || 'other',
       source: 'manual',
       companyId: req.user.companyId,
       createdBy: req.user._id,
@@ -62,17 +68,46 @@ const createIncident = async (req, res) => {
         updatedBy: req.user._id,
         type: 'system',
       }],
-    });
+    };
+
+    const incident = await Incident.create(payload);
     await incident.populate(['siteId', 'assignedTo', 'createdBy']);
 
-      // Notify assigned users by email (if any)
-      if (incident.assignedTo && incident.assignedTo.length > 0) {
-        try {
-          await notificationService.sendAssignedIncidentEmail(incident, incident.assignedTo);
-        } catch (err) {
-          console.warn('Failed sending assigned emails:', err.message);
+    // Auto-assign when no assignee provided: pick an engineer matching preferences or with lowest load
+    if ((!incident.assignedTo || incident.assignedTo.length === 0)) {
+      try {
+        const engineers = await User.find({ companyId: req.user.companyId, role: { $in: ['engineer', 'admin'] } });
+        if (engineers.length > 0) {
+          const agg = await Incident.aggregate([
+            { $match: { companyId: new mongoose.Types.ObjectId(req.user.companyId), status: { $ne: 'resolved' } } },
+            { $unwind: { path: '$assignedTo', preserveNullAndEmptyArrays: false } },
+            { $group: { _id: '$assignedTo', count: { $sum: 1 } } }
+          ]);
+          const counts = {};
+          agg.forEach(a => { counts[String(a._id)] = a.count; });
+
+          const preferred = engineers.filter(u => (u.preferences || []).includes(incident.category));
+          let selected = [];
+          if (preferred.length > 0) {
+            preferred.sort((a, b) => (counts[String(a._id)] || 0) - (counts[String(b._id)] || 0));
+            selected.push(preferred[0]);
+          } else {
+            engineers.sort((a, b) => (counts[String(a._id)] || 0) - (counts[String(b._id)] || 0));
+            selected.push(engineers[0]);
+          }
+
+          if (selected.length > 0) {
+            incident.assignedTo = selected.map(u => u._id);
+            await incident.save();
+            await incident.populate(['siteId', 'assignedTo', 'createdBy']);
+            // notify selected users
+            await notificationService.sendAssignedIncidentEmail(incident, selected.map(u => ({ name: u.name, email: u.email })));
+          }
         }
+      } catch (err) {
+        console.warn('Auto-assignment failed:', err.message);
       }
+    }
 
     // Real-time broadcast
     const io = getIO();
@@ -82,7 +117,6 @@ const createIncident = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, message: err.message });
-    
   }
 };
 

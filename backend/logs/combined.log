@@ -1829,3 +1829,702 @@
 2026-05-01 12:29:43 [INFO]: ::1 - - [01/May/2026:06:59:43 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
 2026-05-01 12:30:00 [INFO]: 🔍 Monitoring 0 sites...
 2026-05-01 12:31:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:32:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:32:37 [INFO]: 📧 Email transporter configured
+2026-05-01 12:32:37 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 12:32:37 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 12:32:37 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 12:33:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:33:45 [INFO]: 📧 Email transporter configured
+2026-05-01 12:33:46 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 12:33:46 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 12:33:46 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 12:34:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:35:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:36:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:36:39 [INFO]: ::1 - - [01/May/2026:07:06:39 +0000] "POST /api/auth/login HTTP/1.1" 401 49 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 12:37:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:38:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:39:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:40:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:41:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:42:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:43:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:44:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:45:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:46:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:47:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:48:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:49:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:50:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:51:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:52:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:53:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:54:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:55:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:56:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:57:13 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:58:06 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 12:59:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:00:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:01:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:39 [INFO]: ::1 - - [01/May/2026:07:31:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:40 [INFO]: ::1 - - [01/May/2026:07:31:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:41 [INFO]: ::1 - - [01/May/2026:07:31:41 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:41 [INFO]: ::1 - - [01/May/2026:07:31:41 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 200 1226 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:41 [INFO]: ::1 - - [01/May/2026:07:31:41 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:41 [INFO]: ::1 - - [01/May/2026:07:31:41 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:42 [INFO]: ::1 - - [01/May/2026:07:31:42 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:42 [INFO]: ::1 - - [01/May/2026:07:31:42 +0000] "GET /api/logs?limit=200 HTTP/1.1" 200 340 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:42 [INFO]: ::1 - - [01/May/2026:07:31:42 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:42 [INFO]: ::1 - - [01/May/2026:07:31:42 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:46 [INFO]: ::1 - - [01/May/2026:07:31:46 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:46 [INFO]: ::1 - - [01/May/2026:07:31:46 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:46 [INFO]: ::1 - - [01/May/2026:07:31:46 +0000] "GET /api/incidents HTTP/1.1" 200 1226 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:47 [INFO]: ::1 - - [01/May/2026:07:31:47 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:47 [INFO]: ::1 - - [01/May/2026:07:31:47 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:47 [INFO]: ::1 - - [01/May/2026:07:31:47 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:48 [INFO]: ::1 - - [01/May/2026:07:31:48 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:51 [INFO]: ::1 - - [01/May/2026:07:31:51 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:01:52 [INFO]: ::1 - - [01/May/2026:07:31:52 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:02:11 [INFO]: 📧 Email transporter configured
+2026-05-01 13:02:12 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:02:12 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:02:12 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:02:14 [INFO]: ::1 - - [01/May/2026:07:32:14 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:14 [INFO]: ::1 - - [01/May/2026:07:32:14 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:14 [INFO]: ::1 - - [01/May/2026:07:32:14 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:14 [INFO]: ::1 - - [01/May/2026:07:32:14 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:14 [INFO]: ::1 - - [01/May/2026:07:32:14 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:14 [INFO]: ::1 - - [01/May/2026:07:32:14 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:15 [INFO]: ::1 - - [01/May/2026:07:32:15 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:15 [INFO]: ::1 - - [01/May/2026:07:32:15 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:20 [INFO]: ::1 - - [01/May/2026:07:32:20 +0000] "GET /api/auth/team HTTP/1.1" 200 307 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:20 [INFO]: ::1 - - [01/May/2026:07:32:20 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:53 [INFO]: 📧 Email sent to arpansakar@gmail.com
+2026-05-01 13:02:53 [INFO]: ::1 - - [01/May/2026:07:32:53 +0000] "POST /api/auth/invite HTTP/1.1" 201 551 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:02:53 [INFO]: ::1 - - [01/May/2026:07:32:53 +0000] "GET /api/auth/team HTTP/1.1" 200 733 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:03:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:04:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:04:19 [INFO]: ::1 - - [01/May/2026:07:34:19 +0000] "GET /api/auth/invite/689310df8d5a7f15392104753fa2b2c6ffbb7891addfb010 HTTP/1.1" 200 606 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:19 [INFO]: ::1 - - [01/May/2026:07:34:19 +0000] "GET /api/auth/invite/689310df8d5a7f15392104753fa2b2c6ffbb7891addfb010 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "POST /api/auth/invite/accept HTTP/1.1" 200 503 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/sites HTTP/1.1" 200 37 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/logs/summary HTTP/1.1" 200 69 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 200 1226 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/incidents/stats HTTP/1.1" 200 106 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:41 [INFO]: ::1 - - [01/May/2026:07:34:41 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:47 [INFO]: ::1 - - [01/May/2026:07:34:47 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:47 [INFO]: ::1 - - [01/May/2026:07:34:47 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:47 [INFO]: ::1 - - [01/May/2026:07:34:47 +0000] "GET /api/incidents HTTP/1.1" 200 1226 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:47 [INFO]: ::1 - - [01/May/2026:07:34:47 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:48 [INFO]: ::1 - - [01/May/2026:07:34:48 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:48 [INFO]: ::1 - - [01/May/2026:07:34:48 +0000] "GET /api/logs?limit=200 HTTP/1.1" 200 340 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:48 [INFO]: ::1 - - [01/May/2026:07:34:48 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:48 [INFO]: ::1 - - [01/May/2026:07:34:48 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:49 [INFO]: ::1 - - [01/May/2026:07:34:49 +0000] "GET /api/postmortems HTTP/1.1" 200 43 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:49 [INFO]: ::1 - - [01/May/2026:07:34:49 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 200 1226 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:49 [INFO]: ::1 - - [01/May/2026:07:34:49 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:49 [INFO]: ::1 - - [01/May/2026:07:34:49 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:04:52 [ERROR]: AI generation failed: Request failed with status code 404. Using mock.
+2026-05-01 13:04:52 [INFO]: ::1 - - [01/May/2026:07:34:52 +0000] "POST /api/postmortems HTTP/1.1" 201 1738 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:05:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:05:04 [INFO]: ::1 - - [01/May/2026:07:35:04 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:04 [INFO]: ::1 - - [01/May/2026:07:35:04 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:05 [INFO]: ::1 - - [01/May/2026:07:35:05 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:05 [INFO]: ::1 - - [01/May/2026:07:35:05 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:05 [INFO]: ::1 - - [01/May/2026:07:35:05 +0000] "GET /api/postmortems HTTP/1.1" 200 1966 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:05 [INFO]: ::1 - - [01/May/2026:07:35:05 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:05 [INFO]: ::1 - - [01/May/2026:07:35:05 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:05 [INFO]: ::1 - - [01/May/2026:07:35:05 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:06 [INFO]: ::1 - - [01/May/2026:07:35:06 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:06 [INFO]: ::1 - - [01/May/2026:07:35:06 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:08 [INFO]: ::1 - - [01/May/2026:07:35:08 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:08 [INFO]: ::1 - - [01/May/2026:07:35:08 +0000] "GET /api/auth/team HTTP/1.1" 200 1054 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:08 [INFO]: ::1 - - [01/May/2026:07:35:08 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:05:08 [INFO]: ::1 - - [01/May/2026:07:35:08 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:06:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:06:10 [INFO]: ::1 - - [01/May/2026:07:36:10 +0000] "POST /api/incidents HTTP/1.1" 201 1172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:06:10 [INFO]: ::1 - - [01/May/2026:07:36:10 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:06:10 [INFO]: ::1 - - [01/May/2026:07:36:10 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 200 860 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:06:10 [INFO]: ::1 - - [01/May/2026:07:36:10 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:06:10 [INFO]: ::1 - - [01/May/2026:07:36:10 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:06:18 [INFO]: ::1 - - [01/May/2026:07:36:18 +0000] "GET /api/incidents HTTP/1.1" 200 1999 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:06:18 [INFO]: ::1 - - [01/May/2026:07:36:18 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:07:19 [INFO]: ::1 - - [01/May/2026:07:37:19 +0000] "GET /api/auth/team HTTP/1.1" 200 1054 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:19 [INFO]: ::1 - - [01/May/2026:07:37:19 +0000] "GET /api/incidents/69f44f46f6fab07a7045f868 HTTP/1.1" 200 1297 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:19 [INFO]: ::1 - - [01/May/2026:07:37:19 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:19 [INFO]: ::1 - - [01/May/2026:07:37:19 +0000] "GET /api/incidents/69f44f46f6fab07a7045f868 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:20 [INFO]: ::1 - - [01/May/2026:07:37:20 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:20 [INFO]: ::1 - - [01/May/2026:07:37:20 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:21 [INFO]: ::1 - - [01/May/2026:07:37:21 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:21 [INFO]: ::1 - - [01/May/2026:07:37:21 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 200 860 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:21 [INFO]: ::1 - - [01/May/2026:07:37:21 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:21 [INFO]: ::1 - - [01/May/2026:07:37:21 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:30 [INFO]: ::1 - - [01/May/2026:07:37:30 +0000] "POST /api/incidents/69f457ea73f4df1d14210272/timeline HTTP/1.1" 200 403 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:33 [INFO]: ::1 - - [01/May/2026:07:37:33 +0000] "PUT /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 200 1625 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:35 [INFO]: ::1 - - [01/May/2026:07:37:35 +0000] "PUT /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 200 1904 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:44 [INFO]: ::1 - - [01/May/2026:07:37:44 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:44 [INFO]: ::1 - - [01/May/2026:07:37:44 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:45 [INFO]: ::1 - - [01/May/2026:07:37:45 +0000] "GET /api/incidents HTTP/1.1" 200 2731 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:45 [INFO]: ::1 - - [01/May/2026:07:37:45 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:46 [INFO]: ::1 - - [01/May/2026:07:37:46 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:46 [INFO]: ::1 - - [01/May/2026:07:37:46 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 200 1700 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:46 [INFO]: ::1 - - [01/May/2026:07:37:46 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:46 [INFO]: ::1 - - [01/May/2026:07:37:46 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:51 [INFO]: ::1 - - [01/May/2026:07:37:51 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:07:51 [INFO]: ::1 - - [01/May/2026:07:37:51 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 200 1700 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:07:51 [INFO]: ::1 - - [01/May/2026:07:37:51 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:07:51 [INFO]: ::1 - - [01/May/2026:07:37:51 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:07:52 [INFO]: ::1 - - [01/May/2026:07:37:52 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:07:52 [INFO]: ::1 - - [01/May/2026:07:37:52 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:07:55 [INFO]: ::1 - - [01/May/2026:07:37:55 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:55 [INFO]: ::1 - - [01/May/2026:07:37:55 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:55 [INFO]: ::1 - - [01/May/2026:07:37:55 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:07:55 [INFO]: ::1 - - [01/May/2026:07:37:55 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:08:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:09:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:10:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:11:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:12:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:13:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:13:13 [INFO]: 📧 Email transporter configured
+2026-05-01 13:13:14 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:13:14 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:13:14 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:13:18 [INFO]: 📧 Email transporter configured
+2026-05-01 13:13:19 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:13:19 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:13:19 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:13:28 [INFO]: 📧 Email transporter configured
+2026-05-01 13:13:29 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:13:29 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:13:29 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:13:37 [INFO]: 📧 Email transporter configured
+2026-05-01 13:13:37 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:13:37 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:13:37 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:14:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:15:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:15:52 [INFO]: 📧 Email transporter configured
+2026-05-01 13:15:53 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:15:53 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:15:53 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:15:55 [INFO]: ::1 - - [01/May/2026:07:45:55 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:15:55 [INFO]: ::1 - - [01/May/2026:07:45:55 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:15:55 [INFO]: ::1 - - [01/May/2026:07:45:55 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:15:55 [INFO]: ::1 - - [01/May/2026:07:45:55 +0000] "GET /api/incidents/69f457ea73f4df1d14210272 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:16:03 [INFO]: 📧 Email transporter configured
+2026-05-01 13:16:04 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:16:04 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:16:04 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:16:08 [INFO]: ::1 - - [01/May/2026:07:46:08 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:08 [INFO]: ::1 - - [01/May/2026:07:46:08 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:10 [INFO]: ::1 - - [01/May/2026:07:46:10 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:10 [INFO]: ::1 - - [01/May/2026:07:46:10 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:10 [INFO]: ::1 - - [01/May/2026:07:46:10 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:10 [INFO]: ::1 - - [01/May/2026:07:46:10 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:10 [INFO]: ::1 - - [01/May/2026:07:46:10 +0000] "GET /api/incidents HTTP/1.1" 200 2731 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:10 [INFO]: ::1 - - [01/May/2026:07:46:10 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:11 [INFO]: ::1 - - [01/May/2026:07:46:11 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:11 [INFO]: ::1 - - [01/May/2026:07:46:11 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:11 [INFO]: ::1 - - [01/May/2026:07:46:11 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:11 [INFO]: ::1 - - [01/May/2026:07:46:11 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:35 [INFO]: 📧 Email sent to arpansakar@gmail.com
+2026-05-01 13:16:35 [INFO]: ::1 - - [01/May/2026:07:46:35 +0000] "POST /api/incidents HTTP/1.1" 201 1146 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:35 [INFO]: ::1 - - [01/May/2026:07:46:35 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:35 [INFO]: ::1 - - [01/May/2026:07:46:35 +0000] "GET /api/incidents/69f45a57e8301938b3b6764d HTTP/1.1" 200 834 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:35 [INFO]: ::1 - - [01/May/2026:07:46:35 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:35 [INFO]: ::1 - - [01/May/2026:07:46:35 +0000] "GET /api/incidents/69f45a57e8301938b3b6764d HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:16:46 [INFO]: ::1 - - [01/May/2026:07:46:46 +0000] "GET /api/incidents HTTP/1.1" 200 3478 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:16:47 [INFO]: ::1 - - [01/May/2026:07:46:47 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:17:04 [INFO]: ::1 - - [01/May/2026:07:47:04 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:04 [INFO]: ::1 - - [01/May/2026:07:47:04 +0000] "GET /api/incidents/69f45a57e8301938b3b6764d HTTP/1.1" 200 834 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:04 [INFO]: ::1 - - [01/May/2026:07:47:04 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:04 [INFO]: ::1 - - [01/May/2026:07:47:04 +0000] "GET /api/incidents/69f45a57e8301938b3b6764d HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:11 [INFO]: ::1 - - [01/May/2026:07:47:11 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:11 [INFO]: ::1 - - [01/May/2026:07:47:11 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:11 [INFO]: ::1 - - [01/May/2026:07:47:11 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:11 [INFO]: ::1 - - [01/May/2026:07:47:11 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:12 [INFO]: ::1 - - [01/May/2026:07:47:12 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 200 3478 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:12 [INFO]: ::1 - - [01/May/2026:07:47:12 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:12 [INFO]: ::1 - - [01/May/2026:07:47:12 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:12 [INFO]: ::1 - - [01/May/2026:07:47:12 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:12 [INFO]: ::1 - - [01/May/2026:07:47:12 +0000] "GET /api/incidents/stats HTTP/1.1" 200 108 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:12 [INFO]: ::1 - - [01/May/2026:07:47:12 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:22 [INFO]: ::1 - - [01/May/2026:07:47:22 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:22 [INFO]: ::1 - - [01/May/2026:07:47:22 +0000] "GET /api/logs?limit=200 HTTP/1.1" 200 340 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:22 [INFO]: ::1 - - [01/May/2026:07:47:22 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:22 [INFO]: ::1 - - [01/May/2026:07:47:22 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:23 [INFO]: ::1 - - [01/May/2026:07:47:23 +0000] "GET /api/postmortems HTTP/1.1" 200 1966 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:23 [INFO]: ::1 - - [01/May/2026:07:47:23 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 200 2731 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:23 [INFO]: ::1 - - [01/May/2026:07:47:23 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:23 [INFO]: ::1 - - [01/May/2026:07:47:23 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:23 [INFO]: ::1 - - [01/May/2026:07:47:23 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:17:23 [INFO]: ::1 - - [01/May/2026:07:47:23 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+2026-05-01 13:18:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:19:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:19:20 [INFO]: 📧 Email transporter configured
+2026-05-01 13:19:21 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:19:21 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:19:21 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:20:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:20:31 [INFO]: 📧 Email transporter configured
+2026-05-01 13:20:31 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:20:31 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:20:31 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:20:41 [INFO]: 📧 Email transporter configured
+2026-05-01 13:20:42 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:20:42 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:20:42 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:20:54 [INFO]: 📧 Email transporter configured
+2026-05-01 13:20:54 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:20:54 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:20:54 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:21:01 [INFO]: 📧 Email transporter configured
+2026-05-01 13:21:01 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:21:01 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:21:01 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:21:14 [INFO]: 📧 Email transporter configured
+2026-05-01 13:21:15 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:21:15 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:21:15 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:22:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:23:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:23:36 [INFO]: 📧 Email transporter configured
+2026-05-01 13:23:37 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:23:37 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:23:37 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:24:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:24:31 [INFO]: ::1 - - [01/May/2026:07:54:31 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:31 [INFO]: ::1 - - [01/May/2026:07:54:31 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 200 3535 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:32 [INFO]: ::1 - - [01/May/2026:07:54:32 +0000] "GET /api/incidents/stats HTTP/1.1" 200 108 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:33 [INFO]: ::1 - - [01/May/2026:07:54:33 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:33 [INFO]: ::1 - - [01/May/2026:07:54:33 +0000] "GET /api/incidents HTTP/1.1" 200 3535 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:33 [INFO]: ::1 - - [01/May/2026:07:54:33 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:42 [INFO]: 📧 Email transporter configured
+2026-05-01 13:24:43 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 13:24:43 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 13:24:43 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 13:24:43 [INFO]: ::1 - - [01/May/2026:07:54:43 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:44 [INFO]: ::1 - - [01/May/2026:07:54:44 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:45 [INFO]: ::1 - - [01/May/2026:07:54:45 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:45 [INFO]: ::1 - - [01/May/2026:07:54:45 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:45 [INFO]: ::1 - - [01/May/2026:07:54:45 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:45 [INFO]: ::1 - - [01/May/2026:07:54:45 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:49 [INFO]: ::1 - - [01/May/2026:07:54:49 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:49 [INFO]: ::1 - - [01/May/2026:07:54:49 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:53 [INFO]: ::1 - - [01/May/2026:07:54:53 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:53 [INFO]: ::1 - - [01/May/2026:07:54:53 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:53 [INFO]: ::1 - - [01/May/2026:07:54:53 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:24:54 [INFO]: ::1 - - [01/May/2026:07:54:54 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 13:25:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:26:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:27:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:28:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:29:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:30:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:31:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:32:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:33:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:34:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:35:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:36:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:37:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:38:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:39:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:40:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:41:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:42:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:43:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:44:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:45:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:46:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:47:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:48:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:49:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:50:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:51:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:52:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:53:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:54:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:55:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:56:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:57:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:58:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 13:59:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:00:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:01:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:02:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:03:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:04:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:05:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:06:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:07:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:07:51 [INFO]: 📧 Email transporter configured
+2026-05-01 14:07:52 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 14:07:52 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 14:07:52 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 14:07:52 [INFO]: ::1 - - [01/May/2026:08:37:52 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:52 [INFO]: ::1 - - [01/May/2026:08:37:52 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:54 [INFO]: ::1 - - [01/May/2026:08:37:54 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:54 [INFO]: ::1 - - [01/May/2026:08:37:54 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:54 [INFO]: ::1 - - [01/May/2026:08:37:54 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:54 [INFO]: ::1 - - [01/May/2026:08:37:54 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:07:59 [INFO]: ::1 - - [01/May/2026:08:37:59 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:00 [INFO]: ::1 - - [01/May/2026:08:38:00 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:01 [INFO]: ::1 - - [01/May/2026:08:38:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:02 [INFO]: ::1 - - [01/May/2026:08:38:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:03 [INFO]: ::1 - - [01/May/2026:08:38:03 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:23 [INFO]: ::1 - - [01/May/2026:08:38:23 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:39 [INFO]: ::1 - - [01/May/2026:08:38:39 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:40 [INFO]: ::1 - - [01/May/2026:08:38:40 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:08:47 [INFO]: ::1 - - [01/May/2026:08:38:47 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:22 [INFO]: ::1 - - [01/May/2026:08:39:22 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:31 [INFO]: ::1 - - [01/May/2026:08:39:31 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:31 [INFO]: ::1 - - [01/May/2026:08:39:31 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:32 [INFO]: ::1 - - [01/May/2026:08:39:32 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:32 [INFO]: ::1 - - [01/May/2026:08:39:32 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:32 [INFO]: ::1 - - [01/May/2026:08:39:32 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:32 [INFO]: ::1 - - [01/May/2026:08:39:32 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:35 [INFO]: ::1 - - [01/May/2026:08:39:35 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:35 [INFO]: ::1 - - [01/May/2026:08:39:35 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:35 [INFO]: ::1 - - [01/May/2026:08:39:35 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:35 [INFO]: ::1 - - [01/May/2026:08:39:35 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:43 [INFO]: 📧 Email transporter configured
+2026-05-01 14:09:43 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 14:09:43 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 14:09:43 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 14:09:54 [INFO]: ::1 - - [01/May/2026:08:39:54 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:54 [INFO]: ::1 - - [01/May/2026:08:39:54 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:54 [INFO]: ::1 - - [01/May/2026:08:39:54 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:54 [INFO]: ::1 - - [01/May/2026:08:39:54 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:56 [INFO]: ::1 - - [01/May/2026:08:39:56 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:56 [INFO]: ::1 - - [01/May/2026:08:39:56 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:56 [INFO]: ::1 - - [01/May/2026:08:39:56 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:56 [INFO]: ::1 - - [01/May/2026:08:39:56 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:57 [INFO]: ::1 - - [01/May/2026:08:39:57 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:09:57 [INFO]: ::1 - - [01/May/2026:08:39:57 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:10:06 [INFO]: ::1 - - [01/May/2026:08:40:06 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:06 [INFO]: ::1 - - [01/May/2026:08:40:06 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:07 [INFO]: ::1 - - [01/May/2026:08:40:07 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:07 [INFO]: ::1 - - [01/May/2026:08:40:07 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:07 [INFO]: ::1 - - [01/May/2026:08:40:07 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:07 [INFO]: ::1 - - [01/May/2026:08:40:07 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:07 [INFO]: ::1 - - [01/May/2026:08:40:07 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:07 [INFO]: ::1 - - [01/May/2026:08:40:07 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:08 [INFO]: ::1 - - [01/May/2026:08:40:08 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:08 [INFO]: ::1 - - [01/May/2026:08:40:08 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:08 [INFO]: ::1 - - [01/May/2026:08:40:08 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:10:08 [INFO]: ::1 - - [01/May/2026:08:40:08 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:11:41 [INFO]: ::1 - - [01/May/2026:08:41:41 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:42 [INFO]: ::1 - - [01/May/2026:08:41:42 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:42 [INFO]: ::1 - - [01/May/2026:08:41:42 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:42 [INFO]: ::1 - - [01/May/2026:08:41:42 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:43 [INFO]: ::1 - - [01/May/2026:08:41:43 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:43 [INFO]: ::1 - - [01/May/2026:08:41:43 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:43 [INFO]: ::1 - - [01/May/2026:08:41:43 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:43 [INFO]: ::1 - - [01/May/2026:08:41:43 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:11:56 [INFO]: 📧 Email transporter configured
+2026-05-01 14:11:57 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 14:11:57 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 14:11:57 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 14:12:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:12:38 [INFO]: ::1 - - [01/May/2026:08:42:38 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:38 [INFO]: ::1 - - [01/May/2026:08:42:38 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:38 [INFO]: ::1 - - [01/May/2026:08:42:38 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:38 [INFO]: ::1 - - [01/May/2026:08:42:38 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:40 [INFO]: ::1 - - [01/May/2026:08:42:40 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:41 [INFO]: ::1 - - [01/May/2026:08:42:41 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:44 [INFO]: ::1 - - [01/May/2026:08:42:44 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:44 [INFO]: ::1 - - [01/May/2026:08:42:44 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:44 [INFO]: ::1 - - [01/May/2026:08:42:44 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:12:44 [INFO]: ::1 - - [01/May/2026:08:42:44 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:13:04 [INFO]: ::1 - - [01/May/2026:08:43:04 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:04 [INFO]: ::1 - - [01/May/2026:08:43:04 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:05 [INFO]: ::1 - - [01/May/2026:08:43:05 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:22 [INFO]: ::1 - - [01/May/2026:08:43:22 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:22 [INFO]: ::1 - - [01/May/2026:08:43:22 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:23 [INFO]: ::1 - - [01/May/2026:08:43:23 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:23 [INFO]: ::1 - - [01/May/2026:08:43:23 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:23 [INFO]: ::1 - - [01/May/2026:08:43:23 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:23 [INFO]: ::1 - - [01/May/2026:08:43:23 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:44 [INFO]: ::1 - - [01/May/2026:08:43:44 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:44 [INFO]: ::1 - - [01/May/2026:08:43:44 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:44 [INFO]: ::1 - - [01/May/2026:08:43:44 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:44 [INFO]: ::1 - - [01/May/2026:08:43:44 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:44 [INFO]: ::1 - - [01/May/2026:08:43:44 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:44 [INFO]: ::1 - - [01/May/2026:08:43:44 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 200 2769 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:45 [INFO]: ::1 - - [01/May/2026:08:43:45 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:45 [INFO]: ::1 - - [01/May/2026:08:43:45 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:46 [INFO]: ::1 - - [01/May/2026:08:43:46 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:46 [INFO]: ::1 - - [01/May/2026:08:43:46 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:46 [INFO]: ::1 - - [01/May/2026:08:43:46 +0000] "GET /api/auth/unassigned HTTP/1.1" 500 88 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:13:46 [INFO]: ::1 - - [01/May/2026:08:43:46 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:14:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:14:38 [INFO]: 📧 Email transporter configured
+2026-05-01 14:14:39 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 14:14:39 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 14:14:39 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 14:14:43 [INFO]: 📧 Email transporter configured
+2026-05-01 14:14:43 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 14:14:43 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 14:14:43 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 14:14:47 [INFO]: ::1 - - [01/May/2026:08:44:47 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:14:47 [INFO]: ::1 - - [01/May/2026:08:44:47 +0000] "GET /api/auth/unassigned HTTP/1.1" 200 300 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:14:51 [INFO]: ::1 - - [01/May/2026:08:44:51 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:14:51 [INFO]: ::1 - - [01/May/2026:08:44:51 +0000] "GET /api/auth/unassigned HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:15:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:16:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:16:27 [INFO]: ::1 - - [01/May/2026:08:46:27 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:29 [INFO]: 📧 Email transporter configured
+2026-05-01 14:16:29 [INFO]: 🕐 Monitoring cron started (every 1 minute)
+2026-05-01 14:16:29 [INFO]: 🚀 SIMRS Backend running on http://localhost:5001
+2026-05-01 14:16:29 [INFO]: 📡 Socket.io ready | 🌍 ENV: development
+2026-05-01 14:16:29 [INFO]: ::1 - - [01/May/2026:08:46:29 +0000] "GET /api/auth/unassigned HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:32 [INFO]: ::1 - - [01/May/2026:08:46:32 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:32 [INFO]: ::1 - - [01/May/2026:08:46:32 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:34 [INFO]: ::1 - - [01/May/2026:08:46:34 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:34 [INFO]: ::ffff:127.0.0.1 - - [01/May/2026:08:46:34 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:34 [INFO]: ::ffff:127.0.0.1 - - [01/May/2026:08:46:34 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:34 [INFO]: ::1 - - [01/May/2026:08:46:34 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:48 [INFO]: ::1 - - [01/May/2026:08:46:48 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:48 [INFO]: ::1 - - [01/May/2026:08:46:48 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:48 [INFO]: ::1 - - [01/May/2026:08:46:48 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:48 [INFO]: ::1 - - [01/May/2026:08:46:48 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:49 [INFO]: ::1 - - [01/May/2026:08:46:49 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:49 [INFO]: ::1 - - [01/May/2026:08:46:49 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:49 [INFO]: ::1 - - [01/May/2026:08:46:49 +0000] "GET /api/postmortems HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:50 [INFO]: ::1 - - [01/May/2026:08:46:50 +0000] "GET /api/incidents?status=resolved&limit=20 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:51 [INFO]: ::1 - - [01/May/2026:08:46:51 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:51 [INFO]: ::1 - - [01/May/2026:08:46:51 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:51 [INFO]: ::1 - - [01/May/2026:08:46:51 +0000] "GET /api/auth/unassigned HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:52 [INFO]: ::1 - - [01/May/2026:08:46:52 +0000] "GET /api/auth/unassigned HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:53 [INFO]: ::1 - - [01/May/2026:08:46:53 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:54 [INFO]: ::1 - - [01/May/2026:08:46:54 +0000] "GET /api/logs?limit=200 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:55 [INFO]: ::1 - - [01/May/2026:08:46:55 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:55 [INFO]: ::1 - - [01/May/2026:08:46:55 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:55 [INFO]: ::1 - - [01/May/2026:08:46:55 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:55 [INFO]: ::1 - - [01/May/2026:08:46:55 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:56 [INFO]: ::1 - - [01/May/2026:08:46:56 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:16:56 [INFO]: ::1 - - [01/May/2026:08:46:56 +0000] "GET /api/auth/team HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:00 [INFO]: 🔍 Monitoring 0 sites...
+2026-05-01 14:17:01 [INFO]: ::1 - - [01/May/2026:08:47:01 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:01 [INFO]: ::1 - - [01/May/2026:08:47:01 +0000] "GET /api/incidents HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:01 [INFO]: ::1 - - [01/May/2026:08:47:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:01 [INFO]: ::1 - - [01/May/2026:08:47:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:01 [INFO]: ::1 - - [01/May/2026:08:47:01 +0000] "GET /api/sites HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:01 [INFO]: ::1 - - [01/May/2026:08:47:01 +0000] "GET /api/logs/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:02 [INFO]: ::1 - - [01/May/2026:08:47:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:02 [INFO]: ::1 - - [01/May/2026:08:47:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:02 [INFO]: ::1 - - [01/May/2026:08:47:02 +0000] "GET /api/incidents/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+2026-05-01 14:17:02 [INFO]: ::1 - - [01/May/2026:08:47:02 +0000] "GET /api/incidents?limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"

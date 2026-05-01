@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
 const User = require('../models/User');
 const Company = require('../models/Company');
 const Invite = require('../models/Invite');
@@ -97,6 +98,30 @@ const getTeam = async (req, res) => {
       Invite.find({ companyId: req.user.companyId }).sort({ createdAt: -1 }),
     ]);
     res.json({ success: true, team, invites });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// @GET /api/auth/unassigned - users in company with zero active incident assignments
+const getUnassignedUsers = async (req, res) => {
+  try {
+    const Incident = require('../models/Incident');
+    const companyId = req.user.companyId;
+
+    // aggregation to find counts of active assignments per user
+    const agg = await Incident.aggregate([
+      { $match: { companyId: new mongoose.Types.ObjectId(companyId), status: { $ne: 'resolved' } } },
+      { $unwind: { path: '$assignedTo', preserveNullAndEmptyArrays: false } },
+      { $group: { _id: '$assignedTo', count: { $sum: 1 } } }
+    ]);
+    const counts = {};
+    agg.forEach(a => { counts[String(a._id)] = a.count; });
+
+    const users = await User.find({ companyId }).select('-password');
+    const unassigned = users.filter(u => (counts[String(u._id)] || 0) === 0);
+
+    res.json({ success: true, unassigned });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -220,4 +245,4 @@ const acceptInvite = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getMe, getTeam, inviteTeamMember, getInviteByToken, acceptInvite };
+module.exports = { register, login, getMe, getTeam, inviteTeamMember, getInviteByToken, acceptInvite, getUnassignedUsers };

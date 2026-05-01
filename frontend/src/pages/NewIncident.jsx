@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import api from '../api/axios';
@@ -21,6 +21,7 @@ export default function NewIncident() {
     severity: 'high',
     siteId: '',
     assignedTo: [],
+    category: 'other',
   });
 
   const canCreate = user?.role === 'admin' || user?.role === 'engineer';
@@ -43,6 +44,30 @@ export default function NewIncident() {
 
     loadMeta();
   }, []);
+
+  const categories = [
+    { value: 'backend', label: 'Backend' },
+    { value: 'frontend', label: 'Frontend' },
+    { value: 'database', label: 'Database' },
+    { value: 'infrastructure', label: 'Infrastructure' },
+    { value: 'network', label: 'Network' },
+    { value: 'security', label: 'Security' },
+    { value: 'other', label: 'Other' },
+  ];
+
+  const memberMatchesCategory = (member) => {
+    const prefs = (member?.preferences || []).map((p) => String(p).toLowerCase());
+    return prefs.includes(String(form.category).toLowerCase());
+  };
+
+  const sortedTeam = useMemo(() => {
+    return [...team].sort((a, b) => {
+      const aMatch = memberMatchesCategory(a) ? 1 : 0;
+      const bMatch = memberMatchesCategory(b) ? 1 : 0;
+      if (aMatch !== bMatch) return bMatch - aMatch;
+      return a.name.localeCompare(b.name);
+    });
+  }, [team, form.category]);
 
   const toggleAssignee = (userId) => {
     setForm((prev) => ({
@@ -67,6 +92,7 @@ export default function NewIncident() {
         description: form.description.trim(),
         severity: form.severity,
         assignedTo: form.assignedTo,
+        category: form.category,
       };
 
       if (form.siteId) payload.siteId = form.siteId;
@@ -141,6 +167,21 @@ export default function NewIncident() {
               </div>
 
               <div>
+                <label className="label">Category / Department</label>
+                <select
+                  className="input"
+                  value={form.category}
+                  onChange={(e) => setForm((prev) => ({ ...prev, category: e.target.value }))}
+                >
+                  {categories.map((c) => (
+                    <option key={c.value} value={c.value}>
+                      {c.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
                 <label className="label">Related Site (optional)</label>
                 <select
                   className="input"
@@ -163,14 +204,23 @@ export default function NewIncident() {
                 <p className="text-xs text-slate-500">No teammates available.</p>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {team.map((member) => {
+                  {sortedTeam.map((member) => {
                     const checked = form.assignedTo.includes(member._id);
+                    const isMatch = memberMatchesCategory(member);
                     return (
                       <label
                         key={member._id}
                         className="flex items-center justify-between px-3 py-2 rounded border border-slate-700 bg-dark-800"
                       >
-                        <span className="text-sm text-slate-200">{member.name}</span>
+                        <span>
+                          <span className="text-sm text-slate-200">{member.name}</span>
+                          <span className="block text-xs text-slate-400">{member.role} {member?.preferences?.length ? `- ${member.preferences.join(', ')}` : ''}</span>
+                          {isMatch && (
+                            <span className="inline-block mt-1 text-[10px] uppercase px-2 py-0.5 rounded" style={{ background: '#C8FF00', color: '#0A0A0A' }}>
+                              Category match
+                            </span>
+                          )}
+                        </span>
                         <input
                           type="checkbox"
                           checked={checked}
