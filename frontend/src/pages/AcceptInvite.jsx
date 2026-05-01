@@ -53,16 +53,16 @@ export default function AcceptInvite() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: '#F2EDE4', backgroundImage: 'radial-gradient(circle, #0A0A0A18 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
+    <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'var(--cream)', backgroundImage: 'radial-gradient(circle, var(--black)18 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
       <div className="w-full max-w-md">
         <div className="mb-8">
-          <div className="inline-flex items-center gap-3 px-4 py-2 mb-6" style={{ background: '#0A0A0A', boxShadow: '4px 4px 0 #C8FF00' }}>
+          <div className="inline-flex items-center gap-3 px-4 py-2 mb-6" style={{ background: 'var(--black)', boxShadow: '4px 4px 0 var(--accent)' }}>
             <span className="text-lg font-black uppercase tracking-widest text-white">FixFlow</span>
-            <span className="text-xs font-bold px-1.5 py-0.5" style={{ background: '#C8FF00', color: '#0A0A0A' }}>INVITE</span>
+            <span className="text-xs font-bold px-1.5 py-0.5" style={{ background: 'var(--accent)', color: 'var(--black)' }}>INVITE</span>
           </div>
-          <h1 className="text-4xl font-black uppercase leading-tight" style={{ color: '#0A0A0A' }}>
+          <h1 className="text-4xl font-black uppercase leading-tight" style={{ color: 'var(--black)' }}>
             ACCEPT
-            <span style={{ background: '#0050FF', color: 'white', display: 'inline-block', padding: '0 8px' }}>
+            <span style={{ background: 'var(--blue)', color: 'white', display: 'inline-block', padding: '0 8px' }}>
               ORGANIZATION INVITE.
             </span>
           </h1>
@@ -71,14 +71,14 @@ export default function AcceptInvite() {
           </p>
         </div>
 
-        <div className="p-6" style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '6px 6px 0 #0A0A0A' }}>
+        <div className="p-6" style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '6px 6px 0 var(--black)' }}>
           {loading ? (
             <p className="text-sm text-slate-400">Loading invite...</p>
           ) : !invite ? (
             <p className="text-sm text-slate-400">Invite unavailable.</p>
           ) : (
             <>
-              <div className="mb-4 p-3" style={{ background: '#0A0A0A', color: 'white' }}>
+              <div className="mb-4 p-3" style={{ background: 'var(--black)', color: 'white' }}>
                 <p className="text-xs uppercase font-bold mb-1 flex items-center gap-2"><Shield size={12} />{invite.companyId?.name}</p>
                 <p className="text-sm">Role: {invite.role} · Category: {invite.category}</p>
                 <p className="text-xs text-slate-300 mt-1">Invite expires on {new Date(invite.expiresAt).toLocaleString()}</p>

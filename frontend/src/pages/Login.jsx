@@ -29,8 +29,8 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6"
       style={{
-        background: '#F2EDE4',
-        backgroundImage: 'radial-gradient(circle, #0A0A0A18 1px, transparent 1px)',
+        background: 'var(--cream)',
+        backgroundImage: 'radial-gradient(circle, var(--black)18 1px, transparent 1px)',
         backgroundSize: '24px 24px',
       }}
     >
@@ -40,17 +40,17 @@ export default function Login() {
         <div className="mb-8">
           <div
             className="inline-flex items-center gap-3 px-4 py-2 mb-6"
-            style={{ background: '#0A0A0A', boxShadow: '4px 4px 0 #C8FF00' }}
+            style={{ background: 'var(--black)', boxShadow: '4px 4px 0 var(--accent)' }}
           >
             <span className="text-lg font-black uppercase tracking-widest text-white">FixFlow</span>
             <span
               className="text-xs font-bold px-1.5 py-0.5"
-              style={{ background: '#C8FF00', color: '#0A0A0A' }}
+              style={{ background: 'var(--accent)', color: 'var(--black)' }}
             >AI</span>
           </div>
-          <h1 className="text-4xl font-black uppercase leading-tight" style={{ color: '#0A0A0A' }}>
+          <h1 className="text-4xl font-black uppercase leading-tight" style={{ color: 'var(--black)' }}>
             SIGN IN<br />
-            <span style={{ background: '#C8FF00', display: 'inline-block', padding: '0 8px' }}>
+            <span style={{ background: 'var(--accent)', display: 'inline-block', padding: '0 8px' }}>
               TO YOUR WORKSPACE.
             </span>
           </h1>
@@ -65,7 +65,7 @@ export default function Login() {
         {/* ── Form Card ────────────────────────────────────── */}
         <div
           className="p-6"
-          style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '6px 6px 0 #0A0A0A' }}
+          style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '6px 6px 0 var(--black)' }}
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -92,7 +92,7 @@ export default function Login() {
 
           <p className="text-center text-sm font-medium mt-4" style={{ color: '#555' }}>
             No account?{' '}
-            <a href="/register" className="font-bold" style={{ color: '#0050FF', textDecoration: 'underline' }}>
+            <a href="/register" className="font-bold" style={{ color: 'var(--blue)', textDecoration: 'underline' }}>
               Create workspace →
             </a>
           </p>
@@ -101,9 +101,9 @@ export default function Login() {
         {/* ── Hint ─────────────────────────────────────────── */}
         <div
           className="mt-4 px-4 py-3 flex items-center gap-2"
-          style={{ background: '#C8FF00', border: '2px solid #0A0A0A', boxShadow: '3px 3px 0 #0A0A0A' }}
+          style={{ background: 'var(--accent)', border: '2px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}
         >
-          <span className="text-xs font-bold uppercase tracking-wide" style={{ color: '#0A0A0A' }}>
+          <span className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--black)' }}>
             💡 Demo: Register a new account to get started instantly
           </span>
         </div>

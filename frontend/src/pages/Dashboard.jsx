@@ -14,26 +14,26 @@ const SeverityBadge = ({ s }) => {
 };
 
 const StatusDot = ({ s }) => {
-  const map = { up: '#C8FF00', down: '#FF2D78', degraded: '#FFE500', unknown: '#ccc' };
+  const map = { up: 'var(--accent)', down: 'var(--pink)', degraded: 'var(--yellow)', unknown: '#ccc' };
   return (
     <span className="inline-block w-3 h-3 flex-shrink-0"
-      style={{ background: map[s] || '#ccc', border: '2px solid #0A0A0A' }} />
+      style={{ background: map[s] || '#ccc', border: '2px solid var(--black)' }} />
   );
 };
 
 const StatCard = ({ label, value, icon: Icon, loading, accent }) => (
   <div
     className="p-5 relative overflow-hidden"
-    style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}
+    style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}
   >
     <div
       className="absolute top-0 right-0 w-12 h-12 flex items-center justify-center"
-      style={{ background: accent, borderLeft: '3px solid #0A0A0A', borderBottom: '3px solid #0A0A0A' }}
+      style={{ background: accent, borderLeft: '3px solid var(--black)', borderBottom: '3px solid var(--black)' }}
     >
-      <Icon size={16} color="#0A0A0A" />
+      <Icon size={16} color="var(--black)" />
     </div>
     <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: '#666' }}>{label}</p>
-    <p className="text-4xl font-black" style={{ color: '#0A0A0A' }}>
+    <p className="text-4xl font-black" style={{ color: 'var(--black)' }}>
       {loading ? '—' : value ?? 0}
     </p>
   </div>
@@ -77,10 +77,10 @@ export default function Dashboard() {
   const avgMttrMin = Math.round(stats.avgMttrSeconds / 60);
 
   const statCards = [
-    { label: 'Active Incidents', value: stats.open,       icon: AlertTriangle,  accent: '#FF2D78' },
-    { label: 'In Progress',      value: stats.inProgress,  icon: Activity,       accent: '#FFE500' },
-    { label: 'Sites Monitored',  value: sites.length,      icon: Globe,          accent: '#0050FF' },
-    { label: 'Resolved Today',   value: stats.resolved,    icon: CheckCircle2,   accent: '#C8FF00' },
+    { label: 'Active Incidents', value: stats.open,       icon: AlertTriangle,  accent: 'var(--pink)' },
+    { label: 'In Progress',      value: stats.inProgress,  icon: Activity,       accent: 'var(--yellow)' },
+    { label: 'Sites Monitored',  value: sites.length,      icon: Globe,          accent: 'var(--blue)' },
+    { label: 'Resolved Today',   value: stats.resolved,    icon: CheckCircle2,   accent: 'var(--accent)' },
   ];
 
   return (
@@ -94,7 +94,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-3 mb-1">
               <span
                 className="text-xs font-bold uppercase px-2 py-0.5"
-                style={{ background: '#C8FF00', border: '2px solid #0A0A0A' }}
+                style={{ background: 'var(--accent)', border: '2px solid var(--black)' }}
               >
                 // LIVE DASHBOARD
               </span>
@@ -110,14 +110,14 @@ export default function Dashboard() {
         {downSites.length > 0 && (
           <div
             className="mb-6 p-4 flex items-center gap-3 animate-fade-in"
-            style={{ background: '#FF2D78', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}
+            style={{ background: 'var(--pink)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}
           >
             <span className="pulse-dot-red" />
             <p className="font-bold text-white text-sm flex-1">
               🚨 {downSites.length} site{downSites.length > 1 ? 's are' : ' is'} currently DOWN:{' '}
               <span className="underline">{downSites.map(s => s.name).join(', ')}</span>
             </p>
-            <Link to="/incidents" className="btn-ghost btn-sm" style={{ background: 'white', color: '#FF2D78' }}>
+            <Link to="/incidents" className="btn-ghost btn-sm" style={{ background: 'var(--cream-2)', color: 'var(--pink)' }}>
               View Incidents →
             </Link>
           </div>
@@ -134,10 +134,10 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Uptime Chart */}
           <div className="lg:col-span-2 p-5"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Uptime Trend</h3>
+                <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: 'var(--black)' }}>Uptime Trend</h3>
                 <p className="text-xs font-medium" style={{ color: '#666' }}>Last 24 hours</p>
               </div>
               <span className="badge-low">
@@ -148,16 +148,16 @@ export default function Dashboard() {
               <AreaChart data={uptimeData}>
                 <defs>
                   <linearGradient id="uptimeGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%"  stopColor="#C8FF00" stopOpacity={0.5} />
-                    <stop offset="95%" stopColor="#C8FF00" stopOpacity={0} />
+                    <stop offset="5%"  stopColor="var(--accent)" stopOpacity={0.5} />
+                    <stop offset="95%" stopColor="var(--accent)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="time" tick={{ fill: '#888', fontSize: 10 }} axisLine={false} tickLine={false} />
                 <YAxis domain={[90, 100]} tick={{ fill: '#888', fontSize: 10 }} axisLine={false} tickLine={false} />
                 <Tooltip
-                  contentStyle={{ background: '#0A0A0A', border: '2px solid #C8FF00', borderRadius: 0, fontSize: 12, color: '#fff' }}
+                  contentStyle={{ background: 'var(--black)', border: '2px solid var(--accent)', borderRadius: 0, fontSize: 12, color: '#fff' }}
                 />
-                <Area type="monotone" dataKey="uptime" stroke="#0A0A0A" strokeWidth={2} fill="url(#uptimeGrad)" />
+                <Area type="monotone" dataKey="uptime" stroke="var(--black)" strokeWidth={2} fill="url(#uptimeGrad)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -165,9 +165,9 @@ export default function Dashboard() {
           {/* MTTR + Log Summary */}
           <div className="space-y-4">
             <div className="p-5 text-center"
-              style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
-              <Clock size={20} className="mx-auto mb-2" style={{ color: '#0050FF' }} />
-              <p className="text-4xl font-black" style={{ color: '#0A0A0A' }}>
+              style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+              <Clock size={20} className="mx-auto mb-2" style={{ color: 'var(--blue)' }} />
+              <p className="text-4xl font-black" style={{ color: 'var(--black)' }}>
                 {avgMttrMin || '—'}
                 <span className="text-base font-medium ml-1" style={{ color: '#666' }}>min</span>
               </p>
@@ -175,26 +175,26 @@ export default function Dashboard() {
             </div>
 
             <div className="p-5"
-              style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
-              <p className="text-xs font-black uppercase tracking-wider mb-3" style={{ color: '#0A0A0A' }}>24H Log Summary</p>
+              style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
+              <p className="text-xs font-black uppercase tracking-wider mb-3" style={{ color: 'var(--black)' }}>24H Log Summary</p>
               <div className="space-y-2.5">
                 {[
-                  ['fatal',   '#FF2D78'],
+                  ['fatal',   'var(--pink)'],
                   ['error',   '#FF6B00'],
-                  ['warning', '#FFE500'],
-                  ['info',    '#0050FF'],
+                  ['warning', 'var(--yellow)'],
+                  ['info',    'var(--blue)'],
                 ].map(([l, c]) => {
                   const total = Object.values(logSummary).reduce((a, b) => a + b, 1);
                   return (
                     <div key={l} className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-bold uppercase w-14" style={{ color: '#0A0A0A' }}>{l}</span>
-                      <div className="flex-1 h-2" style={{ background: '#ccc', border: '1px solid #0A0A0A' }}>
+                      <span className="text-xs font-bold uppercase w-14" style={{ color: 'var(--black)' }}>{l}</span>
+                      <div className="flex-1 h-2" style={{ background: '#ccc', border: '1px solid var(--black)' }}>
                         <div className="h-full" style={{
                           width: `${Math.min(100, (logSummary[l] / total) * 100)}%`,
                           background: c,
                         }} />
                       </div>
-                      <span className="text-xs font-black w-5 text-right" style={{ color: '#0A0A0A' }}>
+                      <span className="text-xs font-black w-5 text-right" style={{ color: 'var(--black)' }}>
                         {logSummary[l]}
                       </span>
                     </div>
@@ -210,34 +210,34 @@ export default function Dashboard() {
 
           {/* Recent Incidents */}
           <div className="p-5"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Recent Incidents</h3>
+              <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: 'var(--black)' }}>Recent Incidents</h3>
               <Link to="/incidents"
                 className="text-xs font-bold uppercase flex items-center gap-1"
-                style={{ color: '#0050FF' }}>
+                style={{ color: 'var(--blue)' }}>
                 View all <ArrowRight size={12} />
               </Link>
             </div>
 
             {incidents.length === 0 ? (
               <div className="text-center py-10">
-                <CheckCircle2 size={32} className="mx-auto mb-2" style={{ color: '#C8FF00' }} />
-                <p className="text-sm font-bold" style={{ color: '#0A0A0A' }}>All clear! No incidents.</p>
+                <CheckCircle2 size={32} className="mx-auto mb-2" style={{ color: 'var(--accent)' }} />
+                <p className="text-sm font-bold" style={{ color: 'var(--black)' }}>All clear! No incidents.</p>
               </div>
             ) : (
               <div className="space-y-2">
                 {incidents.slice(0, 5).map(inc => (
                   <Link key={inc._id} to={`/incidents/${inc._id}`}
                     className="flex items-center gap-3 p-3 transition-all group"
-                    style={{ background: 'white', border: '2px solid #0A0A0A', boxShadow: '2px 2px 0 #0A0A0A' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '4px 4px 0 #0A0A0A'; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '2px 2px 0 #0A0A0A'; }}
+                    style={{ background: 'var(--cream-2)', border: '2px solid var(--black)', boxShadow: '2px 2px 0 var(--black)' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '4px 4px 0 var(--black)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '2px 2px 0 var(--black)'; }}
                   >
                     <SeverityBadge s={inc.severity} />
-                    <p className="text-sm font-semibold flex-1 truncate" style={{ color: '#0A0A0A' }}>{inc.title}</p>
+                    <p className="text-sm font-semibold flex-1 truncate" style={{ color: 'var(--black)' }}>{inc.title}</p>
                     <span className="text-xs font-bold uppercase" style={{
-                      color: inc.status === 'resolved' ? '#0A8A00' : inc.status === 'in_progress' ? '#8A6A00' : '#FF2D78',
+                      color: inc.status === 'resolved' ? '#0A8A00' : inc.status === 'in_progress' ? '#8A6A00' : 'var(--pink)',
                     }}>
                       {inc.status.replace('_', ' ')}
                     </span>
@@ -249,10 +249,10 @@ export default function Dashboard() {
 
           {/* Site Status */}
           <div className="p-5"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: '#0A0A0A' }}>Site Status</h3>
-              <Link to="/sites" className="text-xs font-bold uppercase flex items-center gap-1" style={{ color: '#0050FF' }}>
+              <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: 'var(--black)' }}>Site Status</h3>
+              <Link to="/sites" className="text-xs font-bold uppercase flex items-center gap-1" style={{ color: 'var(--blue)' }}>
                 Manage <ArrowRight size={12} />
               </Link>
             </div>
@@ -260,7 +260,7 @@ export default function Dashboard() {
             {sites.length === 0 ? (
               <div className="text-center py-10">
                 <Globe size={32} className="mx-auto mb-2" style={{ color: '#888' }} />
-                <p className="text-sm font-bold" style={{ color: '#0A0A0A' }}>No sites added yet.</p>
+                <p className="text-sm font-bold" style={{ color: 'var(--black)' }}>No sites added yet.</p>
                 <Link to="/sites" className="btn-primary btn-sm mt-3 inline-flex">Add your first site</Link>
               </div>
             ) : (
@@ -268,15 +268,15 @@ export default function Dashboard() {
                 {sites.slice(0, 6).map(site => (
                   <div key={site._id}
                     className="flex items-center gap-3 p-3"
-                    style={{ background: 'white', border: '2px solid #0A0A0A' }}
+                    style={{ background: 'var(--cream-2)', border: '2px solid var(--black)' }}
                   >
                     <StatusDot s={site.status} />
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-bold truncate" style={{ color: '#0A0A0A' }}>{site.name}</p>
+                      <p className="text-sm font-bold truncate" style={{ color: 'var(--black)' }}>{site.name}</p>
                       <p className="text-xs truncate" style={{ color: '#888' }}>{site.url}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-xs font-mono font-bold" style={{ color: '#0A0A0A' }}>{site.responseTime}ms</p>
+                      <p className="text-xs font-mono font-bold" style={{ color: 'var(--black)' }}>{site.responseTime}ms</p>
                       <p className="text-xs" style={{ color: '#666' }}>{site.uptimePercent}% up</p>
                     </div>
                   </div>

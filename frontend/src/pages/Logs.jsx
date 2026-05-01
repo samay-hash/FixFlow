@@ -5,10 +5,10 @@ import { Activity, Search, RefreshCw, AlertCircle, Info, AlertTriangle, Skull } 
 import clsx from 'clsx';
 
 const LEVEL_CONFIG = {
-  fatal:   { icon: Skull,         color: '#FF2D78', bg: '#FF2D78', label: 'FATAL'   },
+  fatal:   { icon: Skull,         color: 'var(--pink)', bg: 'var(--pink)', label: 'FATAL'   },
   error:   { icon: AlertCircle,   color: '#FF6B00', bg: '#FF6B00', label: 'ERROR'   },
-  warning: { icon: AlertTriangle, color: '#8A5A00', bg: '#FFE500', label: 'WARN'    },
-  info:    { icon: Info,          color: '#0050FF', bg: '#D0E0FF', label: 'INFO'    },
+  warning: { icon: AlertTriangle, color: '#8A5A00', bg: 'var(--yellow)', label: 'WARN'    },
+  info:    { icon: Info,          color: 'var(--blue)', bg: '#D0E0FF', label: 'INFO'    },
 };
 
 export default function Logs() {
@@ -53,7 +53,7 @@ export default function Logs() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-bold uppercase px-2 py-0.5"
-                style={{ background: '#0A0A0A', border: '2px solid #0A0A0A', color: '#C8FF00' }}>
+                style={{ background: 'var(--black)', border: '2px solid var(--black)', color: 'var(--accent)' }}>
                 // EXPLORER
               </span>
             </div>
@@ -73,20 +73,20 @@ export default function Logs() {
                 onClick={() => setFilter(filter === level ? '' : level)}
                 className="p-4 text-left transition-all"
                 style={{
-                  background: isActive ? cfg.bg : '#EAE4D9',
-                  border: `3px solid #0A0A0A`,
-                  boxShadow: isActive ? '4px 4px 0 #0A0A0A' : '3px 3px 0 #0A0A0A',
+                  background: isActive ? cfg.bg : 'var(--cream-2)',
+                  border: `3px solid var(--black)`,
+                  boxShadow: isActive ? '4px 4px 0 var(--black)' : '3px 3px 0 var(--black)',
                   transform: isActive ? 'translate(-1px,-1px)' : 'none',
                 }}
               >
                 <div className="flex items-center gap-1.5 mb-2">
-                  <Icon size={12} style={{ color: isActive ? '#0A0A0A' : cfg.color }} />
+                  <Icon size={12} style={{ color: isActive ? 'var(--black)' : cfg.color }} />
                   <span className="text-xs font-black uppercase tracking-wider"
-                    style={{ color: isActive ? '#0A0A0A' : cfg.color }}>
+                    style={{ color: isActive ? 'var(--black)' : cfg.color }}>
                     {cfg.label}
                   </span>
                 </div>
-                <p className="text-3xl font-black" style={{ color: '#0A0A0A' }}>{summary[level] || 0}</p>
+                <p className="text-3xl font-black" style={{ color: 'var(--black)' }}>{summary[level] || 0}</p>
                 <p className="text-xs font-medium mt-0.5" style={{ color: '#666' }}>last 24h</p>
               </button>
             );
@@ -102,24 +102,24 @@ export default function Logs() {
         </div>
 
         {/* ── Log Table ───────────────────────────────────── */}
-        <div style={{ border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A', overflow: 'hidden' }}>
+        <div style={{ border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)', overflow: 'hidden' }}>
           <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
             {loading ? (
               <div className="flex items-center justify-center py-16">
-                <Activity size={24} style={{ color: '#0050FF' }} className="animate-spin" />
+                <Activity size={24} style={{ color: 'var(--blue)' }} className="animate-spin" />
               </div>
             ) : displayed.length === 0 ? (
               <div className="text-center py-16">
                 <Activity size={32} className="mx-auto mb-3" style={{ color: '#888' }} />
-                <p className="text-sm font-bold" style={{ color: '#0A0A0A' }}>No logs found</p>
+                <p className="text-sm font-bold" style={{ color: 'var(--black)' }}>No logs found</p>
               </div>
             ) : (
               <table className="w-full text-sm">
-                <thead style={{ position: 'sticky', top: 0, background: '#0A0A0A', borderBottom: '3px solid #0A0A0A' }}>
+                <thead style={{ position: 'sticky', top: 0, background: 'var(--black)', borderBottom: '3px solid var(--black)' }}>
                   <tr>
                     {['Level', 'Timestamp', 'Source', 'Message'].map(h => (
                       <th key={h} className="text-left px-4 py-3 text-xs font-black uppercase tracking-wider"
-                        style={{ color: '#C8FF00' }}>
+                        style={{ color: 'var(--accent)' }}>
                         {h}
                       </th>
                     ))}
@@ -132,13 +132,13 @@ export default function Logs() {
                     return (
                       <tr key={log._id}
                         style={{
-                          background: i % 2 === 0 ? '#EAE4D9' : 'white',
+                          background: i % 2 === 0 ? 'var(--cream-2)' : 'white',
                           borderBottom: '1px solid #ccc',
                         }}
                       >
                         <td className="px-4 py-2.5">
                           <span className="inline-flex items-center gap-1 text-xs font-black px-2 py-0.5"
-                            style={{ background: cfg.bg, color: log.level === 'warning' ? '#8A5A00' : 'white', border: '1.5px solid #0A0A0A' }}>
+                            style={{ background: cfg.bg, color: log.level === 'warning' ? '#8A5A00' : 'white', border: '1.5px solid var(--black)' }}>
                             <Icon size={9} />{cfg.label}
                           </span>
                         </td>
@@ -147,11 +147,11 @@ export default function Logs() {
                         </td>
                         <td className="px-4 py-2.5">
                           <span className="text-xs font-black px-1.5 py-0.5"
-                            style={{ background: '#0A0A0A', color: '#C8FF00', fontFamily: 'monospace' }}>
+                            style={{ background: 'var(--black)', color: 'var(--accent)', fontFamily: 'monospace' }}>
                             {log.source || 'system'}
                           </span>
                         </td>
-                        <td className="px-4 py-2.5 text-xs font-mono" style={{ color: '#0A0A0A' }}>
+                        <td className="px-4 py-2.5 text-xs font-mono" style={{ color: 'var(--black)' }}>
                           {log.message}
                         </td>
                       </tr>

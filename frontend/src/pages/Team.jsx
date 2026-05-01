@@ -86,19 +86,19 @@ export default function Team() {
         <div className="page-header flex items-start justify-between flex-wrap gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-bold uppercase px-2 py-0.5" style={{ background: '#0050FF', border: '2px solid #0A0A0A', color: 'white' }}>
+              <span className="text-xs font-bold uppercase px-2 py-0.5" style={{ background: 'var(--blue)', border: '2px solid var(--black)', color: 'white' }}>
                 // ORGANIZATION
               </span>
             </div>
             <h1 className="page-title">Team & Invites</h1>
             <p className="page-subtitle">Invite engineers into {company?.name || 'your workspace'} and track membership</p>
           </div>
-          <div className="p-4" style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+          <div className="p-4" style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <p className="text-xs font-bold uppercase" style={{ color: '#666' }}>Workspace Category</p>
-            <p className="text-lg font-black capitalize" style={{ color: '#0A0A0A' }}>{company?.category || 'engineering'}</p>
+            <p className="text-lg font-black capitalize" style={{ color: 'var(--black)' }}>{company?.category || 'engineering'}</p>
             <div className="mt-2 flex flex-wrap gap-1">
               {companyPreferences.length > 0 ? companyPreferences.map(item => (
-                <span key={item} className="text-xs px-2 py-0.5" style={{ background: '#C8FF00', border: '1px solid #0A0A0A' }}>{item}</span>
+                <span key={item} className="text-xs px-2 py-0.5" style={{ background: 'var(--accent)', border: '1px solid var(--black)' }}>{item}</span>
               )) : <span className="text-xs text-slate-500">No preferences set</span>}
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function Team() {
               </form>
 
               {inviteUrl && (
-                <div className="mt-4 p-3" style={{ background: '#0A0A0A', color: 'white', border: '2px solid #C8FF00' }}>
+                <div className="mt-4 p-3" style={{ background: 'var(--black)', color: 'white', border: '2px solid var(--accent)' }}>
                   <p className="text-xs uppercase font-bold mb-2">Latest invite link</p>
                   <div className="flex items-center gap-2">
                     <input className="input flex-1" readOnly value={inviteUrl} />

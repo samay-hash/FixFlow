@@ -29,7 +29,9 @@ export default function Landing() {
   const [dark, setDark] = useState(() => localStorage.getItem('fixflow-theme') === 'dark');
 
   useEffect(() => {
-    localStorage.setItem('fixflow-theme', dark ? 'dark' : 'light');
+    const theme = dark ? 'dark' : 'light';
+    localStorage.setItem('fixflow-theme', theme);
+    window.dispatchEvent(new CustomEvent('theme-changed', { detail: theme }));
   }, [dark]);
 
   const t = {

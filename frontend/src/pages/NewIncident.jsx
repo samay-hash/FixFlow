@@ -216,7 +216,7 @@ export default function NewIncident() {
                           <span className="text-sm text-slate-200">{member.name}</span>
                           <span className="block text-xs text-slate-400">{member.role} {member?.preferences?.length ? `- ${member.preferences.join(', ')}` : ''}</span>
                           {isMatch && (
-                            <span className="inline-block mt-1 text-[10px] uppercase px-2 py-0.5 rounded" style={{ background: '#C8FF00', color: '#0A0A0A' }}>
+                            <span className="inline-block mt-1 text-[10px] uppercase px-2 py-0.5 rounded" style={{ background: 'var(--accent)', color: 'var(--black)' }}>
                               Category match
                             </span>
                           )}

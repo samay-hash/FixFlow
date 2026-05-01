@@ -16,7 +16,7 @@ const SeverityBadge = ({ s }) => {
 };
 
 const HealthScore = ({ score }) => {
-  const color = score >= 70 ? '#C8FF00' : score >= 40 ? '#FFE500' : '#FF2D78';
+  const color = score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--yellow)' : 'var(--pink)';
   return (
     <div className="relative w-9 h-9 flex-shrink-0">
       <svg className="w-9 h-9 -rotate-90">
@@ -24,7 +24,7 @@ const HealthScore = ({ score }) => {
         <circle cx="18" cy="18" r="13" stroke={color} strokeWidth="3" fill="none"
           strokeDasharray={`${(score / 100) * 81.7} 81.7`} strokeLinecap="butt" />
       </svg>
-      <span className="absolute inset-0 flex items-center justify-center text-xs font-black" style={{ color: '#0A0A0A' }}>
+      <span className="absolute inset-0 flex items-center justify-center text-xs font-black" style={{ color: 'var(--black)' }}>
         {score}
       </span>
     </div>
@@ -81,7 +81,7 @@ export default function Incidents() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-bold uppercase px-2 py-0.5"
-                style={{ background: '#FF2D78', border: '2px solid #0A0A0A', color: 'white' }}>
+                style={{ background: 'var(--pink)', border: '2px solid var(--black)', color: 'white' }}>
                 // INCIDENTS
               </span>
             </div>
@@ -131,14 +131,14 @@ export default function Incidents() {
           <div className="space-y-3">
             {[1,2,3,4].map(i => (
               <div key={i} className="h-20 animate-pulse"
-                style={{ background: '#EAE4D9', border: '3px solid #0A0A0A' }} />
+                style={{ background: 'var(--cream-2)', border: '3px solid var(--black)' }} />
             ))}
           </div>
         ) : sorted.length === 0 ? (
           <div className="p-16 text-center"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <AlertTriangle size={40} className="mx-auto mb-3" style={{ color: '#888' }} />
-            <p className="font-black text-lg uppercase" style={{ color: '#0A0A0A' }}>No incidents found</p>
+            <p className="font-black text-lg uppercase" style={{ color: 'var(--black)' }}>No incidents found</p>
             <p className="text-sm font-medium mt-1" style={{ color: '#666' }}>All systems operational ✅</p>
           </div>
         ) : (
@@ -153,12 +153,12 @@ export default function Incidents() {
                     className="flex items-center gap-4 p-4 transition-all group"
                     style={{
                       background: inc.severity === 'critical' && inc.status !== 'resolved' ? '#FFF0F4' : 'white',
-                      border: `3px solid ${inc.severity === 'critical' && inc.status !== 'resolved' ? '#FF2D78' : '#0A0A0A'}`,
-                      boxShadow: '3px 3px 0 #0A0A0A',
+                      border: `3px solid ${inc.severity === 'critical' && inc.status !== 'resolved' ? 'var(--pink)' : 'var(--black)'}`,
+                      boxShadow: '3px 3px 0 var(--black)',
                       display: 'flex',
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 #0A0A0A'; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '3px 3px 0 #0A0A0A'; }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '5px 5px 0 var(--black)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '3px 3px 0 var(--black)'; }}
                   >
                     <HealthScore score={inc.healthScore ?? 100} />
 
@@ -166,7 +166,7 @@ export default function Incidents() {
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <SeverityBadge s={inc.severity} />
                         <span className="text-xs font-bold uppercase" style={{
-                          color: inc.status === 'resolved' ? '#0A8A00' : inc.status === 'in_progress' ? '#8A5A00' : '#FF2D78',
+                          color: inc.status === 'resolved' ? '#0A8A00' : inc.status === 'in_progress' ? '#8A5A00' : 'var(--pink)',
                         }}>
                           {inc.status.replace('_', ' ')}
                         </span>
@@ -176,7 +176,7 @@ export default function Incidents() {
                           </span>
                         )}
                       </div>
-                      <h3 className="font-bold text-sm truncate" style={{ color: '#0A0A0A' }}>{inc.title}</h3>
+                      <h3 className="font-bold text-sm truncate" style={{ color: 'var(--black)' }}>{inc.title}</h3>
                       <div className="flex items-center gap-3 mt-1 flex-wrap">
                         {inc.siteId && <span className="text-xs" style={{ color: '#888' }}>{inc.siteId.name}</span>}
                         <span className="text-xs" style={{ color: '#888' }}>{new Date(inc.createdAt).toLocaleString()}</span>

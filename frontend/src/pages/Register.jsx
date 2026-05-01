@@ -12,6 +12,20 @@ export default function Register() {
   const dispatch  = useDispatch();
   const navigate  = useNavigate();
 
+  // Dark mode check
+  const dark = localStorage.getItem('fixflow-theme') === 'dark';
+
+  const t = {
+    bg: dark ? '#0A0A0A' : '#F2EDE4',
+    text: dark ? '#F2EDE4' : '#0A0A0A',
+    muted: dark ? '#888' : '#666',
+    border: dark ? '#333' : '#0A0A0A',
+    card: dark ? '#111' : '#EAE4D9',
+    inputBg: dark ? '#000' : '#FFF',
+    primary: '#0050FF',
+    accent: '#FF8C42', // Changed from lime green to light orange
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -29,13 +43,6 @@ export default function Register() {
     } finally { setLoading(false); }
   };
 
-  const fields = [
-    { key: 'name',        label: 'Full Name',              type: 'text',     placeholder: 'John Doe' },
-    { key: 'email',       label: 'Work Email',             type: 'email',    placeholder: 'john@company.com' },
-    { key: 'companyName', label: 'Company / Team Name',    type: 'text',     placeholder: 'Acme Corp' },
-    { key: 'password',    label: 'Password',               type: 'password', placeholder: 'Min. 6 characters' },
-  ];
-
   const categories = [
     { value: 'engineering', label: 'Engineering' },
     { value: 'science', label: 'Science' },
@@ -47,89 +54,141 @@ export default function Register() {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6"
+    <div className="min-h-screen flex items-center justify-center p-4 transition-colors duration-300"
       style={{
-        background: '#F2EDE4',
-        backgroundImage: 'radial-gradient(circle, #0A0A0A18 1px, transparent 1px)',
+        background: t.bg,
+        backgroundImage: `radial-gradient(circle, ${t.border}18 1px, transparent 1px)`,
         backgroundSize: '24px 24px',
+        color: t.text
       }}
     >
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-lg">
 
         {/* ── Brand ────────────────────────────────────────── */}
-        <div className="mb-6">
+        <div className="mb-4 text-center">
           <div
-            className="inline-flex items-center gap-3 px-4 py-2 mb-4"
-            style={{ background: '#0A0A0A', boxShadow: '4px 4px 0 #C8FF00' }}
+            className="inline-flex items-center gap-2 px-3 py-1 mb-2"
+            style={{ background: dark ? '#222' : '#0A0A0A', boxShadow: `3px 3px 0 ${t.accent}` }}
           >
-            <span className="text-lg font-black uppercase tracking-widest text-white">FixFlow</span>
-            <span className="text-xs font-bold px-1.5 py-0.5" style={{ background: '#C8FF00', color: '#0A0A0A' }}>AI</span>
+            <span className="text-base font-black uppercase tracking-widest text-white">FixFlow</span>
+            <span className="text-[10px] font-bold px-1.5 py-0.5" style={{ background: t.accent, color: '#0A0A0A' }}>AI</span>
           </div>
-          <h1 className="text-4xl font-black uppercase leading-tight" style={{ color: '#0A0A0A' }}>
-            CREATE YOUR<br />
-            <span style={{ background: '#FF2D78', color: 'white', display: 'inline-block', padding: '0 8px' }}>
-              WORKSPACE.
+          <h1 className="text-3xl font-black uppercase leading-tight">
+            CREATE YOUR{' '}
+            <span style={{ background: '#FF2D78', color: 'white', display: 'inline-block', padding: '0 6px' }}>
+              WORKSPACE
             </span>
           </h1>
-          <p className="mt-3 text-sm font-medium" style={{ color: '#666' }}>
-            Set up monitoring in seconds. No credit card required.
-          </p>
         </div>
 
         {/* ── Form Card ────────────────────────────────────── */}
         <div
-          className="p-5"
-          style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '6px 6px 0 #0A0A0A' }}
+          className="p-5 transition-colors duration-300"
+          style={{ background: t.card, border: `3px solid ${t.border}`, boxShadow: `6px 6px 0 ${t.border}` }}
         >
           <form onSubmit={handleSubmit} className="space-y-3">
-            {fields.map(({ key, label, type, placeholder }) => (
-              <div key={key}>
-                <label className="label">{label}</label>
-                <input className="input" type={type} placeholder={placeholder}
-                  value={form[key]} onChange={e => setForm({ ...form, [key]: e.target.value })} required />
+            
+            {/* Row 1: Name & Email */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1" style={{ color: t.text }}>Full Name</label>
+                <input 
+                  type="text" placeholder="John Doe" required
+                  className="w-full px-3 py-2 text-sm border-2 focus:outline-none transition-all"
+                  style={{ background: t.inputBg, borderColor: t.border, color: t.text, boxShadow: `2px 2px 0 ${t.border}` }}
+                  value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} 
+                />
               </div>
-            ))}
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1" style={{ color: t.text }}>Work Email</label>
+                <input 
+                  type="email" placeholder="john@company.com" required
+                  className="w-full px-3 py-2 text-sm border-2 focus:outline-none transition-all"
+                  style={{ background: t.inputBg, borderColor: t.border, color: t.text, boxShadow: `2px 2px 0 ${t.border}` }}
+                  value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} 
+                />
+              </div>
+            </div>
 
+            {/* Row 2: Company & Password */}
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1" style={{ color: t.text }}>Company Name</label>
+                <input 
+                  type="text" placeholder="Acme Corp" required
+                  className="w-full px-3 py-2 text-sm border-2 focus:outline-none transition-all"
+                  style={{ background: t.inputBg, borderColor: t.border, color: t.text, boxShadow: `2px 2px 0 ${t.border}` }}
+                  value={form.companyName} onChange={e => setForm({ ...form, companyName: e.target.value })} 
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wide mb-1" style={{ color: t.text }}>Password</label>
+                <input 
+                  type="password" placeholder="Min 6 chars" required
+                  className="w-full px-3 py-2 text-sm border-2 focus:outline-none transition-all"
+                  style={{ background: t.inputBg, borderColor: t.border, color: t.text, boxShadow: `2px 2px 0 ${t.border}` }}
+                  value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} 
+                />
+              </div>
+            </div>
+
+            {/* Row 3: Category */}
             <div>
-              <label className="label">Organization Category</label>
-              <select className="input" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
+              <label className="block text-xs font-bold uppercase tracking-wide mb-1" style={{ color: t.text }}>Organization Category</label>
+              <select 
+                className="w-full px-3 py-2 text-sm border-2 focus:outline-none transition-all cursor-pointer"
+                style={{ background: t.inputBg, borderColor: t.border, color: t.text, boxShadow: `2px 2px 0 ${t.border}` }}
+                value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}
+              >
                 {categories.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
               </select>
             </div>
 
+            {/* Row 4: Preferences */}
             <div>
-              <label className="label">Preferences / Focus Areas</label>
+              <label className="block text-xs font-bold uppercase tracking-wide mb-1" style={{ color: t.text }}>Preferences / Focus Areas</label>
               <textarea
-                className="input min-h-16"
-                placeholder="incident response, scientific analysis, backend reliability"
+                className="w-full px-3 py-2 text-sm border-2 focus:outline-none transition-all min-h-12 resize-none"
+                style={{ background: t.inputBg, borderColor: t.border, color: t.text, boxShadow: `2px 2px 0 ${t.border}` }}
+                placeholder="incident response, backend, scaling..."
                 value={form.preferences}
                 onChange={e => setForm({ ...form, preferences: e.target.value })}
               />
             </div>
 
-            <button type="submit" disabled={loading} className="btn-primary w-full justify-center py-3 mt-2">
+            <button 
+              type="submit" disabled={loading} 
+              className="w-full flex items-center justify-center gap-2 py-3 mt-4 text-sm font-black uppercase tracking-wide border-2 transition-transform active:translate-y-1 active:translate-x-1"
+              style={{ 
+                background: t.accent, 
+                borderColor: t.border, 
+                color: '#0A0A0A',
+                boxShadow: `4px 4px 0 ${t.border}` 
+              }}
+            >
               {loading ? '⏳' : <Zap size={16} />}
-              {loading ? 'SETTING UP...' : 'CREATE WORKSPACE & START MONITORING'}
+              {loading ? 'SETTING UP...' : 'CREATE WORKSPACE'}
             </button>
           </form>
-          <p className="text-center text-sm font-medium mt-4" style={{ color: '#555' }}>
+
+          <p className="text-center text-xs font-medium mt-4" style={{ color: t.muted }}>
             Already have a workspace?{' '}
-            <a href="/login" className="font-bold" style={{ color: '#0050FF', textDecoration: 'underline' }}>
+            <a href="/login" className="font-bold hover:underline" style={{ color: t.primary }}>
               Sign in →
             </a>
           </p>
         </div>
 
         {/* ── Feature Pills ─────────────────────────────────── */}
-        <div className="mt-4 grid grid-cols-3 gap-2">
+        <div className="mt-4 flex justify-center gap-2">
           {[
-            { label: 'Real-time Alerts', bg: '#C8FF00', color: '#0A0A0A' },
-            { label: 'AI Postmortems',   bg: '#0050FF', color: 'white' },
+            { label: 'Real-time Alerts', bg: t.accent, color: '#0A0A0A' },
+            { label: 'AI Postmortems',   bg: t.primary, color: 'white' },
             { label: 'Team Collab',      bg: '#FF2D78', color: 'white' },
           ].map(f => (
             <div key={f.label}
-              className="text-center px-2 py-2 text-xs font-bold uppercase tracking-wide"
-              style={{ background: f.bg, border: '2px solid #0A0A0A', boxShadow: '2px 2px 0 #0A0A0A', color: f.color }}
+              className="text-center px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide border-2"
+              style={{ background: f.bg, borderColor: t.border, boxShadow: `2px 2px 0 ${t.border}`, color: f.color }}
             >
               {f.label}
             </div>

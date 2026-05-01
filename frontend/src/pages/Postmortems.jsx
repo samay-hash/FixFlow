@@ -40,7 +40,7 @@ export default function Postmortems() {
     finally { setGenerating(false); }
   };
 
-  const scoreAccent = (s) => s >= 8 ? '#C8FF00' : s >= 6 ? '#FFE500' : '#FF2D78';
+  const scoreAccent = (s) => s >= 8 ? 'var(--accent)' : s >= 6 ? 'var(--yellow)' : 'var(--pink)';
 
   const sections = [
     ['Summary',          'summary'],
@@ -61,7 +61,7 @@ export default function Postmortems() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-bold uppercase px-2 py-0.5"
-                style={{ background: '#5500CC', border: '2px solid #0A0A0A', color: 'white' }}>
+                style={{ background: '#5500CC', border: '2px solid var(--black)', color: 'white' }}>
                 // AI-POWERED
               </span>
             </div>
@@ -73,13 +73,13 @@ export default function Postmortems() {
         {/* ── Generate Panel ───────────────────────────────── */}
         {resolvedIncidents.length > 0 && (
           <div className="mb-6 p-5 animate-fade-in"
-            style={{ background: '#EDE0FF', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #5500CC' }}>
+            style={{ background: '#EDE0FF', border: '3px solid var(--black)', boxShadow: '4px 4px 0 #5500CC' }}>
             <div className="flex items-center gap-3 mb-2">
               <Bot size={18} style={{ color: '#5500CC' }} />
-              <h3 className="font-black text-sm uppercase tracking-wide" style={{ color: '#0A0A0A' }}>
+              <h3 className="font-black text-sm uppercase tracking-wide" style={{ color: 'var(--black)' }}>
                 Generate AI Postmortem
               </h3>
-              <span className="badge" style={{ background: '#5500CC', color: 'white', borderColor: '#0A0A0A' }}>
+              <span className="badge" style={{ background: '#5500CC', color: 'white', borderColor: 'var(--black)' }}>
                 ✨ Gemini AI
               </span>
             </div>
@@ -96,7 +96,7 @@ export default function Postmortems() {
                 ))}
               </select>
               <button onClick={handleGenerate} disabled={generating || !selectedIncident}
-                className="btn" style={{ background: '#5500CC', color: 'white', border: '3px solid #0A0A0A', boxShadow: '3px 3px 0 #0A0A0A' }}>
+                className="btn" style={{ background: '#5500CC', color: 'white', border: '3px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
                 <Bot size={16} />{generating ? 'AI Analyzing...' : 'Generate Draft'}
               </button>
             </div>
@@ -108,14 +108,14 @@ export default function Postmortems() {
           <div className="space-y-3">
             {[1,2].map(i => (
               <div key={i} className="h-24 animate-pulse"
-                style={{ background: '#EAE4D9', border: '3px solid #0A0A0A' }} />
+                style={{ background: 'var(--cream-2)', border: '3px solid var(--black)' }} />
             ))}
           </div>
         ) : postmortems.length === 0 ? (
           <div className="p-16 text-center"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <FileText size={40} className="mx-auto mb-3" style={{ color: '#888' }} />
-            <p className="font-black text-lg uppercase" style={{ color: '#0A0A0A' }}>No postmortems yet</p>
+            <p className="font-black text-lg uppercase" style={{ color: 'var(--black)' }}>No postmortems yet</p>
             <p className="text-sm font-medium mt-1" style={{ color: '#666' }}>
               Resolve an incident and generate an AI postmortem to start learning from failures.
             </p>
@@ -124,7 +124,7 @@ export default function Postmortems() {
           <div className="space-y-4">
             {postmortems.map(pm => (
               <div key={pm._id} className="p-5"
-                style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+                style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
 
                 {/* Card Header */}
                 <div className="flex items-start justify-between gap-4 cursor-pointer"
@@ -141,15 +141,15 @@ export default function Postmortems() {
                       )}
                       {pm.aiQualityScore && (
                         <div className="flex items-center gap-1 px-2 py-0.5"
-                          style={{ background: scoreAccent(pm.aiQualityScore), border: '2px solid #0A0A0A' }}>
-                          <Star size={11} style={{ color: '#0A0A0A' }} />
-                          <span className="text-xs font-black" style={{ color: '#0A0A0A' }}>
+                          style={{ background: scoreAccent(pm.aiQualityScore), border: '2px solid var(--black)' }}>
+                          <Star size={11} style={{ color: 'var(--black)' }} />
+                          <span className="text-xs font-black" style={{ color: 'var(--black)' }}>
                             {pm.aiQualityScore}/10
                           </span>
                         </div>
                       )}
                     </div>
-                    <h3 className="font-black text-sm" style={{ color: '#0A0A0A' }}>{pm.title}</h3>
+                    <h3 className="font-black text-sm" style={{ color: 'var(--black)' }}>{pm.title}</h3>
                     {pm.incidentId && (
                       <p className="text-xs font-medium mt-1" style={{ color: '#666' }}>
                         Incident: {pm.incidentId.title}
@@ -172,7 +172,7 @@ export default function Postmortems() {
                 {/* Expanded Content */}
                 {expanded === pm._id && (
                   <div className="mt-5 pt-5 space-y-4 animate-fade-in"
-                    style={{ borderTop: '2px solid #0A0A0A' }}>
+                    style={{ borderTop: '2px solid var(--black)' }}>
 
                     {pm.aiQualityFeedback && (
                       <div className="p-3"
@@ -187,7 +187,7 @@ export default function Postmortems() {
                     {sections.filter(([, key]) => pm[key]).map(([label, key]) => (
                       <div key={key}>
                         <h4 className="text-xs font-black uppercase tracking-wider mb-1.5"
-                          style={{ color: '#0A0A0A', borderLeft: '3px solid #C8FF00', paddingLeft: 8 }}>
+                          style={{ color: 'var(--black)', borderLeft: '3px solid var(--accent)', paddingLeft: 8 }}>
                           {label}
                         </h4>
                         <p className="text-sm font-medium leading-relaxed whitespace-pre-line"
@@ -200,20 +200,20 @@ export default function Postmortems() {
                     {pm.actionItems?.length > 0 && (
                       <div>
                         <h4 className="text-xs font-black uppercase tracking-wider mb-2"
-                          style={{ color: '#0A0A0A', borderLeft: '3px solid #FF2D78', paddingLeft: 8 }}>
+                          style={{ color: 'var(--black)', borderLeft: '3px solid var(--pink)', paddingLeft: 8 }}>
                           Action Items
                         </h4>
                         <div className="space-y-2">
                           {pm.actionItems.map((item, i) => (
                             <div key={i} className="flex items-center gap-2 text-sm p-2"
-                              style={{ background: 'white', border: '2px solid #0A0A0A' }}>
+                              style={{ background: 'var(--cream-2)', border: '2px solid var(--black)' }}>
                               <span className="w-2.5 h-2.5 flex-shrink-0" style={{
-                                background: item.status === 'done' ? '#C8FF00' : item.status === 'in_progress' ? '#FFE500' : '#ccc',
-                                border: '2px solid #0A0A0A',
+                                background: item.status === 'done' ? 'var(--accent)' : item.status === 'in_progress' ? 'var(--yellow)' : '#ccc',
+                                border: '2px solid var(--black)',
                                 display: 'inline-block',
                               }} />
                               <span className={clsx('flex-1 font-medium', item.status === 'done' && 'line-through')}
-                                style={{ color: '#0A0A0A' }}>
+                                style={{ color: 'var(--black)' }}>
                                 {item.title}
                               </span>
                               <span className="badge badge-medium text-xs">{item.priority}</span>

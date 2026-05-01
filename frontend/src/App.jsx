@@ -67,7 +67,25 @@ function AppRoutes() {
   );
 }
 
+import { useEffect } from 'react';
+
 export default function App() {
+  useEffect(() => {
+    if (localStorage.getItem('fixflow-theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Listen for custom theme change event
+    const handleThemeChange = (e) => {
+      if (e.detail === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    };
+    window.addEventListener('theme-changed', handleThemeChange);
+    return () => window.removeEventListener('theme-changed', handleThemeChange);
+  }, []);
+
   return (
     <Provider store={store}>
       <BrowserRouter>

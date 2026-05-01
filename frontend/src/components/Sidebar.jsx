@@ -27,26 +27,26 @@ export default function Sidebar() {
   return (
     <aside
       className="w-64 min-h-screen flex flex-col fixed left-0 top-0 z-40"
-      style={{ background: '#EAE4D9', borderRight: '3px solid #0A0A0A' }}
+      style={{ background: 'var(--cream-2)', borderRight: '3px solid var(--black)' }}
     >
       {/* ── Logo ────────────────────────────────────────────── */}
-      <div className="p-5" style={{ borderBottom: '3px solid #0A0A0A' }}>
+      <div className="p-5" style={{ borderBottom: '3px solid var(--black)' }}>
         <div className="flex items-center gap-3">
           <div
             className="w-10 h-10 flex items-center justify-center font-black text-white text-sm"
-            style={{ background: '#0A0A0A', boxShadow: '2px 2px 0 #C8FF00' }}
+            style={{ background: 'var(--black)', boxShadow: '2px 2px 0 var(--accent)' }}
           >
             <Shield size={18} />
           </div>
           <div>
-            <h1 className="text-sm font-extrabold uppercase tracking-widest" style={{ color: '#0A0A0A' }}>
+            <h1 className="text-sm font-extrabold uppercase tracking-widest" style={{ color: 'var(--black)' }}>
               FixFlow
             </h1>
             <p className="text-xs font-medium truncate max-w-[130px]" style={{ color: '#666' }}>
               {company?.name || '...'}
             </p>
             {company?.category && (
-              <p className="text-[10px] font-black uppercase tracking-wide mt-1" style={{ color: '#0050FF' }}>
+              <p className="text-[10px] font-black uppercase tracking-wide mt-1" style={{ color: 'var(--blue)' }}>
                 {company.category}
               </p>
             )}
@@ -57,7 +57,7 @@ export default function Sidebar() {
         {stats.open > 0 && (
           <div
             className="mt-3 flex items-center gap-2 px-2.5 py-1.5"
-            style={{ background: '#FF2D78', border: '2px solid #0A0A0A', boxShadow: '2px 2px 0 #0A0A0A' }}
+            style={{ background: 'var(--pink)', border: '2px solid var(--black)', boxShadow: '2px 2px 0 var(--black)' }}
           >
             <span className="pulse-dot-red" />
             <span className="text-xs font-bold text-white uppercase tracking-wide">
@@ -78,7 +78,7 @@ export default function Sidebar() {
               {path === '/incidents' && stats.open > 0 && (
                 <span
                   className="text-xs font-black w-5 h-5 flex items-center justify-center"
-                  style={{ background: '#FF2D78', color: 'white', border: '2px solid #0A0A0A' }}
+                  style={{ background: 'var(--pink)', color: 'white', border: '2px solid var(--black)' }}
                 >
                   {stats.open}
                 </span>
@@ -91,7 +91,7 @@ export default function Sidebar() {
       {/* ── Admin ───────────────────────────────────────────── */}
       {user?.role === 'admin' && (
         <div className="px-3 mb-2">
-          <Link to="/team" className="nav-item" style={{ color: '#0050FF' }}>
+          <Link to="/team" className="nav-item" style={{ color: 'var(--blue)' }}>
             <Users size={15} />
             <span>Admin · Team</span>
           </Link>
@@ -99,23 +99,23 @@ export default function Sidebar() {
       )}
 
       {/* ── User ────────────────────────────────────────────── */}
-      <div className="p-3" style={{ borderTop: '3px solid #0A0A0A' }}>
+      <div className="p-3" style={{ borderTop: '3px solid var(--black)' }}>
         <div className="flex items-center gap-3 p-2">
           <div
             className="w-9 h-9 flex items-center justify-center text-sm font-black flex-shrink-0"
-            style={{ background: '#C8FF00', border: '2px solid #0A0A0A', color: '#0A0A0A', boxShadow: '2px 2px 0 #0A0A0A' }}
+            style={{ background: 'var(--accent)', border: '2px solid var(--black)', color: 'var(--black)', boxShadow: '2px 2px 0 var(--black)' }}
           >
             {user?.name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-bold truncate" style={{ color: '#0A0A0A' }}>{user?.name}</p>
+            <p className="text-xs font-bold truncate" style={{ color: 'var(--black)' }}>{user?.name}</p>
             <p className="text-xs font-medium uppercase tracking-wide" style={{ color: '#888' }}>{user?.role}</p>
           </div>
           <button
             onClick={handleLogout}
             title="Logout"
             className="transition-colors hover:opacity-70"
-            style={{ color: '#FF2D78' }}
+            style={{ color: 'var(--pink)' }}
           >
             <LogOut size={15} />
           </button>

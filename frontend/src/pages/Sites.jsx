@@ -66,7 +66,7 @@ export default function Sites() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-bold uppercase px-2 py-0.5"
-                style={{ background: '#0050FF', border: '2px solid #0A0A0A', color: 'white' }}>
+                style={{ background: 'var(--blue)', border: '2px solid var(--black)', color: 'white' }}>
                 // MONITORING
               </span>
             </div>
@@ -88,8 +88,8 @@ export default function Sites() {
         {/* ── Add Form ────────────────────────────────────── */}
         {showForm && (
           <div className="mb-6 p-5 animate-fade-in"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0050FF' }}>
-            <h3 className="font-black text-sm uppercase tracking-wide mb-4" style={{ color: '#0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--blue)' }}>
+            <h3 className="font-black text-sm uppercase tracking-wide mb-4" style={{ color: 'var(--black)' }}>
               Add New Site to Monitor
             </h3>
             <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -125,14 +125,14 @@ export default function Sites() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {[1,2,3].map(i => (
               <div key={i} className="h-44 animate-pulse"
-                style={{ background: '#EAE4D9', border: '3px solid #0A0A0A' }} />
+                style={{ background: 'var(--cream-2)', border: '3px solid var(--black)' }} />
             ))}
           </div>
         ) : sites.length === 0 ? (
           <div className="p-16 text-center"
-            style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '4px 4px 0 #0A0A0A' }}>
+            style={{ background: 'var(--cream-2)', border: '3px solid var(--black)', boxShadow: '4px 4px 0 var(--black)' }}>
             <Globe size={48} className="mx-auto mb-4" style={{ color: '#888' }} />
-            <h3 className="font-black text-lg uppercase mb-2" style={{ color: '#0A0A0A' }}>No sites yet</h3>
+            <h3 className="font-black text-lg uppercase mb-2" style={{ color: 'var(--black)' }}>No sites yet</h3>
             <p className="text-sm font-medium mb-4" style={{ color: '#666' }}>Add your first website to start monitoring</p>
             {isAdmin && (
               <button onClick={() => setShowForm(true)} className="btn-primary mx-auto">
@@ -146,13 +146,13 @@ export default function Sites() {
               <div key={site._id}
                 className="p-5 relative group"
                 style={{
-                  background: site.status === 'down' ? '#FFF0F4' : '#EAE4D9',
-                  border: `3px solid ${site.status === 'down' ? '#FF2D78' : '#0A0A0A'}`,
-                  boxShadow: '4px 4px 0 #0A0A0A',
+                  background: site.status === 'down' ? '#FFF0F4' : 'var(--cream-2)',
+                  border: `3px solid ${site.status === 'down' ? 'var(--pink)' : 'var(--black)'}`,
+                  boxShadow: '4px 4px 0 var(--black)',
                   transition: 'transform 0.15s, box-shadow 0.15s',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '6px 6px 0 #0A0A0A'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '4px 4px 0 #0A0A0A'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '6px 6px 0 var(--black)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '4px 4px 0 var(--black)'; }}
               >
                 {site.status === 'down' && (
                   <div className="absolute top-3 right-3"><span className="pulse-dot-red" /></div>
@@ -161,16 +161,16 @@ export default function Sites() {
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     {site.status === 'down'
-                      ? <WifiOff size={18} style={{ color: '#FF2D78' }} />
+                      ? <WifiOff size={18} style={{ color: 'var(--pink)' }} />
                       : <Wifi size={18} style={{ color: '#0A8A00' }} />}
-                    <h3 className="font-black text-sm" style={{ color: '#0A0A0A' }}>{site.name}</h3>
+                    <h3 className="font-black text-sm" style={{ color: 'var(--black)' }}>{site.name}</h3>
                   </div>
                   <StatusBadge s={site.status} />
                 </div>
 
                 <a href={site.url} target="_blank" rel="noreferrer"
                   className="flex items-center gap-1 text-xs font-medium mb-4 truncate"
-                  style={{ color: '#0050FF' }}>
+                  style={{ color: 'var(--blue)' }}>
                   <ExternalLink size={10} />{site.url}
                 </a>
 
@@ -181,8 +181,8 @@ export default function Sites() {
                     { label: 'Interval', value: `${site.checkInterval}m` },
                   ].map(({ label, value }) => (
                     <div key={label} className="text-center p-2"
-                      style={{ background: 'white', border: '2px solid #0A0A0A' }}>
-                      <p className="text-sm font-black" style={{ color: '#0A0A0A' }}>{value}</p>
+                      style={{ background: 'var(--cream-2)', border: '2px solid var(--black)' }}>
+                      <p className="text-sm font-black" style={{ color: 'var(--black)' }}>{value}</p>
                       <p className="text-xs font-medium" style={{ color: '#888' }}>{label}</p>
                     </div>
                   ))}
@@ -197,7 +197,7 @@ export default function Sites() {
                     <button
                       onClick={() => handleDelete(site._id, site.name)}
                       className="transition-opacity opacity-0 group-hover:opacity-100"
-                      style={{ color: '#FF2D78' }}
+                      style={{ color: 'var(--pink)' }}
                     >
                       <Trash2 size={14} />
                     </button>
