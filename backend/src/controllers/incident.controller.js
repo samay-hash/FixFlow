@@ -2,6 +2,8 @@ const Incident = require('../models/Incident');
 const Log = require('../models/Log');
 const { getIO } = require('../socket/socket');
 const mongoose = require('mongoose');
+const User = require('../models/User');
+const notificationService = require('../services/notification.service');
 
 // @GET /api/incidents
 const getIncidents = async (req, res) => {
@@ -63,6 +65,15 @@ const createIncident = async (req, res) => {
     });
     await incident.populate(['siteId', 'assignedTo', 'createdBy']);
 
+      // Notify assigned users by email (if any)
+      if (incident.assignedTo && incident.assignedTo.length > 0) {
+        try {
+          await notificationService.sendAssignedIncidentEmail(incident, incident.assignedTo);
+        } catch (err) {
+          console.warn('Failed sending assigned emails:', err.message);
+        }
+      }
+
     // Real-time broadcast
     const io = getIO();
     io.to(`company_${req.user.companyId}`).emit('incident:created', incident);
@@ -101,6 +112,7 @@ const updateIncident = async (req, res) => {
       changes.push(`Severity changed to '${severity}'`);
       incident.severity = severity;
     }
+    const prevAssignedIds = (incident.assignedTo || []).map(a => String(a));
     if (assignedTo) incident.assignedTo = assignedTo;
     if (title) incident.title = title;
     if (description) incident.description = description;
@@ -115,6 +127,18 @@ const updateIncident = async (req, res) => {
     }
     await incident.save();
     await incident.populate(['siteId', 'assignedTo', 'createdBy']);
+
+    // Notify newly assigned users (only those added in this update)
+    try {
+      const currentAssignedIds = (incident.assignedTo || []).map(a => String(a._id || a));
+      const newAssignedIds = currentAssignedIds.filter(id => !prevAssignedIds.includes(id));
+      if (newAssignedIds.length > 0) {
+        const newUsers = await User.find({ _id: { $in: newAssignedIds } });
+        if (newUsers.length > 0) await notificationService.sendAssignedIncidentEmail(incident, newUsers);
+      }
+    } catch (err) {
+      console.warn('Failed sending assigned emails on update:', err.message);
+    }
 
     const io = getIO();
     io.to(`company_${req.user.companyId}`).emit('incident:updated', incident);
