@@ -57,9 +57,9 @@ export default function Register() {
       <div className="w-full max-w-md">
 
         {/* ── Brand ────────────────────────────────────────── */}
-        <div className="mb-8">
+        <div className="mb-6">
           <div
-            className="inline-flex items-center gap-3 px-4 py-2 mb-6"
+            className="inline-flex items-center gap-3 px-4 py-2 mb-4"
             style={{ background: '#0A0A0A', boxShadow: '4px 4px 0 #C8FF00' }}
           >
             <span className="text-lg font-black uppercase tracking-widest text-white">FixFlow</span>
@@ -78,10 +78,10 @@ export default function Register() {
 
         {/* ── Form Card ────────────────────────────────────── */}
         <div
-          className="p-6"
+          className="p-5"
           style={{ background: '#EAE4D9', border: '3px solid #0A0A0A', boxShadow: '6px 6px 0 #0A0A0A' }}
         >
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             {fields.map(({ key, label, type, placeholder }) => (
               <div key={key}>
                 <label className="label">{label}</label>
@@ -100,7 +100,7 @@ export default function Register() {
             <div>
               <label className="label">Preferences / Focus Areas</label>
               <textarea
-                className="input min-h-24"
+                className="input min-h-16"
                 placeholder="incident response, scientific analysis, backend reliability"
                 value={form.preferences}
                 onChange={e => setForm({ ...form, preferences: e.target.value })}
