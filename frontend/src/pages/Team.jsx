@@ -181,7 +181,9 @@ export default function Team() {
               <div className="card">
                 <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><BadgeCheck size={16} />Unassigned Engineers</h3>
                 <div className="space-y-3">
-                  {unassigned.length === 0 ? (
+                  {loading ? (
+                    <p className="text-sm text-slate-400">Loading unassigned users...</p>
+                  ) : unassigned.length === 0 ? (
                     <p className="text-sm text-slate-400">No unassigned users.</p>
                   ) : unassigned.map(u => (
                     <div key={u._id} className="p-3 rounded border border-slate-700 bg-dark-800">
