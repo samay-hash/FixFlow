@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Moon, Sun, Shield, Zap, Globe, Bot, FileText, Activity, ArrowRight, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
 
 const FEATURES = [
-  { icon: Globe,        title: 'Uptime Monitoring',    desc: 'Every site checked every 60 seconds. HTTP status, response time, degradation — all tracked.',  accent: '#C8FF00' },
+  { icon: Globe,        title: 'Uptime Monitoring',    desc: 'Every site checked every 60 seconds. HTTP status, response time, degradation — all tracked.',  accent: '#FF8C42' },
   { icon: AlertTriangle,title: 'Auto Incidents',       desc: 'Sites go down? Incidents are auto-created instantly. No manual alerts needed.',                    accent: '#FF2D78' },
   { icon: Bot,          title: 'AI Postmortems',       desc: 'Gemini AI generates structured RCA reports from your incident timeline in seconds.',               accent: '#5500CC' },
   { icon: Activity,     title: 'Real-time Dashboard',  desc: 'Socket.io-powered live updates. No refresh needed — watch your infra breathe.',                   accent: '#0050FF' },
@@ -46,7 +46,7 @@ export default function Landing() {
     inkText:  '#F0EBE0',
     // Theme-aware accent section (stats bar + CTA)
     accentBg: dark ? '#0A0A0A' : '#EAE4D9',
-    accentText: dark ? '#C8FF00' : '#0A0A0A',
+    accentText: dark ? '#FF8C42' : '#0A0A0A',
     accentMuted: dark ? '#888'  : '#555',
     accentDivider: dark ? '#333' : '#bbb',
     accentBorder: dark ? '#444' : '#0A0A0A',
@@ -76,12 +76,12 @@ export default function Landing() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 flex items-center justify-center"
-            style={{ background: t.inkBg, boxShadow: `2px 2px 0 #C8FF00` }}>
-            <Shield size={16} color="#C8FF00" />
+            style={{ background: t.inkBg, boxShadow: `2px 2px 0 #FF8C42` }}>
+            <Shield size={16} color="#FF8C42" />
           </div>
           <span className="font-black text-lg uppercase tracking-widest" style={{ color: t.text }}>FixFlow</span>
           <span className="text-xs font-bold px-1.5 py-0.5"
-            style={{ background: '#C8FF00', color: '#0A0A0A', border: `2px solid ${t.border}` }}>AI</span>
+            style={{ background: '#FF8C42', color: '#0A0A0A', border: `2px solid ${t.border}` }}>AI</span>
         </div>
 
         {/* Nav links */}
@@ -109,7 +109,7 @@ export default function Landing() {
           </Link>
           <Link to="/register"
             className="px-4 py-2 text-sm font-black uppercase"
-            style={{ background: '#C8FF00', border: `2px solid ${t.border}`, color: '#0A0A0A', boxShadow: `3px 3px 0 ${t.border}` }}>
+            style={{ background: '#FF8C42', border: `2px solid ${t.border}`, color: '#0A0A0A', boxShadow: `3px 3px 0 ${t.border}` }}>
             Get Started →
           </Link>
         </div>
@@ -129,7 +129,7 @@ export default function Landing() {
             {/* Headline */}
             <h1 className="text-5xl lg:text-7xl font-black uppercase leading-none mb-6" style={{ color: t.text }}>
               INCIDENTS<br />
-              <span className="inline-block px-2" style={{ background: '#C8FF00', color: '#0A0A0A' }}>
+              <span className="inline-block px-2" style={{ background: '#FF8C42', color: '#0A0A0A' }}>
                 FIXED.
               </span><br />
               FAST.
@@ -144,7 +144,7 @@ export default function Landing() {
             <div className="flex gap-4 flex-wrap">
               <Link to="/register"
                 className="px-6 py-3 font-black uppercase text-sm tracking-wide transition-all"
-                style={{ background: '#C8FF00', color: '#0A0A0A', border: `3px solid ${t.border}`, boxShadow: `4px 4px 0 ${t.border}` }}
+                style={{ background: '#FF8C42', color: '#0A0A0A', border: `3px solid ${t.border}`, boxShadow: `4px 4px 0 ${t.border}` }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = `6px 6px 0 ${t.border}`; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = `4px 4px 0 ${t.border}`; }}>
                 Start Monitoring Free →
@@ -161,7 +161,7 @@ export default function Landing() {
               {['No Credit Card', 'Free to Start', 'AI-Powered'].map(b => (
                 <span key={b} className="flex items-center gap-1.5 text-xs font-bold uppercase"
                   style={{ color: t.muted }}>
-                  <CheckCircle size={12} color="#C8FF00" />{b}
+                  <CheckCircle size={12} color="#FF8C42" />{b}
                 </span>
               ))}
             </div>
@@ -173,18 +173,18 @@ export default function Landing() {
             <div className="absolute -top-4 -right-4 w-16 h-16 z-10"
               style={{ background: '#FF2D78', border: `3px solid ${t.border}`, boxShadow: `3px 3px 0 ${t.border}` }} />
             <div className="absolute -bottom-4 -left-4 w-10 h-10 z-10"
-              style={{ background: '#C8FF00', border: `3px solid ${t.border}`, boxShadow: `2px 2px 0 ${t.border}` }} />
+              style={{ background: '#FF8C42', border: `3px solid ${t.border}`, boxShadow: `2px 2px 0 ${t.border}` }} />
 
             <div style={{ ...card(), position: 'relative', overflow: 'hidden' }}>
               {/* Terminal header — always dark */}
               <div className="flex items-center justify-between px-4 py-3 -mx-6 -mt-6 mb-5"
                 style={{ background: t.inkBg, marginLeft: -24, marginRight: -24, marginTop: -24, paddingLeft: 24, paddingRight: 24 }}>
                 <div className="flex gap-1.5">
-                  {['#FF2D78', '#FFE500', '#C8FF00'].map(c => (
+                  {['#FF2D78', '#FFE500', '#FF8C42'].map(c => (
                     <div key={c} className="w-3 h-3" style={{ background: c, border: '1.5px solid #555' }} />
                   ))}
                 </div>
-                <span className="text-xs font-black uppercase tracking-wider" style={{ color: '#C8FF00' }}>
+                <span className="text-xs font-black uppercase tracking-wider" style={{ color: '#FF8C42' }}>
                   FixFlow Dashboard
                 </span>
                 <span className="text-xs font-mono" style={{ color: '#888' }}>LIVE</span>
@@ -193,9 +193,9 @@ export default function Landing() {
               {/* Mock status rows */}
               <p className="text-xs font-black uppercase tracking-wider mb-3" style={{ color: t.muted }}>Site Status</p>
               {[
-                { name: 'api.myapp.com',     status: 'UP',   ms: '124ms',  color: '#C8FF00' },
+                { name: 'api.myapp.com',     status: 'UP',   ms: '124ms',  color: '#FF8C42' },
                 { name: 'dashboard.myapp.com',status: 'DOWN', ms: '—',      color: '#FF2D78' },
-                { name: 'cdn.myapp.com',     status: 'UP',   ms: '89ms',   color: '#C8FF00' },
+                { name: 'cdn.myapp.com',     status: 'UP',   ms: '89ms',   color: '#FF8C42' },
               ].map(s => (
                 <div key={s.name} className="flex items-center gap-3 mb-2 p-3"
                   style={{ background: t.bg3, border: `2px solid ${t.border}` }}>
@@ -252,7 +252,7 @@ export default function Landing() {
       <section id="features" className="px-8 py-20 max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-3 py-1 mb-4 text-xs font-black uppercase tracking-widest"
-            style={{ background: '#C8FF00', border: `2px solid ${t.border}`, color: '#0A0A0A' }}>
+            style={{ background: '#FF8C42', border: `2px solid ${t.border}`, color: '#0A0A0A' }}>
             // Features
           </div>
           <h2 className="text-4xl lg:text-5xl font-black uppercase" style={{ color: t.text }}>
@@ -291,7 +291,7 @@ export default function Landing() {
             </div>
             <h2 className="text-4xl lg:text-5xl font-black uppercase" style={{ color: t.text }}>
               FOUR STEPS TO<br />
-              <span className="inline-block px-2" style={{ background: '#C8FF00', color: '#0A0A0A' }}>ZERO DOWNTIME.</span>
+              <span className="inline-block px-2" style={{ background: '#FF8C42', color: '#0A0A0A' }}>ZERO DOWNTIME.</span>
             </h2>
           </div>
 
@@ -299,7 +299,7 @@ export default function Landing() {
             {HOW.map(({ step, title, desc }, i) => (
               <div key={step} className="relative p-6" style={card()}>
                 <div className="text-5xl font-black mb-4 leading-none"
-                  style={{ color: '#C8FF00', WebkitTextStroke: `2px ${t.border}` }}>
+                  style={{ color: '#FF8C42', WebkitTextStroke: `2px ${t.border}` }}>
                   {step}
                 </div>
                 <h3 className="font-black text-base uppercase tracking-wide mb-2" style={{ color: t.text }}>{title}</h3>
@@ -324,7 +324,7 @@ export default function Landing() {
           </div>
           <h2 className="text-4xl font-black uppercase" style={{ color: t.text }}>
             BUILT WITH<br />
-            <span className="inline-block px-2" style={{ background: t.inkBg, color: '#C8FF00' }}>
+            <span className="inline-block px-2" style={{ background: t.inkBg, color: '#FF8C42' }}>
               PRODUCTION-GRADE TOOLS.
             </span>
           </h2>
@@ -333,7 +333,7 @@ export default function Landing() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { name: 'React 18', role: 'Frontend',   color: '#61DAFB' },
-            { name: 'Express 5', role: 'Backend',   color: '#C8FF00' },
+            { name: 'Express 5', role: 'Backend',   color: '#FF8C42' },
             { name: 'MongoDB',   role: 'Database',  color: '#47A248' },
             { name: 'Socket.io', role: 'Realtime',  color: '#FF2D78' },
             { name: 'Gemini AI', role: 'AI Engine', color: '#5500CC' },
@@ -365,7 +365,7 @@ export default function Landing() {
           </div>
           <h2 className="text-5xl lg:text-6xl font-black uppercase leading-tight mb-6" style={{ color: t.text }}>
             STOP FINDING OUT<br />
-            <span style={{ background: '#C8FF00', color: '#0A0A0A', display: 'inline-block', padding: '0 12px' }}>
+            <span style={{ background: '#FF8C42', color: '#0A0A0A', display: 'inline-block', padding: '0 12px' }}>
               FROM YOUR USERS.
             </span>
           </h2>
@@ -375,7 +375,7 @@ export default function Landing() {
           <div className="flex gap-4 justify-center flex-wrap">
             <Link to="/register"
               className="px-8 py-4 font-black uppercase text-base tracking-wide transition-all"
-              style={{ background: '#C8FF00', color: '#0A0A0A', border: `3px solid ${t.border}`, boxShadow: `5px 5px 0 ${t.border}` }}
+              style={{ background: '#FF8C42', color: '#0A0A0A', border: `3px solid ${t.border}`, boxShadow: `5px 5px 0 ${t.border}` }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}>
               Create Free Workspace →
@@ -395,8 +395,8 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 flex items-center justify-center"
-              style={{ background: t.inkBg, boxShadow: '2px 2px 0 #C8FF00' }}>
-              <Shield size={12} color="#C8FF00" />
+              style={{ background: t.inkBg, boxShadow: '2px 2px 0 #FF8C42' }}>
+              <Shield size={12} color="#FF8C42" />
             </div>
             <span className="font-black uppercase tracking-widest text-sm" style={{ color: t.text }}>FixFlow</span>
             <span className="text-xs" style={{ color: t.muted }}>Smart Incident Monitoring & Response</span>
