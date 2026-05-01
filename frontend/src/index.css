@@ -9,26 +9,13 @@
   --cream:   #F2EDE4;
   --cream-2: #EAE4D9;
   --black:   #0A0A0A;
-  --accent:  #FF8C42; /* Soft orange instead of lime */
+  --lime:    #FF8C42; /* Renamed visually to Soft Orange, keeping var name for backward compatibility */
   --pink:    #FF2D78;
-  --blue:    #0050FF;
+  --blue:    #A0C4FF; /* Changed to a softer, eye-friendly pastel blue */
   --yellow:  #FFE500;
-  --border:  3px solid var(--black);
-  --shadow:  4px 4px 0px var(--black);
-  --shadow-lg: 6px 6px 0px var(--black);
-}
-
-.dark {
-  --cream:   #0A0A0A;
-  --cream-2: #141414;
-  --black:   #F2EDE4;
-  --accent:  #FF8C42;
-  --pink:    #FF2D78;
-  --blue:    #3b82f6;
-  --yellow:  #EAB308;
-  --border:  3px solid #333333;
-  --shadow:  4px 4px 0px #333333;
-  --shadow-lg: 6px 6px 0px #333333;
+  --border:  3px solid #0A0A0A;
+  --shadow:  4px 4px 0px #0A0A0A;
+  --shadow-lg: 6px 6px 0px #0A0A0A;
 }
 
 /* ── Base ───────────────────────────────────────────────── */
@@ -95,7 +82,7 @@
 
   .btn-primary {
     @apply btn;
-    background: var(--accent);
+    background: var(--lime);
     color: var(--black);
   }
   .btn-danger {
@@ -111,7 +98,7 @@
   .btn-ghost:hover:not(:disabled) { background: var(--cream-2); }
   .btn-success {
     @apply btn;
-    background: var(--accent);
+    background: var(--lime);
     color: var(--black);
   }
   .btn-blue {
@@ -134,7 +121,7 @@
   }
   .input::placeholder { color: #888; }
   .input:focus {
-    box-shadow: 3px 3px 0px var(--accent);
+    box-shadow: 3px 3px 0px var(--lime);
     border-color: var(--black);
   }
   .label {
@@ -150,10 +137,10 @@
   .badge-critical { @apply badge; background: var(--pink); color: white; }
   .badge-high     { @apply badge; background: #FF6B00; color: white; }
   .badge-medium   { @apply badge; background: var(--yellow); color: var(--black); }
-  .badge-low      { @apply badge; background: var(--accent); color: var(--black); }
+  .badge-low      { @apply badge; background: var(--lime); color: var(--black); }
 
   /* STATUS BADGES */
-  .status-up      { @apply badge; background: var(--accent); color: var(--black); }
+  .status-up      { @apply badge; background: var(--lime); color: var(--black); }
   .status-down    { @apply badge; background: var(--pink); color: white; }
   .status-degraded { @apply badge; background: var(--yellow); color: var(--black); }
   .status-unknown { @apply badge; background: #ccc; color: var(--black); }
@@ -164,7 +151,7 @@
     animation: pulseDot 1.5s ease-in-out infinite;
   }
   .pulse-dot-red   { @apply pulse-dot; background: var(--pink); box-shadow: 0 0 0 0 rgba(255,45,120,0.4); }
-  .pulse-dot-green { @apply pulse-dot; background: var(--accent); box-shadow: 0 0 0 0 rgba(200,255,0,0.4); }
+  .pulse-dot-green { @apply pulse-dot; background: var(--lime); box-shadow: 0 0 0 0 rgba(200,255,0,0.4); }
 
   /* SIDEBAR NAV */
   .nav-item {
@@ -179,7 +166,7 @@
   }
   .nav-item-active {
     @apply nav-item;
-    background: var(--accent);
+    background: var(--lime);
     border: 2px solid var(--black);
     box-shadow: 2px 2px 0 var(--black);
     color: var(--black);
@@ -197,7 +184,7 @@
     background: white;
     color: var(--black);
   }
-  .tag-lime   { @apply tag; background: var(--accent); }
+  .tag-lime   { @apply tag; background: var(--lime); }
   .tag-pink   { @apply tag; background: var(--pink); color: white; }
   .tag-blue   { @apply tag; background: var(--blue); color: white; }
   .tag-yellow { @apply tag; background: var(--yellow); }

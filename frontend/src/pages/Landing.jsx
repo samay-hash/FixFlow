@@ -6,7 +6,7 @@ const FEATURES = [
   { icon: Globe,        title: 'Uptime Monitoring',    desc: 'Every site checked every 60 seconds. HTTP status, response time, degradation — all tracked.',  accent: '#FF8C42' },
   { icon: AlertTriangle,title: 'Auto Incidents',       desc: 'Sites go down? Incidents are auto-created instantly. No manual alerts needed.',                    accent: '#FF2D78' },
   { icon: Bot,          title: 'AI Postmortems',       desc: 'Gemini AI generates structured RCA reports from your incident timeline in seconds.',               accent: '#5500CC' },
-  { icon: Activity,     title: 'Real-time Dashboard',  desc: 'Socket.io-powered live updates. No refresh needed — watch your infra breathe.',                   accent: '#0050FF' },
+  { icon: Activity,     title: 'Real-time Dashboard',  desc: 'Socket.io-powered live updates. No refresh needed — watch your infra breathe.',                   accent: '#A0C4FF' },
   { icon: Zap,          title: 'Auto-Remediation',     desc: 'AI suggests bash, kubectl and AWS CLI commands to fix your incident automatically.',               accent: '#FFE500' },
   { icon: FileText,     title: 'Log Explorer',         desc: 'Filter 200+ logs by FATAL, ERROR, WARN, INFO. Search by source or message in real-time.',         accent: '#FF6B00' },
 ];
@@ -29,9 +29,7 @@ export default function Landing() {
   const [dark, setDark] = useState(() => localStorage.getItem('fixflow-theme') === 'dark');
 
   useEffect(() => {
-    const theme = dark ? 'dark' : 'light';
-    localStorage.setItem('fixflow-theme', theme);
-    window.dispatchEvent(new CustomEvent('theme-changed', { detail: theme }));
+    localStorage.setItem('fixflow-theme', dark ? 'dark' : 'light');
   }, [dark]);
 
   const t = {
@@ -288,7 +286,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-block px-3 py-1 mb-4 text-xs font-black uppercase tracking-widest"
-              style={{ background: '#0050FF', border: `2px solid ${t.border}`, color: 'white' }}>
+              style={{ background: '#A0C4FF', border: `2px solid ${t.border}`, color: '#0A0A0A' }}>
               // How It Works
             </div>
             <h2 className="text-4xl lg:text-5xl font-black uppercase" style={{ color: t.text }}>
