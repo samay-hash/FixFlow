@@ -1,18 +1,25 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { GitBranch, CheckCircle, AlertTriangle, Sparkles } from 'lucide-react';
 import { SparkLine } from './UIAtoms';
 import { AlertLogos } from './Previews';
+
+const CARD_ROTATIONS = {
+  deploy: 2.5,
+  incident: -2.5,
+  routing: 2.5,
+  summary: 2.5,
+};
 
 export function FloatingDeployCard() {
   return (
     <motion.div
       animate={{ y: [-6, 6, -6] }}
       transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute left-[-15%] top-[13%] z-20 hidden w-[245px] -rotate-2 rounded-2xl border border-white/30 bg-[#111827] p-4 text-left text-white shadow-[0_28px_70px_rgba(7,17,31,0.32)] xl:block"
+      style={{ rotate: CARD_ROTATIONS.deploy }}
+      className="absolute left-0 top-[15%] z-30 w-[220px] rounded-2xl border border-white/30 bg-[#111827] p-4 text-left text-white shadow-[0_28px_70px_rgba(7,17,31,0.34)] 2xl:block"
     >
       <div className="mb-4 flex items-center gap-3">
-        <GitBranch size={25} />
+        <GitBranch size={23} />
         <div>
           <p className="text-[14px] font-extrabold">GitHub Deploy</p>
           <p className="mt-1 text-[11px] font-semibold text-slate-300">
@@ -33,7 +40,8 @@ export function FloatingIncidentCard() {
     <motion.div
       animate={{ y: [8, -8, 8] }}
       transition={{ duration: 5.6, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute bottom-[16%] left-[-17%] z-20 hidden w-[285px] -rotate-2 rounded-2xl border border-white/10 bg-[#101827] p-4 text-left text-white shadow-[0_34px_80px_rgba(7,17,31,0.35)] xl:block"
+      style={{ rotate: CARD_ROTATIONS.incident }}
+      className="absolute bottom-[20%] left-10 z-30 hidden w-[238px] rounded-2xl border border-white/10 bg-[#101827] p-4 text-left text-white shadow-[0_34px_80px_rgba(7,17,31,0.36)] 2xl:block"
     >
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -58,7 +66,8 @@ export function FloatingRoutingCard() {
     <motion.div
       animate={{ y: [-5, 5, -5] }}
       transition={{ duration: 5.9, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute right-[-14%] top-[20%] z-20 hidden w-[275px] rotate-2 rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-[0_30px_70px_rgba(80,55,40,0.18)] xl:block"
+      style={{ rotate: CARD_ROTATIONS.routing }}
+      className="absolute right-0 top-[22%] z-30 hidden w-[220px] rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-[0_30px_70px_rgba(80,55,40,0.18)] 2xl:block"
     >
       <p className="mb-4 text-[14px] font-extrabold text-[#07111f]">Alert Routing</p>
       <AlertLogos />
@@ -74,7 +83,8 @@ export function FloatingSummaryCard() {
     <motion.div
       animate={{ y: [6, -6, 6] }}
       transition={{ duration: 6.2, repeat: Infinity, ease: 'easeInOut' }}
-      className="absolute bottom-[13%] right-[-16%] z-20 hidden w-[295px] rotate-2 rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-[0_30px_70px_rgba(80,55,40,0.18)] xl:block"
+      style={{ rotate: CARD_ROTATIONS.summary }}
+      className="absolute bottom-[20%] right-10 z-30 hidden w-[230px] rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-[0_30px_70px_rgba(80,55,40,0.18)] 2xl:block"
     >
       <div className="mb-4 flex items-center gap-2">
         <p className="text-[14px] font-extrabold text-[#07111f]">AI Summary</p>

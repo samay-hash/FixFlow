@@ -21,9 +21,10 @@ export default function Landing() {
       <Navbar />
       <Hero />
       <Solutions />
+      <ProductFeatures />
       <MainFeatures />
       <IncidentWorkspace />
-      <ProductFeatures />
+      
       <WhyTeamsSwitch />
       <Pricing />
       <Integrations />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Activity, ArrowRight, ChevronDown } from 'lucide-react';
@@ -9,9 +8,9 @@ import { FloatingDeployCard, FloatingIncidentCard, FloatingRoutingCard, Floating
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-5 pb-28 pt-[116px] sm:px-8">
+    <section className="relative overflow-hidden px-5  pt-[116px] sm:px-8">
       <BackgroundOrnaments />
-      <div className="relative z-10 mx-auto flex max-w-[1260px] flex-col items-center text-center">
+      <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -90,7 +89,7 @@ export function Hero() {
           </span>
         </button>
 
-        <div className="relative mt-3 w-full max-w-[1060px]">
+        <div className="relative mt-2 w-full max-w-[1420px] pb-28 2xl:min-h-[560px]">
           <HeroDashboard />
           <FloatingDeployCard />
           <FloatingIncidentCard />
