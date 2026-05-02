@@ -98,30 +98,30 @@ export default function Landing() {
         />
       </div>
 
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/40 bg-white/60 backdrop-blur-xl">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+      <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-slate-200/40 bg-white/60 backdrop-blur-xl">
+        <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-6">
           <div className="flex items-center gap-12">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F172A] shadow-lg transition-transform group-hover:scale-105">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0F172A] shadow-lg transition-transform group-hover:scale-105">
                 <Shield size={18} color={accent} strokeWidth={2.5} />
               </div>
-              <span className="text-[28px] font-bold tracking-tight leading-none text-slate-900">
+              <span className="text-[24px] font-bold tracking-tight leading-none text-slate-900">
                 FixFlow <span style={{ color: accent }}>AI</span>
               </span>
             </Link>
+          </div>
 
-            <div className="hidden items-center gap-9 lg:flex">
-              {['Product', 'Solutions', 'Integrations', 'Docs', 'Pricing'].map((item) => (
-                <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
-                  className="flex items-center gap-1 text-[15px] font-medium text-slate-600 transition-colors hover:text-slate-900"
-                >
-                  {item}
-                  {(item === 'Product' || item === 'Solutions') && <ChevronDown size={14} className="opacity-40" />}
-                </a>
-              ))}
-            </div>
+          <div className="hidden items-center gap-9 lg:flex absolute left-1/2 -translate-x-1/2">
+            {['Product', 'Solutions', 'Integrations', 'Docs', 'Pricing'].map((item) => (
+              <a 
+                key={item} 
+                href={`#${item.toLowerCase()}`} 
+                className="flex items-center gap-1 text-[15px] font-medium text-slate-600 transition-colors hover:text-slate-900"
+              >
+                {item}
+                {(item === 'Product' || item === 'Solutions') && <ChevronDown size={14} className="opacity-40" />}
+              </a>
+            ))}
           </div>
 
           <div className="flex items-center gap-4">
@@ -133,255 +133,233 @@ export default function Landing() {
               className="flex items-center gap-2 rounded-full px-6 py-2.5 text-[15px] font-semibold text-white transition-all hover:brightness-110 active:scale-[0.98]"
               style={{ 
                 backgroundColor: accent,
-                boxShadow: `0 10px 20px -5px ${accent}40`
+                boxShadow: `0 8px 16px -4px ${accent}40`
               }}
             >
-              Start free <ArrowRight size={15} strokeWidth={3} />
+              Start free <ArrowRight size={14} strokeWidth={3} />
             </Link>
           </div>
         </div>
       </nav>
 
-      <section className="relative px-6 pt-44 pb-32 overflow-visible">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div 
-            className="absolute -top-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[120%] opacity-[0.03]"
-            style={{
-              backgroundImage: 'radial-gradient(#FF5A0A 1.5px, transparent 1.5px)',
-              backgroundSize: '32px 32px',
-            }}
-          />
-          <div className="absolute top-[20%] left-[-10%] w-[40%] h-[60%] blur-[120px] rounded-full bg-orange-100/30" />
-          <div className="absolute top-[10%] right-[-10%] w-[30%] h-[50%] blur-[120px] rounded-full bg-blue-50/20" />
+      <section className="relative min-h-[110vh] px-6 pt-32 pb-20 overflow-hidden flex flex-col items-center">
+        {/* Background Patterns */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[#FFFDFC]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FFF3E8] via-[#FFFDFC] to-[#FFFDFC]" />
+          
+          {/* Decorative Dotted Corners */}
+          <div className="absolute top-0 left-0 w-64 h-64 opacity-20" style={{ backgroundImage: 'radial-gradient(#FF5A1F 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          <div className="absolute bottom-0 right-0 w-64 h-64 opacity-20" style={{ backgroundImage: 'radial-gradient(#FF5A1F 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          
+          {/* Subtle Glows */}
+          <div className="absolute top-[20%] left-[-10%] w-[50%] h-[60%] blur-[140px] rounded-full bg-[#FFE2C2]/30" />
+          <div className="absolute top-[10%] right-[-10%] w-[40%] h-[50%] blur-[140px] rounded-full bg-orange-50/20" />
+          
+          {/* Curved Line Decorations (Simulated with SVGs or Ring) */}
+          <img src="/hero/ring.png" alt="" className="absolute -left-[30%] top-[10%] w-[80%] opacity-[0.03] rotate-12" />
+          <img src="/hero/ring.png" alt="" className="absolute -right-[30%] bottom-[10%] w-[80%] opacity-[0.03] -rotate-12" />
         </div>
 
-        <div className="mx-auto max-w-7xl text-center relative z-10">
+        <div className="mx-auto max-w-7xl text-center relative z-10 w-full flex flex-col items-center">
+          {/* Status Pill */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-10 inline-flex items-center gap-2.5 rounded-full border border-orange-200/50 bg-white px-4 py-1.5 shadow-sm"
+            className="mb-10 inline-flex items-center gap-2.5 rounded-full border border-orange-100 bg-white/80 backdrop-blur-sm px-4 py-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.03)]"
           >
             <div className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </div>
-            <span className="text-[13px] font-semibold tracking-wide text-orange-900 uppercase">Live monitoring active</span>
-            <Activity size={13} className="text-orange-500" />
+            <span className="text-[13px] font-semibold tracking-wide text-slate-600 uppercase">Live monitoring active</span>
+            <Activity size={13} className="text-orange-500 animate-pulse" />
           </motion.div>
 
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto mb-8 max-w-[1000px] text-[64px] leading-[1.05] md:text-[92px] tracking-[-0.03em]"
+            className="mx-auto mb-6 max-w-[900px] text-[48px] md:text-[76px] leading-[0.98] tracking-[-0.04em] font-bold"
             style={{ fontFamily: '"Instrument Serif", serif' }}
           >
             <span className="block text-slate-900">Stay ahead of incidents.</span>
-            <span className="block italic" style={{ color: accent }}>
+            <span className="block" style={{ color: accent }}>
               Fix issues before customers notice.
             </span>
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="mx-auto mb-12 max-w-[640px] text-[20px] leading-relaxed text-slate-500/80 font-medium"
+            className="mx-auto mb-10 max-w-[580px] text-[18px] md:text-[20px] leading-relaxed text-slate-500 font-medium"
           >
             AI-powered monitoring, incident response, and postmortems that help engineering teams move fast and stay reliable.
           </motion.p>
 
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-16 flex flex-wrap items-center justify-center gap-5"
+            className="mb-14 flex flex-wrap items-center justify-center gap-5"
           >
             <Link
               to="/register"
-              className="flex items-center gap-2.5 rounded-full px-10 py-4.5 text-[18px] font-bold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="flex items-center gap-2 rounded-2xl px-10 py-4 text-[17px] font-bold text-white transition-all hover:scale-[1.02] hover:brightness-110 active:scale-[0.98]"
               style={{ 
                 backgroundColor: accent,
                 boxShadow: `0 20px 40px -10px ${accent}40`
               }}
             >
-              Start free <ArrowRight size={20} strokeWidth={3} />
+              Start free <ArrowRight size={18} strokeWidth={3} />
             </Link>
             <Link 
               to="/demo" 
-              className="rounded-full border border-slate-200 bg-white px-10 py-4.5 text-[18px] font-bold text-slate-800 transition-all hover:bg-slate-50 hover:border-slate-300"
+              className="rounded-2xl border border-slate-200 bg-white px-10 py-4 text-[17px] font-bold text-slate-800 transition-all hover:bg-slate-50 hover:border-slate-300"
             >
               Book a demo
             </Link>
           </motion.div>
 
+          {/* Feature Pills */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 1 }}
-            className="mb-20 flex flex-wrap items-center justify-center gap-4"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.4 }
+              }
+            }}
+            className="mb-20 flex flex-wrap items-center justify-center gap-3.5"
           >
-            {HERO_CHIPS.map((chip, idx) => (
+            {[
+              { icon: Clock, label: '60s checks', color: 'text-green-500' },
+              { icon: Bell, label: 'Realtime alerts', color: 'text-orange-500' },
+              { icon: GitBranch, label: 'Deploy context', color: 'text-purple-500' },
+              { icon: Sparkles, label: 'AI summaries', color: 'text-rose-500' },
+              { icon: FileText, label: 'Postmortems', color: 'text-blue-500' },
+            ].map((chip) => (
               <motion.div 
                 key={chip.label}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + (idx * 0.1) }}
-                className="flex items-center gap-2.5 rounded-2xl border border-slate-200/60 bg-white/50 backdrop-blur-sm px-6 py-3 text-[15px] font-semibold text-slate-600 shadow-sm transition-all hover:shadow-md hover:border-slate-300 cursor-default"
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="flex items-center gap-2 rounded-xl border border-slate-200/60 bg-white px-5 py-2.5 text-[14px] font-bold text-slate-600 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all hover:shadow-md hover:border-slate-300"
               >
-                <chip.icon size={18} className={chip.color} strokeWidth={2.5} />
+                <chip.icon size={16} className={chip.color} strokeWidth={2.5} />
                 {chip.label}
               </motion.div>
             ))}
           </motion.div>
 
+          {/* Scroll Indicator */}
           <motion.div 
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="mb-8 flex flex-col items-center gap-3"
+            className="mb-6 flex flex-col items-center gap-2.5 cursor-pointer z-20"
+            onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <span className="text-[13px] font-bold uppercase tracking-widest text-slate-400">
+            <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-slate-400">
               Scroll to explore
             </span>
-            <div className="flex h-10 w-6 items-center justify-center rounded-full border-2 border-slate-200 bg-white shadow-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-200 bg-white shadow-sm text-slate-400">
+              <ChevronDown size={18} strokeWidth={3} />
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mx-auto mt-12 max-w-[1200px] perspective-[2000px]"
-          >
-            {/* The Pedestal / Shelf - More pronounced and premium */}
-            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[95%] h-[60px] rounded-[100%] bg-orange-200/20 blur-[40px] z-0 animate-pulse" />
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[80%] h-[25px] rounded-[100%] bg-orange-300/15 blur-[20px] z-0" />
-            
-            {/* Glass Shelf effect */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[92%] h-[6px] rounded-full bg-gradient-to-r from-transparent via-orange-400/20 to-transparent blur-[1px] z-0" />
-            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-[85%] h-[1px] bg-gradient-to-r from-transparent via-orange-500/30 to-transparent z-0" />
-            
-            {/* Dashboard Container - Slightly tilted and floating */}
+          {/* Dashboard Preview Section */}
+          <div className="relative mx-auto w-[82%] md:w-[78%] lg:max-w-[1050px] perspective-[2000px]">
+            {/* Glowing Pedestal/Ring */}
             <motion.div 
-              animate={{ 
-                y: [0, -10, 0],
-                rotateX: [0, 1, 0],
+              animate={{ opacity: [0.4, 0.7, 0.4] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[110%] h-[120px] rounded-[100%] bg-radial-gradient from-white via-orange-200/20 to-transparent blur-[40px] z-0"
+              style={{
+                background: 'radial-gradient(circle at center, white 0%, #FFE2C2 30%, transparent 70%)',
+                opacity: 0.5
               }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="relative z-10 overflow-hidden rounded-[32px] border border-white/60 bg-white/40 p-2.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08),0_30px_60px_-30px_rgba(0,0,0,0.12),inset_0_0_0_1px_rgba(255,255,255,0.5)] backdrop-blur-md"
+            />
+            
+            {/* Main Dashboard Image */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 overflow-hidden rounded-[24px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)]"
             >
-              <div className="overflow-hidden rounded-[24px] border border-slate-100 bg-white shadow-inner">
-                <img src="/hero/dummyDashboard.png" alt="FixFlow dashboard preview" className="w-full select-none" />
-              </div>
+              <img src="/hero/dummyDashboard.png" alt="FixFlow dashboard preview" className="w-full select-none" />
             </motion.div>
 
-            {/* Floating Context Cards */}
+            {/* Floating Asset Cards (Direct Images) */}
+            {/* A. GitHub Deploy */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="pointer-events-none absolute left-[-180px] top-[10%] hidden w-[320px] xl:block z-20"
+              animate={{ y: [-6, 6, -6] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute left-[-15%] top-[15%] hidden xl:block w-[240px] z-20 -rotate-3"
             >
-              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-2xl backdrop-blur-md">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 rounded-xl bg-slate-900 flex items-center justify-center">
-                    <Activity size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-[14px] font-bold text-slate-900">GitHub Deploy</p>
-                    <p className="text-[11px] font-medium text-slate-400">main • a1b2c3d</p>
-                  </div>
-                </div>
-                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full w-[85%] bg-green-500 rounded-full" />
-                </div>
-                <p className="mt-2 text-[11px] font-bold text-green-600 flex items-center gap-1">
-                   <CheckCircle size={10} /> Deployed successfully
-                </p>
-              </div>
+              <img src="/hero/github.png" alt="GitHub Deploy" className="w-full drop-shadow-2xl" />
             </motion.div>
 
+            {/* B. Live Incident */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="pointer-events-none absolute right-[-200px] top-[40%] hidden w-[360px] xl:block z-20"
+              animate={{ y: [6, -6, 6] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute left-[-18%] bottom-[20%] hidden xl:block w-[280px] z-20 -rotate-2"
             >
-              <div className="rounded-2xl border border-white/60 bg-white/90 p-5 shadow-2xl backdrop-blur-md">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-rose-50 flex items-center justify-center">
-                      <Sparkles size={20} className="text-rose-500" />
-                    </div>
-                    <p className="text-[15px] font-bold text-slate-900">AI Summary <span className="ml-1 text-[10px] bg-rose-100 text-rose-600 px-1.5 py-0.5 rounded-md uppercase tracking-wider">Beta</span></p>
-                  </div>
-                </div>
-                <p className="text-[13px] leading-relaxed text-slate-600 font-medium">
-                  "Root cause identified: Database connection timeout on user-service causing 500 errors."
-                </p>
-                <div className="mt-4 flex items-center gap-2">
-                  <div className="h-6 w-16 bg-slate-100 rounded-md animate-pulse" />
-                  <div className="h-6 w-24 bg-slate-50 rounded-md animate-pulse" />
-                </div>
-              </div>
+              <img src="/hero/incedent.png" alt="Live Incident" className="w-full drop-shadow-2xl" />
             </motion.div>
 
+            {/* C. Alert Routing */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="pointer-events-none absolute left-[-140px] bottom-[5%] hidden w-[280px] xl:block z-20"
+              animate={{ y: [-5, 5, -5] }}
+              transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute right-[-12%] top-[20%] hidden xl:block w-[250px] z-20 rotate-3"
             >
-              <div className="rounded-2xl border border-white/60 bg-white/90 p-4 shadow-2xl backdrop-blur-md">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-8 w-8 rounded-lg bg-orange-100 flex items-center justify-center">
-                    <Bell size={16} className="text-orange-500" />
-                  </div>
-                  <p className="text-[14px] font-bold text-slate-900">Alert Routing</p>
-                </div>
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="h-8 w-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center overflow-hidden">
-                      <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="" className="h-full w-full object-cover" />
-                    </div>
-                  ))}
-                  <div className="h-8 w-8 rounded-full border-2 border-white bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-400">
-                    +5
-                  </div>
-                </div>
-              </div>
+              <img src="/hero/alert.png" alt="Alert Routing" className="w-full drop-shadow-2xl" />
             </motion.div>
-          </motion.div>
 
-          <div id="solutions" className="mt-24 scroll-mt-20">
-            <h2 className="mb-12 text-[42px] leading-tight text-slate-900 text-center" style={{ fontFamily: '"Instrument Serif", serif' }}>
-              The complete incident lifecycle, guided by AI.
-            </h2>
-            <div className="grid gap-6 md:grid-cols-5">
-              {LIFECYCLE.map((step) => (
-                <motion.div 
-                  key={step.id} 
-                  whileHover={{ y: -5 }}
-                  className="rounded-3xl border border-slate-200/60 bg-white/50 backdrop-blur-sm p-6 text-left shadow-sm hover:shadow-md transition-all"
-                >
-                  <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ${step.bg}`}>
-                    <step.icon size={20} className={step.color} />
-                  </div>
-                  <p className="mb-2 text-[18px] font-bold text-slate-900">{step.id}</p>
-                  <p className="text-[14px] leading-relaxed text-slate-500 font-medium">{step.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            {/* D. AI Summary */}
+            <motion.div
+              animate={{ y: [5, -5, 5] }}
+              transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute right-[-15%] bottom-[15%] hidden xl:block w-[290px] z-20 rotate-2"
+            >
+              <img src="/hero/aisummary.png" alt="AI Summary" className="w-full drop-shadow-2xl" />
+            </motion.div>
           </div>
         </div>
       </section>
+
+      <div id="solutions" className="mt-24 scroll-mt-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="mb-12 text-[42px] leading-tight text-slate-900 text-center" style={{ fontFamily: '"Instrument Serif", serif' }}>
+            The complete incident lifecycle, guided by AI.
+          </h2>
+          <div className="grid gap-6 md:grid-cols-5">
+            {LIFECYCLE.map((step) => (
+              <motion.div 
+                key={step.id} 
+                whileHover={{ y: -5 }}
+                className="rounded-3xl border border-slate-200/60 bg-white/50 backdrop-blur-sm p-6 text-left shadow-sm hover:shadow-md transition-all"
+              >
+                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ${step.bg}`}>
+                  <step.icon size={20} className={step.color} />
+                </div>
+                <p className="mb-2 text-[18px] font-bold text-slate-900">{step.id}</p>
+                <p className="text-[14px] leading-relaxed text-slate-500 font-medium">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
 
 
       <section id="product" className="py-24 px-6 scroll-mt-20">
