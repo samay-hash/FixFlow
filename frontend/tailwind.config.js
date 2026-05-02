@@ -22,6 +22,7 @@ export default {
       },
       fontFamily: {
         sans:  ['Space Grotesk', 'system-ui', 'sans-serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
         mono:  ['JetBrains Mono', 'monospace'],
         space: ['Space Mono', 'monospace'],
       },
