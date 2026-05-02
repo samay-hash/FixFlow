@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Home, PlusCircle, ClipboardList, Users, Route, Settings, ChevronDown, Clock, AlertTriangle, Send, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
 import { ACCENT } from '../constants';
@@ -25,16 +24,23 @@ export function HeroDashboard() {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative z-10 mx-auto w-full max-w-[980px]"
+      className="relative z-10 mx-auto w-full max-w-[920px] 2xl:max-w-[940px]"
     >
-      <div className="absolute -bottom-12 left-1/2 h-[92px] w-[108%] -translate-x-1/2 rounded-[999px] border border-orange-200/70 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.96)_0%,rgba(255,147,83,0.35)_36%,rgba(255,79,10,0.08)_60%,transparent_72%)] blur-[1px]" />
-      <div className="absolute -bottom-20 left-1/2 h-[92px] w-[88%] -translate-x-1/2 rounded-[999px] bg-orange-300/20 blur-3xl" />
+      <img
+        src="/hero/ring.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-[82px] left-1/2 z-0 hidden w-[1160px] max-w-none -translate-x-1/2 select-none opacity-100 2xl:block"
+      />
+      <div className="pointer-events-none absolute -bottom-[46px] left-1/2 z-[1] hidden h-[76px] w-[101%] -translate-x-1/2 rounded-[999px] border-t border-orange-100/90 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.72)_0%,rgba(255,207,176,0.34)_42%,rgba(255,95,32,0.11)_66%,transparent_78%)] shadow-[0_22px_72px_rgba(255,119,64,0.24)] 2xl:block" />
+      <div className="pointer-events-none absolute -bottom-[74px] left-1/2 z-0 h-28 w-[88%] -translate-x-1/2 rounded-[999px] bg-orange-300/24 blur-3xl" />
 
-      <div className="relative overflow-hidden rounded-[26px] border border-slate-200/90 bg-white/94 p-4 text-left shadow-[0_34px_90px_rgba(80,55,40,0.18)] backdrop-blur-xl sm:p-5">
-        <div className="grid min-h-[382px] grid-cols-[50px_1fr] gap-4 md:grid-cols-[62px_1fr]">
-          <aside className="flex flex-col items-center gap-4 border-r border-slate-100 pr-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#07111f] text-white">
-              <Shield size={17} color={ACCENT} />
+      <div className="relative z-20 overflow-hidden rounded-[24px] border border-slate-200/90 bg-white/95 p-4 text-left shadow-[0_34px_90px_rgba(68,49,35,0.16)] backdrop-blur-xl sm:p-5 2xl:p-6">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.9)_52%,rgba(255,247,239,0.78)_100%)]" />
+        <div className="relative grid min-h-[430px] grid-cols-[54px_1fr] gap-5 md:grid-cols-[64px_1fr] 2xl:min-h-[462px] 2xl:gap-6">
+          <aside className="flex flex-col items-center gap-4 border-r border-slate-100/90 pr-4">
+            <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-[13px] bg-[#07111f] text-white shadow-[0_10px_22px_rgba(7,17,31,0.14)]">
+              <Shield size={18} color={ACCENT} />
             </div>
             {[
               { icon: Home, active: true },
@@ -46,34 +52,34 @@ export function HeroDashboard() {
             ].map(({ icon: Icon, active }) => (
               <span
                 key={Icon.displayName || Icon.name}
-                className={`flex h-9 w-9 items-center justify-center rounded-xl ${active ? 'bg-orange-50 text-orange-500 shadow-sm' : 'text-slate-500'}`}
+                className={`flex h-9 w-9 items-center justify-center rounded-[13px] transition ${active ? 'bg-orange-50 text-orange-500 shadow-[0_8px_18px_rgba(255,95,32,0.1)]' : 'text-slate-500/90'}`}
               >
-                <Icon size={17} strokeWidth={2.2} />
+                <Icon size={17} strokeWidth={2.25} />
               </span>
             ))}
           </aside>
 
           <div className="min-w-0">
-            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <h3 className="text-[18px] font-extrabold tracking-[-0.02em] text-[#07111f]">Overview</h3>
-              <div className="flex gap-2">
-                <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-bold text-slate-700 shadow-sm">
+            <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-[19px] font-extrabold tracking-[-0.025em] text-[#07111f]">Overview</h3>
+              <div className="flex gap-2.5">
+                <button className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-4 py-2 text-[11px] font-extrabold text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.045)]">
                   All Monitors <ChevronDown size={13} />
                 </button>
-                <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-bold text-slate-700 shadow-sm">
+                <button className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-4 py-2 text-[11px] font-extrabold text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.045)]">
                   <Clock size={13} /> Last 24 hours <ChevronDown size={13} />
                 </button>
               </div>
             </div>
 
-            <div className="mb-4 grid gap-3 md:grid-cols-4">
+            <div className="mb-5 grid gap-3.5 md:grid-cols-4">
               {statCards.map((card) => (
-                <div key={card.label} className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
-                  <p className="mb-2 text-[10px] font-bold text-slate-500">{card.label}</p>
-                  <div className="flex items-end justify-between gap-2">
+                <div key={card.label} className="min-h-[118px] rounded-2xl border border-slate-200/80 bg-white/95 p-[18px] shadow-[0_14px_34px_rgba(15,23,42,0.045)]">
+                  <p className="mb-3 text-[10px] font-extrabold text-slate-500">{card.label}</p>
+                  <div className="flex items-end justify-between gap-3">
                     <div>
-                      <p className="text-[22px] font-black tracking-[-0.03em] text-[#07111f]">{card.value}</p>
-                      <p className={`mt-1 text-[10px] font-bold ${card.warning ? 'text-red-500' : card.tone}`}>{card.warning ? '1 vs yesterday' : card.delta}</p>
+                      <p className="whitespace-nowrap text-[25px] font-black tracking-[-0.035em] text-[#07111f]">{card.value}</p>
+                      <p className={`mt-2 text-[10px] font-extrabold ${card.warning ? 'text-red-500' : card.tone}`}>{card.warning ? '1 vs yesterday' : card.delta}</p>
                     </div>
                     {card.graph && <SparkLine className="h-9 w-20" />}
                   </div>
@@ -81,10 +87,10 @@ export function HeroDashboard() {
               ))}
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr_0.78fr]">
-              <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
-                <h4 className="mb-4 text-[13px] font-extrabold text-[#07111f]">Monitored Services</h4>
-                <div className="mb-2 grid grid-cols-[1.3fr_0.65fr_0.55fr_0.8fr] text-[9px] font-bold text-slate-400">
+            <div className="grid gap-[18px] lg:grid-cols-[1.06fr_1.04fr_0.86fr]">
+              <div className="min-h-[238px] rounded-2xl border border-slate-200/80 bg-white/95 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.045)]">
+                <h4 className="mb-5 text-[13px] font-extrabold text-[#07111f]">Monitored Services</h4>
+                <div className="mb-3 grid grid-cols-[1.35fr_0.62fr_0.54fr_0.72fr] text-[9px] font-extrabold text-slate-400">
                   <span>Service</span>
                   <span>Status</span>
                   <span>Uptime</span>
@@ -92,8 +98,8 @@ export function HeroDashboard() {
                 </div>
                 <div className="space-y-3">
                   {services.map(([service, status, uptime, color]) => (
-                    <div key={service} className="grid grid-cols-[1.3fr_0.65fr_0.55fr_0.8fr] items-center text-[10px]">
-                      <span className="flex min-w-0 items-center gap-2 font-semibold text-slate-700">
+                    <div key={service} className="grid grid-cols-[1.35fr_0.62fr_0.54fr_0.72fr] items-center text-[10px]">
+                      <span className="flex min-w-0 items-center gap-2 font-bold text-slate-700">
                         <span className="h-2 w-2 rounded-full" style={{ backgroundColor: color }} />
                         <span className="truncate">{service}</span>
                       </span>
@@ -105,16 +111,16 @@ export function HeroDashboard() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
-                <h4 className="mb-4 text-[13px] font-extrabold text-[#07111f]">Incident Timeline</h4>
+              <div className="min-h-[238px] rounded-2xl border border-slate-200/80 bg-white/95 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.045)]">
+                <h4 className="mb-5 text-[13px] font-extrabold text-[#07111f]">Incident Timeline</h4>
                 {[
                   { icon: AlertTriangle, title: 'Incident triggered', desc: 'dashboard.mypop.co returned 500', time: '10:21 AM', color: 'text-red-500', bg: 'bg-red-50' },
                   { icon: Send, title: 'Alert sent to @incidents', desc: 'Slack notification', time: '10:21 AM', color: 'text-violet-500', bg: 'bg-violet-50' },
                   { icon: Sparkles, title: 'AI diagnosis started', desc: 'Analyzing logs and metrics', time: '10:22 AM', color: 'text-blue-500', bg: 'bg-blue-50' },
                   { icon: ShieldCheck, title: 'Investigation in progress', desc: 'Auto-collecting relevant data', time: '10:23 AM', color: 'text-slate-500', bg: 'bg-slate-50' },
                 ].map((item) => (
-                  <div key={item.title} className="mb-4 grid grid-cols-[28px_1fr_auto] gap-3 last:mb-0">
-                    <span className={`flex h-7 w-7 items-center justify-center rounded-full ${item.bg} ${item.color}`}>
+                  <div key={item.title} className="mb-3.5 grid grid-cols-[30px_1fr_auto] gap-3 last:mb-0">
+                    <span className={`flex h-8 w-8 items-center justify-center rounded-full ${item.bg} ${item.color}`}>
                       <item.icon size={14} />
                     </span>
                     <span>
@@ -126,16 +132,16 @@ export function HeroDashboard() {
                 ))}
               </div>
 
-              <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
+              <div className="min-h-[238px] rounded-2xl border border-slate-200/80 bg-white/95 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.045)]">
                 <div className="mb-5 flex items-center gap-2">
                   <h4 className="text-[13px] font-extrabold text-[#07111f]">AI Analysis</h4>
                   <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[9px] font-black text-slate-500">Beta</span>
                 </div>
-                <p className="mb-2 text-[12px] font-extrabold text-[#07111f]">Root cause identified</p>
-                <p className="mb-5 text-[11px] font-medium leading-relaxed text-slate-500">
+                <p className="mb-3 text-[12px] font-extrabold text-[#07111f]">Root cause identified</p>
+                <p className="mb-5 text-[11px] font-semibold leading-relaxed text-slate-500">
                   Database connection timeout on user-service causing 500 errors.
                 </p>
-                <button className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-extrabold text-slate-700 shadow-sm">
+                <button className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-[11px] font-extrabold text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.045)]">
                   View full analysis <ArrowRight size={13} />
                 </button>
               </div>

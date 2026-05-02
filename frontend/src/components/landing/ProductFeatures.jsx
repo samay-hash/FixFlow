@@ -43,9 +43,9 @@ const PRODUCT_FEATURES = [
 
 export function ProductFeatures() {
   return (
-    <section className="bg-[#fffaf5] px-6 py-16">
+    <section className="bg-[#fffaf5] px-6 ">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-6 text-center text-[22px] font-black tracking-[-0.03em] text-[#07111f]">Everything you need to ship reliable software</h2>
+        <h2 className="mb-6 text-center text-[22px] font-semibold font-black tracking-[-0.03em] text-[#07111f]">Everything you need to ship reliable software</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {PRODUCT_FEATURES.map(({ title, desc, icon: Icon, preview }) => (
             <div key={title} className="grid min-h-[116px] grid-cols-[1fr_auto] items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_12px_32px_rgba(80,55,40,0.05)]">
@@ -60,7 +60,7 @@ export function ProductFeatures() {
             </div>
           ))}
         </div>
-        <h3 className="mt-9 text-center text-[17px] font-black text-[#07111f]">Connect your stack. Close the loop.</h3>
+        <h3 className="mt-9 text-center font-semibold text-[17px] font-black text-[#07111f]">Connect your stack. Close the loop.</h3>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
           {[
             { label: 'GitHub', icon: GitBranch },
