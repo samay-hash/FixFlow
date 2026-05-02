@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GitBranch, CheckCircle, AlertTriangle, Sparkles } from 'lucide-react';
-import { SparkLine, AlertLogos } from './Previews';
+import { SparkLine } from './UIAtoms';
+import { AlertLogos } from './Previews';
 
 export function FloatingDeployCard() {
   return (
