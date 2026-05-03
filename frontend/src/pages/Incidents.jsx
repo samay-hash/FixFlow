@@ -97,7 +97,7 @@ export default function Incidents() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 ml-64 p-8 page-enter">
 
         {/* ── Header ──────────────────────────────────────── */}
         <div className="page-header flex items-start justify-between flex-wrap gap-4">

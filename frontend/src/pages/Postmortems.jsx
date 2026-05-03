@@ -33,12 +33,17 @@ export default function Postmortems() {
   useEffect(() => { load(); }, []);
 
   const handleGenerate = async () => {
-    if (!selectedIncident) return toast.error('Select an incident first');
+    if (!selectedIncident) return toast.error('Select a resolved incident first');
     setGenerating(true);
     try {
       const { data } = await api.post('/postmortems', { incidentId: selectedIncident });
       setPostmortems(prev => [data.postmortem, ...prev]);
       setSelectedIncident('');
+      // Refresh resolved incidents list
+      const pmRes = await api.get('/postmortems');
+      const incRes = await api.get('/incidents?status=resolved&limit=20');
+      const withPM = new Set(pmRes.data.postmortems.map(p => p.incidentId?._id));
+      setResolvedIncidents(incRes.data.incidents.filter(i => !withPM.has(i._id)));
       toast.success('🤖 AI postmortem draft generated!');
     } catch (err) { toast.error(err.response?.data?.message || 'Generation failed'); }
     finally { setGenerating(false); }
@@ -95,7 +100,7 @@ export default function Postmortems() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 ml-64 p-8 page-enter">
 
         {/* ── Header ──────────────────────────────────────── */}
         <div className="page-header flex items-start justify-between">
@@ -111,38 +116,41 @@ export default function Postmortems() {
           </div>
         </div>
 
-        {/* ── Generate Panel ───────────────────────────────── */}
-        {resolvedIncidents.length > 0 && (
-          <div className="mb-6 p-5 animate-fade-in"
-            style={{ background: '#EDE0FF', border: '3px solid var(--black)', boxShadow: '4px 4px 0 #5500CC' }}>
-            <div className="flex items-center gap-3 mb-2">
-              <Bot size={18} style={{ color: '#5500CC' }} />
-              <h3 className="font-black text-sm uppercase tracking-wide" style={{ color: 'var(--black)' }}>
-                Generate AI Postmortem
-              </h3>
-              <span className="badge" style={{ background: '#5500CC', color: 'white', borderColor: 'var(--black)' }}>
-                ✨ Gemini AI
-              </span>
-            </div>
-            <p className="text-xs font-medium mb-4" style={{ color: '#444' }}>
-              Select a resolved incident — AI will analyze the full timeline, generate root cause analysis,
-              and draft the entire postmortem report.
-            </p>
-            <div className="flex gap-3 flex-wrap">
-              <select className="input flex-1" value={selectedIncident}
-                onChange={e => setSelectedIncident(e.target.value)}>
-                <option value="">Select resolved incident...</option>
-                {resolvedIncidents.map(i => (
-                  <option key={i._id} value={i._id}>[{i.severity.toUpperCase()}] {i.title}</option>
-                ))}
-              </select>
-              <button onClick={handleGenerate} disabled={generating || !selectedIncident}
-                className="btn" style={{ background: '#5500CC', color: 'white', border: '3px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
-                <Bot size={16} />{generating ? 'AI Analyzing...' : 'Generate Draft'}
-              </button>
-            </div>
+        {/* ── Generate Panel ── always visible ──────────────── */}
+        <div className="mb-6 p-5 animate-fade-in anim-up"
+          style={{ background: 'var(--card-bg)', border: '3px solid #5500CC', boxShadow: '4px 4px 0 #5500CC' }}>
+          <div className="flex items-center gap-3 mb-2">
+            <Bot size={18} style={{ color: '#5500CC' }} />
+            <h3 className="font-black text-sm uppercase tracking-wide" style={{ color: 'var(--text)' }}>
+              Generate AI Postmortem
+            </h3>
+            <span className="badge" style={{ background: '#5500CC', color: 'white', borderColor: 'var(--black)' }}>
+              ✨ Gemini / Groq AI
+            </span>
           </div>
-        )}
+          <p className="text-xs font-medium mb-4" style={{ color: 'var(--muted)' }}>
+            Select a resolved incident — AI will analyze the full timeline, generate root cause analysis,
+            and draft the entire postmortem report automatically.
+          </p>
+          <div className="flex gap-3 flex-wrap">
+            <select className="input flex-1" value={selectedIncident}
+              onChange={e => setSelectedIncident(e.target.value)}>
+              <option value="">Select resolved incident...</option>
+              {resolvedIncidents.map(i => (
+                <option key={i._id} value={i._id}>[{i.severity.toUpperCase()}] {i.title}</option>
+              ))}
+            </select>
+            <button onClick={handleGenerate} disabled={generating || !selectedIncident}
+              className="btn" style={{ background: '#5500CC', color: 'white', border: '3px solid var(--black)', boxShadow: '3px 3px 0 var(--black)' }}>
+              <Bot size={16} />{generating ? 'AI Analyzing...' : resolvedIncidents.length === 0 ? 'No Pending Incidents' : 'Generate Draft'}
+            </button>
+          </div>
+          {resolvedIncidents.length === 0 && (
+            <p className="text-xs mt-3 font-medium" style={{ color: 'var(--muted)' }}>
+              ✅ All resolved incidents already have postmortems. Resolve a new incident to generate another.
+            </p>
+          )}
+        </div>
 
         {/* ── List ────────────────────────────────────────── */}
         {loading ? (

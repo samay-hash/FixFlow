@@ -153,7 +153,7 @@ export default function IncidentDetail() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 ml-64 p-8 page-enter">
         {/* Back */}
         <button onClick={() => navigate('/incidents')} className="btn-ghost btn-sm mb-6"><ArrowLeft size={14} />All Incidents</button>
 

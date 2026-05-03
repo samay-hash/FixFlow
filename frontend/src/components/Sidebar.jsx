@@ -1,9 +1,10 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/authSlice';
+import { useTheme } from '../context/ThemeContext';
 import {
   LayoutDashboard, Globe, AlertTriangle, FileText,
-  Activity, LogOut, Shield, Users
+  Activity, LogOut, Shield, Users, Sun, Moon
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -21,28 +22,33 @@ export default function Sidebar() {
   const dispatch  = useDispatch();
   const { user, company } = useSelector(state => state.auth);
   const { stats }         = useSelector(state => state.incidents);
+  const { dark, toggle }  = useTheme();
 
   const handleLogout = () => { dispatch(logout()); navigate('/login'); };
 
   return (
     <aside
-      className="w-64 min-h-screen flex flex-col fixed left-0 top-0 z-40"
-      style={{ background: 'var(--cream-2)', borderRight: '3px solid var(--black)' }}
+      className="w-64 min-h-screen flex flex-col fixed left-0 top-0 z-40 anim-left"
+      style={{
+        background: 'var(--cream-2)',
+        borderRight: '3px solid var(--black)',
+        transition: 'background 0.3s ease, border-color 0.3s ease',
+      }}
     >
       {/* ── Logo ────────────────────────────────────────────── */}
       <div className="p-5" style={{ borderBottom: '3px solid var(--black)' }}>
         <div className="flex items-center gap-3">
           <div
             className="w-10 h-10 flex items-center justify-center font-black text-white text-sm"
-            style={{ background: 'var(--black)', boxShadow: '2px 2px 0 var(--accent)' }}
+            style={{ background: '#0A0A0A', boxShadow: '2px 2px 0 #FF8C42' }}
           >
-            <Shield size={18} />
+            <Shield size={18} color="#FF8C42" />
           </div>
           <div>
             <h1 className="text-sm font-extrabold uppercase tracking-widest" style={{ color: 'var(--black)' }}>
               FixFlow
             </h1>
-            <p className="text-xs font-medium truncate max-w-[130px]" style={{ color: '#666' }}>
+            <p className="text-xs font-medium truncate max-w-[130px]" style={{ color: 'var(--muted)' }}>
               {company?.name || '...'}
             </p>
             {company?.category && (
@@ -97,18 +103,42 @@ export default function Sidebar() {
         </div>
       )}
 
+      {/* ── Dark Mode Toggle ──────────────────────────────── */}
+      <div className="px-3 mb-2">
+        <button
+          onClick={toggle}
+          className="nav-item w-full justify-between"
+          title={dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          style={{ color: 'var(--black)' }}
+        >
+          <div className="flex items-center gap-3">
+            {dark ? <Sun size={15} color="#FF8C42" /> : <Moon size={15} />}
+            <span>{dark ? 'Light Mode' : 'Dark Mode'}</span>
+          </div>
+          {/* Toggle pill */}
+          <div className="w-10 h-5 relative flex-shrink-0"
+            style={{ background: dark ? '#FF8C42' : 'var(--cream)', border: '2px solid var(--black)', transition: 'background 0.2s' }}>
+            <div className="absolute top-0.5 w-3 h-3 transition-all duration-200"
+              style={{
+                background: 'var(--black)',
+                left: dark ? 'calc(100% - 14px)' : '2px',
+              }} />
+          </div>
+        </button>
+      </div>
+
       {/* ── User ────────────────────────────────────────────── */}
       <div className="p-3" style={{ borderTop: '3px solid var(--black)' }}>
         <div className="flex items-center gap-3 p-2">
           <div
             className="w-9 h-9 flex items-center justify-center text-sm font-black flex-shrink-0"
-            style={{ background: 'var(--accent)', border: '2px solid var(--black)', color: 'var(--black)', boxShadow: '2px 2px 0 var(--black)' }}
+            style={{ background: '#FF8C42', border: '2px solid var(--black)', color: '#0A0A0A', boxShadow: '2px 2px 0 var(--black)' }}
           >
             {user?.name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-xs font-bold truncate" style={{ color: 'var(--black)' }}>{user?.name}</p>
-            <p className="text-xs font-medium uppercase tracking-wide" style={{ color: '#888' }}>{user?.role}</p>
+            <p className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--muted)' }}>{user?.role}</p>
           </div>
           <button
             onClick={handleLogout}

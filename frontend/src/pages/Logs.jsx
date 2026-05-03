@@ -28,7 +28,7 @@ export default function LogIntelligence() {
   return (
     <div className="flex min-h-screen" style={{ background: '#F2EDE4' }}>
       <Sidebar />
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 ml-64 p-8 page-enter">
         
         {/* ── Header ──────────────────────────────────────── */}
         <div className="flex items-start justify-between mb-8">

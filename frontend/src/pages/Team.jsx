@@ -82,7 +82,7 @@ export default function Team() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 ml-64 p-8 page-enter">
         <div className="page-header flex items-start justify-between flex-wrap gap-4 mb-6">
           <div>
             <div className="flex items-center gap-2 mb-1">

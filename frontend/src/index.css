@@ -9,13 +9,44 @@
   --cream:   #F2EDE4;
   --cream-2: #EAE4D9;
   --black:   #0A0A0A;
-  --lime:    #FF8C42; /* Renamed visually to Soft Orange, keeping var name for backward compatibility */
+  --lime:    #FF8C42;
   --pink:    #FF2D78;
-  --blue:    #A0C4FF; /* Changed to a softer, eye-friendly pastel blue */
+  --blue:    #A0C4FF;
   --yellow:  #FFE500;
   --border:  3px solid #0A0A0A;
   --shadow:  4px 4px 0px #0A0A0A;
   --shadow-lg: 6px 6px 0px #0A0A0A;
+  /* Theme-aware tokens */
+  --bg:      #F2EDE4;
+  --bg-2:    #EAE4D9;
+  --bg-3:    #ffffff;
+  --text:    #0A0A0A;
+  --muted:   #555555;
+  --bdr:     #0A0A0A;
+  --dot-clr: #0A0A0A18;
+  --card-bg: #EAE4D9;
+  --input-bg:#ffffff;
+  --sidebar-bg: #EAE4D9;
+}
+
+/* Dark mode overrides — triggered by data-theme="dark" on <html> */
+[data-theme="dark"] {
+  --cream:   #141414;
+  --cream-2: #1A1A1A;
+  --black:   #F0EBE0;
+  --bg:      #0A0A0A;
+  --bg-2:    #141414;
+  --bg-3:    #1E1E1E;
+  --text:    #F0EBE0;
+  --muted:   #999999;
+  --bdr:     #444444;
+  --dot-clr: #F0EBE018;
+  --card-bg: #1A1A1A;
+  --input-bg:#1E1E1E;
+  --sidebar-bg: #141414;
+  --border:  3px solid #444444;
+  --shadow:  4px 4px 0px #444444;
+  --shadow-lg: 6px 6px 0px #444444;
 }
 
 /* ── Base ───────────────────────────────────────────────── */
@@ -23,13 +54,13 @@
   * { box-sizing: border-box; }
 
   body {
-    background-color: var(--cream);
-    color: var(--black);
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
     min-height: 100vh;
-    /* Dot grid pattern */
-    background-image: radial-gradient(circle, #0A0A0A18 1px, transparent 1px);
+    background-image: radial-gradient(circle, var(--dot-clr) 1px, transparent 1px);
     background-size: 24px 24px;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -42,20 +73,21 @@
 
   /* CARDS */
   .card {
-    background: var(--cream-2);
+    background: var(--card-bg);
     border: var(--border);
     box-shadow: var(--shadow);
     padding: 1.5rem;
     position: relative;
+    transition: background 0.3s ease, border-color 0.3s ease;
   }
   .card-sm { @apply card; padding: 1rem; }
   .card-hover {
-    background: var(--cream-2);
+    background: var(--card-bg);
     border: var(--border);
     box-shadow: var(--shadow);
     padding: 1.25rem;
     display: block;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.3s ease;
   }
   .card-hover:hover {
     transform: translate(-2px, -2px);
@@ -111,13 +143,13 @@
   /* INPUTS */
   .input {
     @apply w-full px-4 py-2.5 text-sm font-medium;
-    background: white;
+    background: var(--input-bg);
     border: var(--border);
     box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-    color: var(--black);
+    color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
     outline: none;
-    transition: box-shadow 0.15s ease;
+    transition: box-shadow 0.15s ease, background 0.3s ease;
   }
   .input::placeholder { color: #888; }
   .input:focus {
@@ -156,11 +188,11 @@
   /* SIDEBAR NAV */
   .nav-item {
     @apply flex items-center gap-3 px-3 py-2.5 text-sm font-bold transition-all duration-150 cursor-pointer uppercase tracking-wide;
-    color: var(--black);
+    color: var(--text);
     border: 2px solid transparent;
   }
   .nav-item:hover {
-    background: var(--cream);
+    background: var(--bg);
     border: 2px solid var(--black);
     box-shadow: 2px 2px 0 var(--black);
   }
@@ -169,13 +201,13 @@
     background: var(--lime);
     border: 2px solid var(--black);
     box-shadow: 2px 2px 0 var(--black);
-    color: var(--black);
+    color: #0A0A0A;
   }
 
   /* PAGE HEADER */
   .page-header  { @apply mb-8; }
-  .page-title   { @apply text-3xl font-extrabold uppercase tracking-tight; color: var(--black); }
-  .page-subtitle { @apply text-sm font-medium mt-1; color: #555; }
+  .page-title   { @apply text-3xl font-extrabold uppercase tracking-tight; color: var(--text); }
+  .page-subtitle { @apply text-sm font-medium mt-1; color: var(--muted); }
 
   /* TAG / CHIP */
   .tag {
@@ -210,3 +242,46 @@
   border-radius: 0 !important;
   box-shadow: 3px 3px 0 #0A0A0A !important;
 }
+
+/* ── Page Enter Animations ──────────────────────────────── */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-left  { animation: slideInLeft  0.8s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-right { animation: slideInRight 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-up    { animation: slideInUp    0.7s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-down  { animation: slideInDown  0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-scale { animation: scaleIn      0.6s cubic-bezier(0.22,1,0.36,1) both; }
+.page-enter { animation: pageEnter    0.55s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* Staggered delay helpers */
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+.delay-7 { animation-delay: 0.56s; }
+.delay-8 { animation-delay: 0.64s; }
