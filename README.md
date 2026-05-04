@@ -1,32 +1,37 @@
 <div align="center">
+  <img src="./frontend/public/logo.png" alt="FixFlow Logo" width="120" />
 
-# 🔥 FixFlow
-### Smart Incident Monitoring & Response System
+  # 🔥 FixFlow AI
+  ### Smart Incident Monitoring & Autonomous Response System
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
-[![MongoDB](https://img.shields.io/badge/MongoDB-6-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
-[![Socket.io](https://img.shields.io/badge/Socket.io-4-010101?style=for-the-badge&logo=socket.io&logoColor=white)](https://socket.io)
-[![Google Gemini](https://img.shields.io/badge/Gemini_AI-Pro-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+  [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
+  [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-6-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
+  [![Socket.io](https://img.shields.io/badge/Socket.io-4-010101?style=for-the-badge&logo=socket.io&logoColor=white)](https://socket.io)
+  [![Google Gemini](https://img.shields.io/badge/Gemini_AI-Pro-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+  [![Vercel Ready](https://img.shields.io/badge/Vercel-Serverless-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
-**Production-grade uptime monitoring with AI-powered incident response, auto-resolution, and intelligent postmortem generation.**
+  **Production-grade uptime monitoring with AI-powered incident response, auto-resolution, and a pixel-perfect premium UI.**
 
-[Features](#-features) · [Architecture](#-architecture) · [Quick Start](#-quick-start) · [API Reference](#-api-reference) · [Screenshots](#-screenshots)
+  ### 🌐 [Live Demo: fixflow-eta.vercel.app](https://fixflow-eta.vercel.app)
 
+  [Features](#-features) · [Architecture](#-architecture) · [What's New](#-whats-new) · [Quick Start](#-quick-start) · [Deployment](#-deployment)
 </div>
 
 ---
 
 ## 🚀 Overview
 
-FixFlow is a full-stack SRE (Site Reliability Engineering) platform that monitors your websites every minute, automatically creates incidents when outages occur, and uses **Google Gemini AI** to generate professional postmortem reports and real-time SITREP summaries. Built for hackathons and production environments alike.
+FixFlow AI is a full-stack SRE (Site Reliability Engineering) platform that monitors your websites every minute, automatically creates incidents when outages occur, and uses **Cascading AI Models (Gemini → Groq → Local)** to generate professional postmortem reports and real-time SITREP summaries. 
+
+Built with an obsessive focus on **design fidelity**, the application features a stunning layout, scroll-driven micro-animations, and a responsive workspace tailored for modern DevOps and SRE teams.
 
 ### Why FixFlow?
-- ⚡ **Zero-touch incident lifecycle** — detection → creation → notification → resolution, all automated
-- 🤖 **AI-Powered** — Gemini Pro generates postmortems, SITREP summaries, and auto-remediation scripts
-- 📡 **Real-time** — WebSocket-powered live dashboard with no polling
-- 📧 **Email Alerts** — Instant Nodemailer notifications on site down/recovery
-- 📊 **30-Day Uptime Tracking** — Accurate uptime percentages from historical snapshots
+- ⚡ **Zero-Touch Incident Lifecycle** — Detection → Creation → Notification → Resolution, completely automated.
+- 🤖 **Cascading AI Fallbacks** — Rock-solid AI integration prioritizing Gemini Pro, gracefully falling back to Groq, and lastly local mocked data if external APIs fail.
+- 📡 **Real-Time Data** — WebSocket-powered live dashboard with no polling.
+- ✨ **Premium Aesthetics** — High-end UI with Framer Motion animations, scroll-driven navbars, and glassmorphism styling.
+- 🚀 **Serverless Ready** — Pre-configured for seamless Vercel deployment.
 
 ---
 
@@ -34,93 +39,49 @@ FixFlow is a full-stack SRE (Site Reliability Engineering) platform that monitor
 
 | Feature | Description |
 |---|---|
-| 🔍 **Uptime Monitoring** | Cron-based health checks every 60 seconds per site |
-| 🚨 **Auto Incident Creation** | Incidents created instantly when a site goes `down` |
-| ✅ **Auto Resolution** | Incidents auto-closed with MTTR calculated when site recovers |
-| 🤖 **AI Postmortems** | Gemini Pro generates structured RCA reports from incident timelines |
-| 📋 **SITREP Generation** | Live AI situation reports for active incidents in the war room |
-| 🛠️ **Auto Remediation** | AI suggests Bash/Kubectl/AWS CLI commands to mitigate outages |
-| 📊 **Recharts Dashboard** | Response time trends, uptime %, incident history visualized |
-| 🔔 **Real-time Alerts** | Socket.io push notifications across all connected clients |
-| 📧 **Email Notifications** | Nodemailer alerts on outage and recovery |
-| 🔐 **JWT Auth** | Role-based access control (Admin / Member) |
-| 🏢 **Multi-Tenant** | Company-scoped data isolation |
-| 📄 **Public Status Page** | Shareable uptime page for external stakeholders |
+| 🔍 **Uptime Monitoring** | Cron-based health checks every 60 seconds per site. |
+| 🚨 **Auto Incident Creation** | Incidents are triggered instantly when a site goes `down`. |
+| ✅ **Auto Resolution** | Incidents auto-close with MTTR calculated upon site recovery. |
+| 🤖 **AI Postmortems** | Structured RCA reports generated from incident timelines via AI. |
+| 📋 **Live SITREP** | On-demand AI situation reports for active incidents in the war room. |
+| 🛠️ **Auto Remediation** | Contextual Bash/Kubectl/AWS CLI commands suggested to mitigate outages. |
+| 🎨 **Scroll-Driven UI** | Fluid, state-based animations (e.g., dynamic "pill-shaped" floating navbars). |
+| 🔔 **Real-Time Alerts** | Socket.io push notifications across all connected clients. |
+| 📧 **Email Notifications** | Nodemailer alerts sent securely on outage and recovery. |
+| 🔐 **Redux Auth State** | JWT authentication driving UI state globally via Redux Toolkit. |
+| 🏢 **Multi-Tenant Architecture** | Complete data isolation mapped by `companyId`. |
 
 ---
 
-## 🏗️ Architecture
+## 🌟 What's New? (Latest Updates)
 
-```
-FixFlow
-├── backend/                   # Express.js REST API
-│   └── src/
-│       ├── config/            # MongoDB connection
-│       ├── controllers/       # Route handlers
-│       │   ├── auth.controller.js
-│       │   ├── incident.controller.js
-│       │   ├── postmortem.controller.js
-│       │   ├── site.controller.js
-│       │   └── log.controller.js
-│       ├── models/            # Mongoose schemas
-│       │   ├── User.js
-│       │   ├── Company.js
-│       │   ├── Website.js
-│       │   ├── Incident.js
-│       │   ├── Postmortem.js
-│       │   ├── Log.js
-│       │   └── UptimeSnapshot.js
-│       ├── services/
-│       │   ├── monitor.service.js   # Cron-based health checks
-│       │   ├── ai.service.js        # Gemini AI integration
-│       │   └── notification.service.js  # Email alerts
-│       ├── socket/
-│       │   └── socket.js            # Socket.io setup
-│       ├── middleware/
-│       │   ├── auth.middleware.js   # JWT verification
-│       │   └── role.middleware.js   # RBAC guards
-│       └── routes/            # Express routers
-│
-└── frontend/                  # React + Vite SPA
-    └── src/
-        ├── pages/             # Route-level components
-        │   ├── Dashboard.jsx
-        │   ├── Incidents.jsx
-        │   ├── IncidentDetail.jsx
-        │   ├── Sites.jsx
-        │   ├── Postmortems.jsx
-        │   ├── Logs.jsx
-        │   ├── StatusPage.jsx
-        │   ├── Login.jsx
-        │   └── Register.jsx
-        ├── components/
-        │   ├── Sidebar.jsx
-        │   └── AutoRemediation.jsx  # AI terminal UI
-        ├── store/             # Redux Toolkit state
-        ├── context/           # Socket.io React context
-        └── api/               # Axios instance
-```
+- **Vercel Serverless Support**: Added robust `vercel.json` configurations allowing the Express REST API and React SPA to deploy directly on Vercel infrastructure out of the box.
+- **Cascading AI Engine**: The backend now attempts resolution through Gemini, switches to Groq LLaMA if rate-limited, and ultimately falls back to local data — guaranteeing uptime for the AI features.
+- **Stunning UI/UX Refinements**: 
+  - Overhauled typography (`font-black` replaced with elegant `font-semibold` weights for readability).
+  - Consistent branding integration using the central `logo.png`.
+  - Removed visual artifacts for a pristine, premium background layout across the hero and dashboard.
+  - Interactive, dynamic scroll-driven landing page components built with `framer-motion`.
 
-### Tech Stack
+---
 
-**Backend**
-- **Express.js 5** — REST API framework
-- **MongoDB + Mongoose** — Database & ODM
-- **Socket.io** — Real-time bidirectional communication
-- **node-cron** — Scheduled monitoring ticks (every 1 minute)
-- **Winston** — Structured logging
-- **Nodemailer** — Email notifications
-- **bcryptjs + JWT** — Authentication
+## 🏗️ Architecture & Tech Stack
 
-**Frontend**
-- **React 18** + **Vite** — UI framework & build tool
-- **Redux Toolkit** — Global state management
-- **Framer Motion** — Animations
-- **Recharts** — Data visualization
-- **Tailwind CSS** — Utility-first styling
-- **Lucide React** — Icon library
-- **React Hot Toast** — Notification toasts
-- **Socket.io Client** — Real-time updates
+### Backend Engine
+- **Framework**: Express.js 5 (REST API)
+- **Database**: MongoDB + Mongoose ODM
+- **Real-Time**: Socket.io
+- **Cron Jobs**: `node-cron` for minute-by-minute sweeps
+- **AI Processing**: `@google/generative-ai`, `groq-sdk`
+- **Security & Auth**: `bcryptjs`, JWT
+
+### Frontend Client
+- **Core**: React 18 + Vite
+- **State Management**: Redux Toolkit + React Context
+- **Styling**: Tailwind CSS + `clsx`
+- **Animations**: Framer Motion
+- **Visualizations**: Recharts
+- **Icons**: Lucide React
 
 ---
 
@@ -129,212 +90,84 @@ FixFlow
 ### Prerequisites
 - Node.js 18+
 - MongoDB (local or Atlas URI)
-- Google Gemini API key *(optional — mock fallback built-in)*
-- SMTP credentials *(optional — for email alerts)*
 
-### 1. Clone the repo
-
+### 1. Clone & Install
 ```bash
 git clone https://github.com/samay-hash/FixFlow.git
 cd FixFlow
+
+# Install Backend
+cd backend && npm install
+
+# Install Frontend
+cd ../frontend && npm install
 ```
 
-### 2. Configure the Backend
+### 2. Configure Environment
 
-```bash
-cd backend
-cp .env.example .env   # or create .env manually
-npm install
-```
-
-Create `backend/.env`:
-
+**Backend (`backend/.env`)**
 ```env
 PORT=5000
 NODE_ENV=development
 MONGO_URI=mongodb://localhost:27017/fixflow
 
-JWT_SECRET=your_super_secret_jwt_key_here
+JWT_SECRET=your_super_secret_jwt_key
 JWT_EXPIRES_IN=7d
 
-# Optional: Google Gemini AI (postmortems & SITREPs)
-GEMINI_API_KEY=your_gemini_api_key_here
+# Primary AI (Required for full experience)
+GEMINI_API_KEY=your_gemini_key
 
-# Optional: Email alerts via SMTP
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_app_password
-ALERT_FROM=alerts@fixflow.io
+# Fallback AI (Optional)
+GROQ_API_KEY=your_groq_key
 ```
 
-### 3. Configure the Frontend
-
-```bash
-cd ../frontend
-npm install
-```
-
-Create `frontend/.env`:
-
+**Frontend (`frontend/.env`)**
 ```env
 VITE_API_URL=http://localhost:5000
 VITE_SOCKET_URL=http://localhost:5000
 ```
 
-### 4. Run the Application
+### 3. Launch Development Servers
 
-**Start the backend:**
+**Terminal 1 (Backend):**
 ```bash
 cd backend
 npm run dev
 ```
 
-**Start the frontend (in a new terminal):**
+**Terminal 2 (Frontend):**
 ```bash
 cd frontend
 npm run dev
 ```
-
-Visit **http://localhost:5173** and register your account.
-
----
-
-## 🔌 API Reference
-
-### Authentication
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/auth/register` | Register a new user + company |
-| `POST` | `/api/auth/login` | Login and receive JWT |
-| `GET` | `/api/auth/me` | Get current user profile |
-
-### Sites
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/sites` | List all monitored sites |
-| `POST` | `/api/sites` | Add a new site to monitor |
-| `PUT` | `/api/sites/:id` | Update site details |
-| `DELETE` | `/api/sites/:id` | Remove a site |
-| `GET` | `/api/sites/:id/uptime` | Get uptime snapshots |
-
-### Incidents
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/incidents` | List all incidents |
-| `GET` | `/api/incidents/:id` | Get incident with full timeline |
-| `POST` | `/api/incidents` | Manually create an incident |
-| `PUT` | `/api/incidents/:id` | Update status / add timeline entry |
-| `POST` | `/api/incidents/:id/sitrep` | Generate AI SITREP |
-
-### Postmortems
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/postmortems` | List all postmortems |
-| `POST` | `/api/postmortems/generate/:incidentId` | AI-generate postmortem from incident |
-| `PUT` | `/api/postmortems/:id` | Edit postmortem draft |
-| `POST` | `/api/postmortems/:id/score` | AI quality score a postmortem |
-
-### System
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/health` | Health check |
+Visit **http://localhost:5173** and explore your new SRE command center!
 
 ---
 
-## 📡 WebSocket Events
+## 🚀 Deployment (Vercel)
 
-The server emits real-time events to company-scoped rooms (`company_<id>`):
+FixFlow AI is heavily optimized for Serverless deployments on Vercel.
 
-| Event | Payload | Trigger |
-|-------|---------|---------|
-| `site:status` | `{ siteId, name, status, responseTime, uptimePercent }` | Every monitoring tick |
-| `incident:created` | Incident object | Site goes down |
-| `incident:updated` | Incident object | Status changes |
-| `notification:alert` | `{ message, severity, incidentId }` | Down/recovery events |
+1. **Deploy Frontend:**
+   - Import the repository to Vercel.
+   - Set the Root Directory to `frontend`.
+   - Framework Preset: **Vite**.
+   - Add Environment Variables: `VITE_API_URL` (pointing to your deployed backend URL).
 
----
-
-## 🤖 AI Features
-
-### Postmortem Generation
-When you resolve an incident, FixFlow can generate a structured postmortem using Gemini Pro with:
-- Executive Summary
-- Root Cause Analysis
-- Impact Assessment
-- What Went Well / Wrong
-- 3–5 Prevention Steps
-- Timeline Narrative
-- Quality Score (1–10)
-
-### SITREP (Situation Report)
-Live AI-written situation reports for active war-room incidents — updated on demand with the latest timeline context.
-
-### Auto-Remediation Terminal
-AI suggests contextual Bash, Kubectl, or AWS CLI commands based on the incident title and severity — displayed in a terminal-style UI component.
-
-> **Fallback:** If `GEMINI_API_KEY` is not set, all AI features gracefully fall back to structured mock data so the app remains fully functional.
-
----
-
-## 📊 Monitoring Logic
-
-```
-Every 60 seconds:
-  for each active site:
-    → HTTP GET with 10s timeout
-    → status = 'down'    if HTTP >= 500 or connection error
-    → status = 'degraded' if response > 3000ms
-    → status = 'up'      otherwise
-
-    → Save UptimeSnapshot
-    → Recalculate 30-day uptime %
-    → Broadcast via Socket.io
-
-    if was UP, now DOWN  → createDownIncident() + email alert
-    if was DOWN, now UP  → autoResolveIncident() + calculate MTTR
-```
-
----
-
-## 🔐 Environment Variables Reference
-
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `PORT` | No | `5000` | Backend port |
-| `NODE_ENV` | No | `development` | Environment |
-| `MONGO_URI` | **Yes** | — | MongoDB connection string |
-| `JWT_SECRET` | **Yes** | — | Secret for JWT signing |
-| `JWT_EXPIRES_IN` | No | `7d` | Token expiry |
-| `GEMINI_API_KEY` | No | — | Google AI Studio key |
-| `SMTP_HOST` | No | — | SMTP server host |
-| `SMTP_PORT` | No | `587` | SMTP port |
-| `SMTP_USER` | No | — | SMTP username |
-| `SMTP_PASS` | No | — | SMTP password |
-
----
-
-## 🗂️ Database Models
-
-| Model | Key Fields |
-|-------|-----------|
-| `User` | name, email, password, role, companyId |
-| `Company` | name, slug, plan |
-| `Website` | url, name, status, uptimePercent, responseTime, companyId |
-| `Incident` | title, severity, status, timeline[], mttr, siteId, companyId |
-| `Postmortem` | rootCause, preventionSteps, qualityScore, incidentId |
-| `Log` | message, level, source, siteId, incidentId |
-| `UptimeSnapshot` | status, responseTime, statusCode, timestamp |
+2. **Deploy Backend:**
+   - Import the repository to Vercel again as a new project.
+   - Set the Root Directory to `backend`.
+   - Framework Preset: **Other**.
+   - Ensure the Vercel project overrides the build command to `npm install`.
+   - Add Environment Variables: `MONGO_URI`, `JWT_SECRET`, `GEMINI_API_KEY`.
+   
+*(Note: Because Vercel is serverless, persistent Socket.io connections and `node-cron` background tasks require long-running compute. For full functionality of real-time web-sockets and background cron jobs, deploying the backend on **Render** or **Railway** is recommended.)*
 
 ---
 
 ## 🤝 Contributing
 
+We welcome contributions to make FixFlow even better!
 1. Fork the repository
 2. Create a feature branch — `git checkout -b feat/your-feature`
 3. Commit your changes — `git commit -m "feat: add your feature"`
@@ -347,12 +180,195 @@ Every 60 seconds:
 
 This project is licensed under the **ISC License**.
 
+<div align="center">
+  <br />
+  Built with ❤️ for modern SRE teams and hackathons.<br />
+  <strong>If FixFlow helped you, please give it a ⭐ on GitHub!</strong>
+</div>
+<div align="center">
+  <img src="./frontend/public/logo.png" alt="FixFlow Logo" width="120" />
+
+  # 🔥 FixFlow AI
+  ### Smart Incident Monitoring & Autonomous Response System
+
+  [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org)
+  [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-6-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
+  [![Socket.io](https://img.shields.io/badge/Socket.io-4-010101?style=for-the-badge&logo=socket.io&logoColor=white)](https://socket.io)
+  [![Google Gemini](https://img.shields.io/badge/Gemini_AI-Pro-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+  [![Vercel Ready](https://img.shields.io/badge/Vercel-Serverless-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+
+  **Production-grade uptime monitoring with AI-powered incident response, auto-resolution, and a pixel-perfect premium UI.**
+
+  ### 🌐 [Live Demo: fixflow-eta.vercel.app](https://fixflow-eta.vercel.app)
+
+  [Features](#-features) · [Architecture](#-architecture) · [What's New](#-whats-new) · [Quick Start](#-quick-start) · [Deployment](#-deployment)
+</div>
+
 ---
 
+## 🚀 Overview
+
+FixFlow AI is a full-stack SRE (Site Reliability Engineering) platform that monitors your websites every minute, automatically creates incidents when outages occur, and uses **Cascading AI Models (Gemini → Groq → Local)** to generate professional postmortem reports and real-time SITREP summaries. 
+
+Built with an obsessive focus on **design fidelity**, the application features a stunning layout, scroll-driven micro-animations, and a responsive workspace tailored for modern DevOps and SRE teams.
+
+### Why FixFlow?
+- ⚡ **Zero-Touch Incident Lifecycle** — Detection → Creation → Notification → Resolution, completely automated.
+- 🤖 **Cascading AI Fallbacks** — Rock-solid AI integration prioritizing Gemini Pro, gracefully falling back to Groq, and lastly local mocked data if external APIs fail.
+- 📡 **Real-Time Data** — WebSocket-powered live dashboard with no polling.
+- ✨ **Premium Aesthetics** — High-end UI with Framer Motion animations, scroll-driven navbars, and glassmorphism styling.
+- 🚀 **Serverless Ready** — Pre-configured for seamless Vercel deployment.
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---|---|
+| 🔍 **Uptime Monitoring** | Cron-based health checks every 60 seconds per site. |
+| 🚨 **Auto Incident Creation** | Incidents are triggered instantly when a site goes `down`. |
+| ✅ **Auto Resolution** | Incidents auto-close with MTTR calculated upon site recovery. |
+| 🤖 **AI Postmortems** | Structured RCA reports generated from incident timelines via AI. |
+| 📋 **Live SITREP** | On-demand AI situation reports for active incidents in the war room. |
+| 🛠️ **Auto Remediation** | Contextual Bash/Kubectl/AWS CLI commands suggested to mitigate outages. |
+| 🎨 **Scroll-Driven UI** | Fluid, state-based animations (e.g., dynamic "pill-shaped" floating navbars). |
+| 🔔 **Real-Time Alerts** | Socket.io push notifications across all connected clients. |
+| 📧 **Email Notifications** | Nodemailer alerts sent securely on outage and recovery. |
+| 🔐 **Redux Auth State** | JWT authentication driving UI state globally via Redux Toolkit. |
+| 🏢 **Multi-Tenant Architecture** | Complete data isolation mapped by `companyId`. |
+
+---
+
+## 🌟 What's New? (Latest Updates)
+
+- **Vercel Serverless Support**: Added robust `vercel.json` configurations allowing the Express REST API and React SPA to deploy directly on Vercel infrastructure out of the box.
+- **Cascading AI Engine**: The backend now attempts resolution through Gemini, switches to Groq LLaMA if rate-limited, and ultimately falls back to local data — guaranteeing uptime for the AI features.
+- **Stunning UI/UX Refinements**: 
+  - Overhauled typography (`font-black` replaced with elegant `font-semibold` weights for readability).
+  - Consistent branding integration using the central `logo.png`.
+  - Removed visual artifacts for a pristine, premium background layout across the hero and dashboard.
+  - Interactive, dynamic scroll-driven landing page components built with `framer-motion`.
+
+---
+
+## 🏗️ Architecture & Tech Stack
+
+### Backend Engine
+- **Framework**: Express.js 5 (REST API)
+- **Database**: MongoDB + Mongoose ODM
+- **Real-Time**: Socket.io
+- **Cron Jobs**: `node-cron` for minute-by-minute sweeps
+- **AI Processing**: `@google/generative-ai`, `groq-sdk`
+- **Security & Auth**: `bcryptjs`, JWT
+
+### Frontend Client
+- **Core**: React 18 + Vite
+- **State Management**: Redux Toolkit + React Context
+- **Styling**: Tailwind CSS + `clsx`
+- **Animations**: Framer Motion
+- **Visualizations**: Recharts
+- **Icons**: Lucide React
+
+---
+
+## ⚡ Quick Start
+
+### Prerequisites
+- Node.js 18+
+- MongoDB (local or Atlas URI)
+
+### 1. Clone & Install
+```bash
+git clone https://github.com/samay-hash/FixFlow.git
+cd FixFlow
+
+# Install Backend
+cd backend && npm install
+
+# Install Frontend
+cd ../frontend && npm install
+```
+
+### 2. Configure Environment
+
+**Backend (`backend/.env`)**
+```env
+PORT=5000
+NODE_ENV=development
+MONGO_URI=mongodb://localhost:27017/fixflow
+
+JWT_SECRET=your_super_secret_jwt_key
+JWT_EXPIRES_IN=7d
+
+# Primary AI (Required for full experience)
+GEMINI_API_KEY=your_gemini_key
+
+# Fallback AI (Optional)
+GROQ_API_KEY=your_groq_key
+```
+
+**Frontend (`frontend/.env`)**
+```env
+VITE_API_URL=http://localhost:5000
+VITE_SOCKET_URL=http://localhost:5000
+```
+
+### 3. Launch Development Servers
+
+**Terminal 1 (Backend):**
+```bash
+cd backend
+npm run dev
+```
+
+**Terminal 2 (Frontend):**
+```bash
+cd frontend
+npm run dev
+```
+Visit **http://localhost:5173** and explore your new SRE command center!
+
+---
+
+## 🚀 Deployment (Vercel)
+
+FixFlow AI is heavily optimized for Serverless deployments on Vercel.
+
+1. **Deploy Frontend:**
+   - Import the repository to Vercel.
+   - Set the Root Directory to `frontend`.
+   - Framework Preset: **Vite**.
+   - Add Environment Variables: `VITE_API_URL` (pointing to your deployed backend URL).
+
+2. **Deploy Backend:**
+   - Import the repository to Vercel again as a new project.
+   - Set the Root Directory to `backend`.
+   - Framework Preset: **Other**.
+   - Ensure the Vercel project overrides the build command to `npm install`.
+   - Add Environment Variables: `MONGO_URI`, `JWT_SECRET`, `GEMINI_API_KEY`.
+   
+*(Note: Because Vercel is serverless, persistent Socket.io connections and `node-cron` background tasks require long-running compute. For full functionality of real-time web-sockets and background cron jobs, deploying the backend on **Render** or **Railway** is recommended.)*
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions to make FixFlow even better!
+1. Fork the repository
+2. Create a feature branch — `git checkout -b feat/your-feature`
+3. Commit your changes — `git commit -m "feat: add your feature"`
+4. Push to the branch — `git push origin feat/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **ISC License**.
+
 <div align="center">
-
-Built with ❤️ for hackathons and production SRE teams.
-
-**[⭐ Star this repo](https://github.com/samay-hash/FixFlow)** if FixFlow helped you!
-
+  <br />
+  Built with ❤️ for modern SRE teams and hackathons.<br />
+  <strong>If FixFlow helped you, please give it a ⭐ on GitHub!</strong>
 </div>
