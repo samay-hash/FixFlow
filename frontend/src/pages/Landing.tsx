@@ -16,7 +16,7 @@ import {
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="relative min-h-screen overflow-x-clip text-[#07111f]" style={{ fontFamily: '"Inter", sans-serif' }}>
+    <div className="relative min-h-screen overflow-x-clip bg-[#fffaf5] text-[#07111f]" style={{ fontFamily: '"Inter", sans-serif' }}>
       <Navbar />
       <Hero />
       <Solutions />

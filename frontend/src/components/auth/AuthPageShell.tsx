@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Activity, Bell, CheckCircle2, Clock, ShieldAlert, Sparkles, TimerReset, Zap } from 'lucide-react';
+import { Activity, Bell, CheckCircle2, Clock, ShieldAlert, Sparkles, TimerReset } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 interface AuthPageShellProps {
@@ -38,8 +38,8 @@ export function AuthPageShell({
       <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-32px)] w-full max-w-[1180px] flex-col">
         <header className="flex items-center justify-between gap-4">
           <Link to="/" className="group flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-[#07111f] text-[#ff4f0a] shadow-[0_10px_22px_rgba(7,17,31,0.14)]">
-              <Zap size={19} fill="currentColor" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-[#07111f] shadow-[0_10px_22px_rgba(7,17,31,0.14)]">
+              <img src="/logo.png" alt="FixFlow" className="h-6 w-6 object-contain" />
             </span>
             <span className="text-[24px] font-extrabold leading-none tracking-[-0.04em] text-[#07111f]">
               FixFlow <span className="text-[#ff4f0a]">AI</span>

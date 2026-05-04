@@ -10,7 +10,7 @@ export function Hero() {
   const isAuthenticated  = false
 
   return (
-    <section className="relative overflow-hidden px-5 pt-[140px] sm:px-8 lg:pt-[180px]">
+    <section className="relative overflow-hidden bg-[#fffaf5] px-5 pt-[140px] sm:px-8 lg:pt-[180px]">
       <BackgroundOrnaments />
       <div className="relative z-10 mx-auto flex max-w-[1440px] flex-col items-center text-center">
         <motion.h1

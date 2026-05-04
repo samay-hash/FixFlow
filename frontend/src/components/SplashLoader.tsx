@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Activity, Bell, CheckCircle2, Shield, Sparkles } from 'lucide-react';
+import { Activity, Bell, CheckCircle2, Sparkles } from 'lucide-react';
 
 const LOADING_STEPS = [
   'Preparing monitors',
@@ -119,7 +119,7 @@ export default function SplashLoader({ onDone }: SplashLoaderProps) {
               animation: 'loaderRing 1.8s ease-in-out infinite',
             }}
           />
-          <Shield size={34} strokeWidth={2.4} />
+          <img src="/logo.png" alt="FixFlow" style={{ width: 36, height: 36, objectFit: 'contain' }} />
         </div>
 
         <h1
