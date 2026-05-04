@@ -21,7 +21,7 @@ export function Navbar() {
         className={`relative mx-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled 
             ? 'h-[72px] max-w-[1100px] bg-white/90 backdrop-blur-xl border border-slate-200 shadow-[0_16px_40px_rgba(0,0,0,0.08)] rounded-full px-6 sm:px-8' 
-            : 'h-[78px] max-w-[1280px] bg-white/20 backdrop-blur-2xl border-b border-[var(--border-subtle)] px-5 sm:px-8 rounded-none'
+            : 'h-[78px] max-w-[1280px] bg-white/20 backdrop-blur-2xl px-5 sm:px-8 rounded-none'
         }`}
       >
         <Logo />

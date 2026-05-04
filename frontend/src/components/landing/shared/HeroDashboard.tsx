@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Home, PlusCircle, ClipboardList, Users, Route, Settings, ChevronDown, Clock, AlertTriangle, Send, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Home, PlusCircle, ClipboardList, Users, Route, Settings, ChevronDown, Clock, AlertTriangle, Send, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
 import { ACCENT } from '../constants';
 import { SparkLine } from './UIAtoms';
 
@@ -40,7 +40,7 @@ export function HeroDashboard() {
         <div className="relative grid min-h-[430px] grid-cols-[54px_1fr] gap-5 md:grid-cols-[64px_1fr] 2xl:min-h-[462px] 2xl:gap-6">
           <aside className="flex flex-col items-center gap-4 border-r border-slate-100/90 pr-4">
             <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-[13px] bg-[#07111f] text-white shadow-[0_10px_22px_rgba(7,17,31,0.14)]">
-              <Shield size={18} color={ACCENT} />
+              <img src="/logo.png" alt="FixFlow" className="h-5 w-5 object-contain" />
             </div>
             {[
               { icon: Home, active: true },
